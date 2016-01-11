@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+
+    <!-- Set the title here -->
+    <title>Summary Report - Quality of Life Explorer</title>
+
+    <!-- metadata -->
+    <meta name="description" content="Quality of Life Dashboard.">
+    <meta name="keywords" content="GIS,Mecklenburg County,parks,libraries,schools,environment,impervious surface,floodplain,zoning,assessment,tax,photos,government">
+    <meta name="author" content="Tobin Bradley">
+
+    <!-- turn off robots during dev -->
+    <meta name="robots" value="none">
+
+    <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Windows 8.1 garbage -->
+    <meta name="application-name" content="Quality of Life Explorer"/>
+    <meta name="msapplication-TileColor" content="#1e59bd"/>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/report.css?foo=70417">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png" />
+
+</head>
+
+<body>
+    <!--[if lt IE 9]>
+        <p class="oldie alert-info text-center">You are using an outdated browser. <a href="http://whatbrowser.org/">Upgrade your browser today</a> to better experience this site.</p>
+    <![endif]-->
+
+    <div class="container">
+
+        <!-- Front page -->
+        <div class="page page-front">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="hero">
+                        <img class="logo-image" src="images/report-logo.png">
+                        <div class="subhero">
+                            <input type="text" class="form-control input-lg subtitle" placeholder="optional subtitle - type here" value="Summary Report" maxlength=40>
+                            <h4 class="neighborhoods">&nbsp;</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6">
+                    <p>
+                        The <a href="http://mcmap.org/qol/">Quality of Life Explorer</a> is an interactive online tool to help neighborhoods, government leaders and staff, businesses, community organizations, new residents and others learn more about our county and the diverse neighborhoods within it.  The Explorer features over 80 variables that reflect you, the places you live and work, and collectively, our community.
+                    </p>
+                    <p>
+                        On these pages, you’ll find information about the selected area’s social, housing, economic and environmental conditions.  Check out the Explorer online to learn more about what’s happening, see trends over time, and connect to resources to take action on the issues that matter to you.
+                    </p>
+                    <p>
+                        Learn More.  Take Action.  Create Change.
+                    </p>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <div id="smallmap" class="pull-right"></div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-xs-12 text-center">
+                    <table class="metric-box">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h2>Demographics</h2>
+                                    <h3 data-metric="rPOP">&nbsp;</h3>
+                                    <h4>Population</h4>
+                                </td>
+                                <td>
+                                    <h2>Infrastructure & Amenities</h2>
+                                    <h3 data-metric="mBIKEWK">&nbsp;</h3>
+                                    <h4>Commuting to work by Bicycle</h4>
+                                </td>
+                                <td>
+                                    <h2>Economy</h2>
+                                    <h3 data-metric="mMHI">&nbsp;</h3>
+                                    <h4>Median Household Income</h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <h2>Housing</h2>
+                                    <h3 data-metric="m6">&nbsp;</h3>
+                                    <h4>poor and unsound state of repair</h4>
+                                </td>
+                                <td>
+                                    <h2>Environment</h2>
+                                    <h3 data-metric="m7">&nbsp;</h3>
+                                    <h4>commuting 30 minutes or more</h4>
+                                </td>
+                                <td>
+                                    <h2>Safety</h2>
+                                    <h3 data-metric="m8">&nbsp;</h3>
+                                    <h4>violent crime</h4>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- Large Map -->
+        <!-- <div class="page page-category">
+            <div class="row text-center">
+                <div id="largemap"></div>
+            </div>
+        </div> -->
+
+        <!-- category pages -->
+        <div class="category-pages"></div>
+	</div>
+
+    <!-- category page template -->
+    <script type="text/template" id="template-category">
+        <div class="page page-category">
+            <div class="row">
+                <div class="col-xs-6 text-left">
+                    <h1><%= rc.category.toProperCase() %></h1>
+                </div>
+            </div>
+            <div class="row">
+                <% if (typeof rc.vis === 'function') { %>
+                <%= rc.vis() %>
+                <% } %>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-condensed table-<%= rc.featureID+"-"+rc.category.replace(/\s+/g, "-") %>">
+                      <thead>
+                        <!-- <tr>
+                          <th>Variable</th>
+                          <th class="text-right report-column-selected">Selected</th>
+                          <th class="text-right report-column-county">County</th>
+                          <th></th>
+                        </tr> -->
+                      </thead>
+                      <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </script>
+	<!-- Underscore row template -->
+    <!-- <script type="text/template" class="template-row">
+      <tr data-metric="<%= rc.id %>">
+          Name (year)
+          <td class='text-left label-<%= rc.id %>' data-val="<%= metricConfig[rc.id].title %>">
+              <a target="_blank" href="./?m=<%= rc.id %>&n=<%= theFilter.join(',') %>"><%= metricConfig[rc.id].title %></a>
+            (<%= rc.year %>)
+          </td>
+          Selected Value
+          <td class='text-right data-<%= rc.id %> report-column-selected' data-selected-val="<%= rc.selectedNVal %>" data-county-val="<%= rc.countyNVal %>">
+              <%= rc.selectedVal %><%= rc.selectedRaw %>
+          </td>
+          County Value
+          <td class='text-right report-column-county'>
+              <%= rc.countyVal %><%= rc.countyRaw %>
+          </td>
+          Units
+          <td class='text-left report-units'>
+              <%= metricConfig[rc.id].label %>
+              <% if (metricConfig[rc.id].raw_label) { %>
+                  <br><%= metricConfig[rc.id].raw_label %>
+              <% } %>
+          </td>
+      </tr>
+    </script> -->
+    <!-- Underscore row template -->
+    <script type="text/template" class="template-metric">
+      <div class="container-fluid">
+		  <div class="row">
+			  <div class="col-md-12">
+				  <h3><a target="_blank" href="./?m=<%= rc.id %>&n=<%= theFilter.join(',') %>"><%= rc.title %></a></h3>
+				  <table class="table table-striped" border="1" style="width:100%">
+  				  	<tr>
+					    <th>Year</th>
+					    <th>Feature Value</th> 
+					    <th>Selection Average</th> 
+					    <th>County Average</th>
+					</tr>
+  				  <% 
+				  _.each (rc.typeValues,function(v){ %>
+				  	<tr>
+				  		<td><%- v[1] %></td>
+				  		<td class="warning"><%- v[0] %></td>
+				  		<td class="success"><%- v[2] %></td>
+				  		<td class="active"><%- v[3] %></td>
+				  	</tr>
+			     <% }); %>
+				</table>
+				<div class="col-md-6">
+					<div id="lineChartContainer" class="lineChart-container">
+						<canvas id="lineChart<%- rc.id +rc.feature%>" class="temporal"></canvas>
+						<div id="chartLegend<%- rc.id +rc.feature%>" class="chartLegend lineChartLegend temporal text-center"></div>
+					</div>
+				</div>
+				<div class = 'row meta-container'>
+					<div class="col-md-12">
+						<h4>About the Data</h4>
+						<div >
+							<%= rc.about%>
+						</div>
+					</div>
+				</div>
+				<div class = 'row meta-container'>
+					<div class="col-md-12">
+						<h4>Why is this important?</h4>
+						<div >
+							<%= rc.important%>
+						</div>
+					</div>
+				</div>
+				<div class = 'row meta-container'>
+					<div class="col-md-12">
+						<h4>Additional Resources</h4>
+						<div class='meta-additionalResources'>
+							<%= rc.additionalResources%>
+						</div>
+					</div>
+				</div>
+				</div>
+		  </div>
+          <!-- $('.meta-about').html(
+                data.substring(GetSubstringIndex(data, '</h3>', 2) + 5, GetSubstringIndex(data, '<h3', 3))
+            ); 
+            function GetSubstringIndex(str, substring, n) {
+			    var times = 0, index = null;
+			    while (times < n && index !== -1) {
+			        index = str.indexOf(substring, index+1);
+			        times++;
+			    }
+			    return index;
+			} -->
+          <!-- Selected Value -->
+          <!-- <td class='text-right data-<%= rc.id %> report-column-selected' data-selected-val="<%= rc.selectedNVal %>" data-county-val="<%= rc.countyNVal %>">
+              <%= rc.selectedVal %><%= rc.selectedRaw %>
+          </td> -->
+          <!-- County Value -->
+          <!-- <td class='text-right report-column-county'>
+              <%= rc.countyVal %><%= rc.countyRaw %>
+          </td> -->
+          <!-- Units -->
+          <!-- <td class='text-left report-units'>
+              <%= metricConfig[rc.id].label %>
+              <% if (metricConfig[rc.id].raw_label) { %>
+                  <br><%= metricConfig[rc.id].raw_label %>
+              <% } %>
+          </td> -->
+      </div>
+    </script>
+
+	<!--map template *****DELETE*****-->
+
+<!-- category chart template - character -->
+    <!-- <script type="text/template" id="template-vis-character">
+        <div class="col-xs-3 col-xs-offset-1 text-center vis vis-horizontal">
+            <h4>Selected Race</h4>
+            <canvas id="chart-character-1" class="chart-doughnut" data-selector="selected-val" data-chart="m14,m15,m18,m16,m17" width="150" height="150"></canvas>
+        </div>
+        <div class="col-xs-4 text-center vis vis-vertical">
+            <h4>County Race</h4>
+            <canvas id="chart-character-2" class="chart-doughnut" data-selector="county-val" data-chart="m14,m15,m18,m16,m17" width="150" height="150"></canvas>
+        </div>
+        <div class="col-xs-4 text-center vis vis-vertical">
+            <div id="chart-character-2-legend" class="text-center" style="margin-top: 60px;"></div>
+        </div>
+    </script> -->
+
+
+    <!-- category chart template - economy -->
+    <!-- <script type="text/template" id="template-vis-demographics">
+        <div class="col-xs-12 text-center vis vis-horizontal">
+            <h4>Demographics</h4>
+            <canvas id="chart-demographics-1" class="chart-bar" data-chart="m1" data-labels="Population Density" width="550" height="180"></canvas>
+            <div id="chart-demographics-1-legend" class="text-center"></div>
+        </div>
+    </script>
+	<script type="text/template" id="template-vis-demographics2">
+        <div class="col-xs-12 text-center vis vis-horizontal">
+            <h4>Demographics</h4>
+            <canvas id="chart-demographics2-1" class="chart-bar" data-chart="m2" data-labels="Retirement-Age Population" width="550" height="180"></canvas>
+            <div id="chart-demographics2-1-legend" class="text-center"></div>
+        </div>
+    </script> -->
+    <!-- category chart template - education -->
+    <!-- <script type="text/template" id="template-vis-infrastructure">
+        <div class="col-xs-12 text-center vis vis-horizontal">
+            <h4>Infrastructure and Amenities</h4>
+            <canvas id="chart-infrastructure-1" class="chart-bar" data-chart="m3" data-labels="Households within walking distance to bus stops" width="550" height="180"></canvas>
+            <div id="chart-infrastructure-1-legend" class="text-center"></div>
+        </div>
+    </script>
+	<script type="text/template" id="template-vis-infrastructure2">
+        <div class="col-xs-12 text-center vis vis-horizontal">
+            <h4>Infrastructure and Amenities</h4>
+            <canvas id="chart-infrastructure2-1" class="chart-bar" data-chart="m4" data-labels="Sidewalk to roadway ratio" width="550" height="180"></canvas>
+            <div id="chart-infrastructure2-1-legend" class="text-center"></div>
+        </div>
+    </script> -->
+    <!-- category chart template - engagement -->
+    <!-- <script type="text/template" id="template-vis-economy">
+        <div class="col-xs-12 text-center vis vis-horizontal">
+            <h4>Economy</h4>
+            <canvas id="chart-economy-1" class="chart-line" data-chart="m5" width="550" height="220"></canvas>
+            <div id="chart-economy-1-legend" class="text-center"></div>
+        </div>
+    </script> -->
+
+    <!-- category chart template - environment -->
+    <!-- <script type="text/template" id="template-vis-housing">
+        <div class="col-xs-12 text-center vis vis-horizontal">
+          <h4>Housing</h4>
+          <canvas id="chart-housing-1" class="chart-line" data-chart="m6" width="550" height="220"></canvas>
+          <div id="chart-housing-1-legend" class="text-center"></div>
+        </div>
+    </script> -->
+
+    <!-- category chart template - health -->
+    <!-- <script type="text/template" id="template-vis-environment">
+        <div class="col-xs-12 text-center vis vis-horizontal">
+            <h4>Environment</h4>
+            <canvas id="chart-environment-1" class="chart-bar" data-chart="m7" data-labels="Commuting 30 minutes or more" width="550" height="180"></canvas>
+            <div id="chart-environment-1-legend" class="text-center"></div>
+        </div>
+    </script> -->
+
+    <!-- category chart template - housing -->
+    <!-- <script type="text/template" id="template-vis-safety">
+        <div class="col-xs-12 text-center vis vis-horizontal">
+            <h4>Safety</h4>
+            <canvas id="chart-safety-1" class="chart-bar" data-chart="m8" data-labels="Crimes with a violent component" width="550" height="180"></canvas>
+            <div id="chart-safety-1-legend" class="text-center"></div>
+        </div>
+    </script> -->
+
+    <!-- scripts at the bottom yo -->
+    <script src="js/report.js?foo=70417"></script>
+
+    <!--   Google Analytics -->
+    <!-- <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-47136977-1', 'mcmap.org');
+      ga('send', 'pageview');
+    </script> -->
+
+</body>
+
+</html>

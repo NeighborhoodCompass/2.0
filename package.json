@@ -1,0 +1,36 @@
+{
+  "name": "qoldashboard",
+  "version": "1.9.1",
+  "description": "Node packages for gulp",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "*",
+    "del": "^1.1.1",
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-concat": "*",
+    "gulp-convert": "*",
+    "gulp-imagemin": "*",
+    "gulp-jsoncombine": "*",
+    "gulp-less": "*",
+    "gulp-markdown": "*",
+    "gulp-markdown-table-to-json": "^1.0.5",
+    "gulp-markdown-to-json": "^0.2.1",
+    "gulp-minify-css": "*",
+    "gulp-replace": "*",
+    "gulp-uglify": "*",
+    "gulp-util": "^3.0.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tobinbradley/Mecklenburg-County-Quality-of-Life-Dashboard.git"
+  },
+  "author": "Tobin Bradley",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "gitHead": "5f971b0b3ff2cad74d86af05be9a2cb3af2072f6"
+}
