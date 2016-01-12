@@ -1,4 +1,4 @@
-Durham NC adaptations of Tobin Bradley's Quality of Life Explorer (in development). See Bradley's notes below.
+Durham NC adaptations of Tobin Bradley's Quality of Life Explorer. See Bradley's notes below. Changes made here will roll into the Durham Neighborhood Compass (http://compass.durhamnc.gov).
 =================
 
 
