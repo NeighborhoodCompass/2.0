@@ -1,4 +1,4 @@
-Neighbrohood Compass 2.0 (development).
+Neighborhood Compass 2.0 (development).
 ==========
 
 This branch is an effort to replace the sequential 1-153 id field for blockgroups with Census geoids. Dependencies are: config.js, census.topo.json, and src/metrics/census. 
