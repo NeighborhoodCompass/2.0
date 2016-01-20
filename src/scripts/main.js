@@ -88,10 +88,8 @@ $(document).ready(function () {
       		activeLayer = "neighborhood";
       		neighborhoods = neighborhoodFeatures;
       		metricConfig = neighborhoodMetricConfig;
-      		alert($("#metric").val());
       		getMetricValues();
 	        model.metricId =  $("#metric").val();
-	        alert($("#metric").val());
       	}
     }
     // Start with random metric if none passed
@@ -372,7 +370,6 @@ $(document).ready(function () {
     // });
 	
     // Get the data and kick everything off
-    alert(model.metricId);
     fetchMetricData(model.metricId);
 
     // turn on form labels if placeholder not supported - curse you IE9
@@ -538,6 +535,7 @@ function verticalBarChart() {
 		}).attr("class", function(d, i) {
 			return classlist[getClosestValues(d[xColumn])];
 		}).on("mouseover", function(d) {
+			console.log("mouseover stallToolTip = "+stallToolTip);
 			addHighlightFromBarChart(d.id);
 			d3.select(this).attr("class", function() {
 				return "orange";
@@ -547,7 +545,8 @@ function verticalBarChart() {
 			d3.select(this).attr("class", function(d, i) {
 				return classlist[getClosestValues(d[xColumn])];
 			});
-		});
+		})
+		;
 		bars.exit().remove();
 		bars.transition().attr("class", function(d, i) {
 			//console.log("d & i = "+ d[xColumn] +" & "+i);
