@@ -191,6 +191,7 @@ function removeHighlight(elem) {
     }
 }
 var stallToolTip = false;
+//TODO create custom events to stall addition of tooltip until previous tooltip has been removed. 
 function addHighlightFromBarChart(theId) {
 	console.log("addToolTip theID = " + theId );
 	var i;
@@ -216,19 +217,11 @@ function addHighlightFromBarChart(theId) {
         // console.log("$geom = " + JSON.stringify($('.geom'))+" "+ $('.geom').length);
         // console.log("$geom[theId] = " + JSON.stringify($('.geom')[theId])+" "+$('.geom')[theId].length);
         if(stallToolTip == false){
-        	$('.geom').tooltip('show');
+        	//$('.geom').tooltip('show');
         	console.log("add stallToolTip & theId = " + stallToolTip+" & "+theId);
         	stallToolTip=true;
         }
-        else{
-        	do {
-			    $('.geom').tooltip('show');
-        		console.log("add do stallToolTip & theId = " + stallToolTip+" & "+theId);
-        		stallToolTip=true;
-			}
-			while (stallToolTip == true);
-        	
-        }
+        
     }
 }
 function removeHighlightFromBarChart(theId) {
@@ -248,7 +241,7 @@ function removeHighlightFromBarChart(theId) {
 	else{ 
 		console.log("remove stallToolTip & theId = " + stallToolTip+" & "+theId);
     	d3.selectAll('[data-id="' + theId + '"]').classed("d3-highlight", false).transition().attr("r", 5);
-    	$('.geom').tooltip('hide');
+    	//$('.geom').tooltip('hide');
     	stallToolTip = false;
     }
 }

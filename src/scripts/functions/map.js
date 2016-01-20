@@ -154,8 +154,7 @@ function initMap() {
 		d3Layer = d3NeighborhoodLayer;
 	}
 	
-    alert("neighborhoods = "+neighborhoods);        
-	//console.log("map.hasLayer(d3NeighborhoodLayer) "+ map.hasLayer(d3NeighborhoodLayer));
+    //console.log("map.hasLayer(d3NeighborhoodLayer) "+ map.hasLayer(d3NeighborhoodLayer));
 	var count = model.geom.objects[neighborhoods].geometries.length;
 	//console.log("geometry count = "+count);
 	d3.selectAll(".leaflet-overlay-pane svg path").attr("class", "geom metric-hover").attr("data-id", function(d, i) {
@@ -198,9 +197,11 @@ function initMap() {
             var sel = $(this),
                 num = "<br>N/A";
             // console.log("tooltip $(this) = " + JSON.stringify($(this))+ " length = "+JSON.stringify($(this)[0]).length);
-            // console.log("$(geom) = " + JSON.stringify($(".geom")));
+            //console.log("$(geom) = " + JSON.stringify($(".geom")));
 	        if(JSON.stringify($(this)[0]).length>2){
-	            if ($.isNumeric(sel.attr("data-value"))) {
+	        	console.log("tooltip hit "+JSON.stringify($(this)[0]).length);
+	        	console.log("tooltip hit "+JSON.stringify($(this)));
+	        	if ($.isNumeric(sel.attr("data-value"))) {
 	                num = "<br>" + dataPretty(sel.attr("data-value"), $("#metric").val());
 	            }
 	            if (metricConfig[model.metricId].label) {
