@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="23" version="2.0">
+<workbench progressCount="40" version="2.0">
 <workbenchAdvisor/>
 <window height="940" width="1200" x="50" y="50">
 <fastViewData fastViewLocation="1024"/>
@@ -32,13 +32,15 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="com.aptana.editor.js" name="gulpfile.js" partName="gulpfile.js" title="gulpfile.js" tooltip="C:\Users\johnki\Desktop\GitHub\2.0\gulpfile.js" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/Users/johnki/Desktop/GitHub/2.0/gulpfile.js"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+<editor activePart="true" focus="true" id="com.aptana.editor.js" name="config.js" partName="config.js" title="config.js" tooltip="C:\Users\johnki\Desktop\GitHub\2.0\src\scripts\config.js" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" uri="file:/C:/Users/johnki/Desktop/GitHub/2.0/src/scripts/config.js"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2405" selectionTopPixel="405"/>
 </editor>
 </editors>
 <views>
-<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer"/>
+<view id="org.eclipse.ui.navigator.ProjectExplorer" partName="Project Explorer">
+<viewState CommonNavigator.LINKING_ENABLED="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0"/>
+</view>
 <view id="com.aptana.snippets.ui.views.SnippetsView" partName="Snippets"/>
 <view id="com.aptana.terminal.views.terminal" partName="Terminal"/>
 <view id="com.aptana.samples.ui.SamplesView" partName="Samples"/>
@@ -166,8 +168,27 @@
 <navigationHistory>
 <editors>
 <editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.js" uri="file:/C:/Users/johnki/Desktop/GitHub/2.0/gulpfile.js"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.js" uri="file:/C:/Users/johnki/Desktop/GitHub/2.0/src/scripts/config.js"/>
 </editors>
-<item active="true" historyLabel="gulpfile.js" index="0">
+<item historyLabel="gulpfile.js" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="config.js" index="1">
+<position/>
+</item>
+<item historyLabel="gulpfile.js" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="config.js" index="1">
+<position info="not_deleted" x="4613" y="0"/>
+</item>
+<item historyLabel="gulpfile.js" index="0">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="config.js" index="1">
+<position info="not_deleted" x="2408" y="0"/>
+</item>
+<item active="true" historyLabel="config.js" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
@@ -187,6 +208,9 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.js" name="config.js" tooltip="C:\Users\johnki\Desktop\GitHub\2.0\src\scripts\config.js">
+<persistable uri="file:/C:/Users/johnki/Desktop/GitHub/2.0/src/scripts/config.js"/>
+</file>
 <file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.aptana.editor.js" name="gulpfile.js" tooltip="C:\Users\johnki\Desktop\GitHub\2.0\gulpfile.js">
 <persistable uri="file:/C:/Users/johnki/Desktop/GitHub/2.0/gulpfile.js"/>
 </file>
