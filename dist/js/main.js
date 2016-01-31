@@ -41372,8 +41372,7 @@ function initMap() {
 		d3Layer = d3NeighborhoodLayer;
 	}
 	
-    alert("neighborhoods = "+neighborhoods);        
-	//console.log("map.hasLayer(d3NeighborhoodLayer) "+ map.hasLayer(d3NeighborhoodLayer));
+    //console.log("map.hasLayer(d3NeighborhoodLayer) "+ map.hasLayer(d3NeighborhoodLayer));
 	var count = model.geom.objects[neighborhoods].geometries.length;
 	//console.log("geometry count = "+count);
 	d3.selectAll(".leaflet-overlay-pane svg path").attr("class", "geom metric-hover").attr("data-id", function(d, i) {
@@ -41416,9 +41415,11 @@ function initMap() {
             var sel = $(this),
                 num = "<br>N/A";
             // console.log("tooltip $(this) = " + JSON.stringify($(this))+ " length = "+JSON.stringify($(this)[0]).length);
-            // console.log("$(geom) = " + JSON.stringify($(".geom")));
+            //console.log("$(geom) = " + JSON.stringify($(".geom")));
 	        if(JSON.stringify($(this)[0]).length>2){
-	            if ($.isNumeric(sel.attr("data-value"))) {
+	        	console.log("tooltip hit "+JSON.stringify($(this)[0]).length);
+	        	console.log("tooltip hit "+JSON.stringify($(this)));
+	        	if ($.isNumeric(sel.attr("data-value"))) {
 	                num = "<br>" + dataPretty(sel.attr("data-value"), $("#metric").val());
 	            }
 	            if (metricConfig[model.metricId].label) {
@@ -41815,6 +41816,7 @@ function removeHighlight(elem) {
     }
 }
 var stallToolTip = false;
+//TODO create custom events to stall addition of tooltip until previous tooltip has been removed. 
 function addHighlightFromBarChart(theId) {
 	console.log("addToolTip theID = " + theId );
 	var i;
@@ -41840,19 +41842,11 @@ function addHighlightFromBarChart(theId) {
         // console.log("$geom = " + JSON.stringify($('.geom'))+" "+ $('.geom').length);
         // console.log("$geom[theId] = " + JSON.stringify($('.geom')[theId])+" "+$('.geom')[theId].length);
         if(stallToolTip == false){
-        	$('.geom').tooltip('show');
+        	//$('.geom').tooltip('show');
         	console.log("add stallToolTip & theId = " + stallToolTip+" & "+theId);
         	stallToolTip=true;
         }
-        else{
-        	do {
-			    $('.geom').tooltip('show');
-        		console.log("add do stallToolTip & theId = " + stallToolTip+" & "+theId);
-        		stallToolTip=true;
-			}
-			while (stallToolTip == true);
-        	
-        }
+        
     }
 }
 function removeHighlightFromBarChart(theId) {
@@ -41872,7 +41866,7 @@ function removeHighlightFromBarChart(theId) {
 	else{ 
 		console.log("remove stallToolTip & theId = " + stallToolTip+" & "+theId);
     	d3.selectAll('[data-id="' + theId + '"]').classed("d3-highlight", false).transition().attr("r", 5);
-    	$('.geom').tooltip('hide');
+    	//$('.geom').tooltip('hide');
     	stallToolTip = false;
     }
 }
@@ -42479,10 +42473,8 @@ $(document).ready(function () {
       		activeLayer = "neighborhood";
       		neighborhoods = neighborhoodFeatures;
       		metricConfig = neighborhoodMetricConfig;
-      		alert($("#metric").val());
       		getMetricValues();
 	        model.metricId =  $("#metric").val();
-	        alert($("#metric").val());
       	}
     }
     // Start with random metric if none passed
@@ -42763,7 +42755,6 @@ $(document).ready(function () {
     // });
 	
     // Get the data and kick everything off
-    alert(model.metricId);
     fetchMetricData(model.metricId);
 
     // turn on form labels if placeholder not supported - curse you IE9
@@ -42929,6 +42920,7 @@ function verticalBarChart() {
 		}).attr("class", function(d, i) {
 			return classlist[getClosestValues(d[xColumn])];
 		}).on("mouseover", function(d) {
+			console.log("mouseover stallToolTip = "+stallToolTip);
 			addHighlightFromBarChart(d.id);
 			d3.select(this).attr("class", function() {
 				return "orange";
@@ -42938,7 +42930,8 @@ function verticalBarChart() {
 			d3.select(this).attr("class", function(d, i) {
 				return classlist[getClosestValues(d[xColumn])];
 			});
-		});
+		})
+		;
 		bars.exit().remove();
 		bars.transition().attr("class", function(d, i) {
 			//console.log("d & i = "+ d[xColumn] +" & "+i);
