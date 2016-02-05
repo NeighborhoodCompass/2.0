@@ -183,8 +183,8 @@ var censusMetricConfig = {
   "metric": "REDIV",
   "category": "Demographics",
   "title": "Race/Ethnic Diversity",
-  "suffix": "%",
-  "raw_label": "Percent",
+  "suffix": "",
+  "raw_label": "",
   "decimals": 2,
   "type": "sum"
  },
@@ -257,15 +257,42 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "normalize"
  },
- "mPCTRENT": {
-  "metric": "PCTRENT",
+ "mPCTSSI": {
+  "metric": "PCTSSI",
   "accuracy": "true",
-  "category": "Housing",
+  "category": "Economy",
   "prefix": "$",
   "raw_label": "Dollars",
-  "title": "Renter-Occupied Housing",
+  "title": "Supplemental Security Income",
   "decimals": 1,
   "type": "normalize"
+ },
+ "mCOR": {
+  "metric": "COR",
+  "category": "Economy",
+  "suffix": "",
+  "raw_label": "/sq. mi.",
+  "title": "Residential Certificates of Occupancy",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mCOB": {
+  "metric": "COB",
+  "category": "Economy",
+  "suffix": "",
+  "raw_label": "/sq. mi.",
+  "title": "Commercial Certificates of Occupancy",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mPPSF": {
+  "metric": "PPSF",
+  "category": "Housing",
+  "title": "Median Price Per Square Foot",
+  "prefix": "$",
+  "raw_label": "$/sq. ft.",
+  "decimals": 2,
+  "type": "sum"
  }
 };
 var neighborhoodMetricConfig = {
