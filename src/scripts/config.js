@@ -270,8 +270,8 @@ var censusMetricConfig = {
  "mCOR": {
   "metric": "COR",
   "category": "Economy",
-  "suffix": "",
-  "raw_label": "/sq. mi.",
+  "suffix": "/sq. mile",
+  "raw_label": "",
   "title": "Residential Certificates of Occupancy",
   "decimals": 0,
   "type": "normalize"
@@ -279,8 +279,8 @@ var censusMetricConfig = {
  "mCOB": {
   "metric": "COB",
   "category": "Economy",
-  "suffix": "",
-  "raw_label": "/sq. mi.",
+  "suffix": "/sq. mile",
+  "raw_label": "",
   "title": "Commercial Certificates of Occupancy",
   "decimals": 0,
   "type": "normalize"
