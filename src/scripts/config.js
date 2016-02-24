@@ -251,48 +251,21 @@ var censusMetricConfig = {
   "metric": "PCTSSI",
   "accuracy": "true",
   "category": "Economy",
-  "prefix": "$",
-  "raw_label": "Dollars",
+  "suffix": "%",
+  "raw_label": "",
   "title": "Supplemental Security Income",
   "decimals": 1,
   "type": "normalize"
  },
- "mPCTSSI": {
-  "metric": "PCTSSI",
+ "mPCTRENT": {
+  "metric": "PCTRENT",
   "accuracy": "true",
-  "category": "Economy",
-  "prefix": "$",
-  "raw_label": "Dollars",
-  "title": "Supplemental Security Income",
+  "category": "Housing",
+  "suffix": "%",
+  "raw_label": "",
+  "title": "Renter-Occupied Housing",
   "decimals": 1,
   "type": "normalize"
- },
- "mCOR": {
-  "metric": "COR",
-  "category": "Economy",
-  "suffix": "/sq. mile",
-  "raw_label": "",
-  "title": "Residential Certificates of Occupancy",
-  "decimals": 0,
-  "type": "normalize"
- },
- "mCOB": {
-  "metric": "COB",
-  "category": "Economy",
-  "suffix": "/sq. mile",
-  "raw_label": "",
-  "title": "Commercial Certificates of Occupancy",
-  "decimals": 0,
-  "type": "normalize"
- },
- "mPPSF": {
-  "metric": "PPSF",
-  "category": "Housing",
-  "title": "Median Price Per Square Foot",
-  "prefix": "$",
-  "raw_label": "$/sq. ft.",
-  "decimals": 2,
-  "type": "sum"
  }
 };
 var neighborhoodMetricConfig = {

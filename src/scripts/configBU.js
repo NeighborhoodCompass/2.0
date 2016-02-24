@@ -1,11 +1,21 @@
 // Here we have a bunch of configuration nobs.
 
+//searching for other configurable items
+//There are other configurable items that i have found throughout the project that may be of use. I have peppered
+//the applicaiton with the following search terms so that these items may be altered as needed. To find these search 
+//terms, search the entire project for the following words:
+//1. Quantile Color Breaks - this is where the color scheme for the map quantiles is stored these values are RGB values
+// and are indexed starting a q0 and ending with q4. do not change the number of 'q' values without changing the 
+//'colorbreaks' variable listed in this file below. Always that q0 is the first instance so if colorbreaks = n then
+//the 'q' values should extend from q0 to qn-1.
+
 // Stick your Google Analytics key here
 var gaKey = "UA-47136977-1";
 
 // Here's where to put what you are calling your neighborhoods. We call them NPA,
 // you might call them NSA or precinct or even something crazy like "neighborhood".
 // Shorter is better lest you run into some unintended wrapping text issues.
+//TODO - set these variables according to selected target layer. 
 var neighborhoodDescriptor = "Block Group";
 var neighborhoodDefinition = "Census block groups";
 
@@ -35,8 +45,17 @@ var mapGeography = {
 
 // Neighborhoods name in your TopoJSON file. This is usually the name of the shapefile
 // or geojson file you converted from.
-var neighborhoods = "blockgroups";
-
+var loadLayer = "census";
+var censusFeatures = "blockgroups";
+var neighborhoodFeatures = "neighborhoods";
+var neighborhoods;
+if (loadLayer == "census"){
+	neighborhoods = censusFeatures;
+}
+else{
+	neighborhoods = neighborhoodFeatures;
+}
+var blInitMap = true;
 // If you have an additional data layer in your TopoJSON file, name it here.
 // Otherwise comment it out.
 // var overlay = "istates";
@@ -77,24 +96,46 @@ catch(err) {}
 // }
 // ***********************************************************
 
-var metricConfig = {
- "m1": {
-  "metric": "1",
+//COMPASSNOTE - these are the locations and names of the two target layer topojson files
+var neighborhoodTOPOJSON = "data/neighborhood.topo.json";
+var censusTOPOJSON = "data/census.topo.json";
+
+
+var activeTOPOJSON;
+if (loadLayer == "census"){
+	activeTOPOJSON = censusTOPOJSON;
+}
+else{
+	activeTOPOJSON = neighborhoodTOPOJSON;
+}
+var censusMergeTOPOJSON = "data/merge_cb.json";
+var neighborhoodMergeTOPOJSON = "data/merge_nh.json";
+var activeMergeJSON;
+if (loadLayer == "census"){
+	activeMergeJSON = censusMergeTOPOJSON;
+}
+else{
+	activeMergeJSON = neighborhoodMergeTOPOJSON;
+}
+var censusMetricConfig = {
+ "mPOP": {
+  "metric": "POP",
   "category": "Demographics",
   "label": "People",
   "title": "Population",
+  "decimals": 0,
   "type": "sum"
  },
- "m2": {
-  "metric": "2",
+ "mPOPDENS": {
+  "metric": "POPDENS",
   "category": "Demographics",
   "raw_label": "People/Sq Mi",
   "title": "Population Density",
   "decimals": 0,
   "type": "normalize"
  },
- "m3": {
-  "metric": "3",
+ "mPTWHNL": {
+  "metric": "PTWHNL",
   "category": "Demographics",
   "suffix": "%",
   "raw_label": "Percent",
@@ -102,8 +143,8 @@ var metricConfig = {
   "decimals": 0,
   "type": "normalize"
  },
- "m4": {
-  "metric": "4",
+ "mPTBLKNL": {
+  "metric": "PTBLKNL",
   "category": "Demographics",
   "suffix": "%",
   "raw_label": "Percent",
@@ -111,8 +152,8 @@ var metricConfig = {
   "decimals": 0,
   "type": "normalize"
  },
- "m5": {
-  "metric": "5",
+ "mPTASNL": {
+  "metric": "PTASNL",
   "category": "Demographics",
   "suffix": "%",
   "raw_label": "Percent",
@@ -120,17 +161,17 @@ var metricConfig = {
   "decimals": 0,
   "type": "normalize"
  },
- "m6": {
-  "metric": "6",
+ "mPTLAT": {
+  "metric": "PTLAT",
   "category": "Demographics",
   "suffix": "%",
-  "raw_label": "Percent",
+  "raw_label": "People",
   "title": "Hispanic/Latino",
   "decimals": 0,
   "type": "normalize"
  },
- "m7": {
-  "metric": "7",
+ "mPTOTHNL": {
+  "metric": "PTOTHNL",
   "category": "Demographics",
   "suffix": "%",
   "raw_label": "Percent",
@@ -138,82 +179,155 @@ var metricConfig = {
   "decimals": 0,
   "type": "normalize"
  },
- "m8": {
-  "metric": "8",
+ "mREDIV": {
+  "metric": "REDIV",
   "category": "Demographics",
   "title": "Race/Ethnic Diversity",
-  "decimals": 0,
+  "suffix": "",
+  "raw_label": "",
+  "decimals": 2,
   "type": "sum"
  },
- "m11": {
-  "metric": "11",
+ "mMEDAGE": {
+  "metric": "MEDAGE",
+  "accuracy": "true",
   "category": "Demographics",
-  "raw_label": "Years",
   "title": "Median Age",
-  "decimals": 0,
+  "raw_label": "years",
+  "decimals": 1,
   "type": "sum"
  },
- "m18": {
-  "metric": "18",
-  "category": "Infrastructure & Amenities",
+ "mBIKEWK": {
+  "metric": "BIKEWK",
+  "accuracy": "true",
+  "category": "Infrastructure and Amenities",
   "suffix": "%",
   "raw_label": "Percent",
   "title": "Commuting to work by Bicycle",
   "decimals": 1,
   "type": "normalize"
  },
- "m19": {
-  "metric": "19",
-  "category": "Infrastructure & Amenities",
+ "mWLKWK": {
+  "metric": "WLKWK",
+  "accuracy": "true",
+  "category": "Infrastructure and Amenities",
   "suffix": "%",
   "raw_label": "Percent",
   "title": "Commuting to work by Foot",
   "decimals": 1,
   "type": "normalize"
  },
- "m20": {
-  "metric": "20",
-  "category": "Infrastructure & Amenities",
+ "mWKHOME": {
+  "metric": "WKHOME",
+  "accuracy": "true",
+  "category": "Infrastructure and Amenities",
   "suffix": "%",
   "raw_label": "Percent",
   "title": "Working from Home",
   "decimals": 1,
   "type": "normalize"
  },
- "m27": {
-  "metric": "27",
+ "mMHI": {
+  "metric": "MHI",
+  "accuracy": "true",
   "category": "Economy",
   "prefix": "$",
   "raw_label": "Dollars",
   "title": "Median Household Income",
-  "decimals": 1,
+  "decimals": 0,
   "type": "sum"
  },
- "m28": {
-  "metric": "28",
+ "mPCI": {
+  "metric": "PCI",
+  "accuracy": "true",
   "category": "Economy",
   "prefix": "$",
   "raw_label": "Dollars",
   "title": "Per Capita Income",
-  "decimals": 1,
+  "decimals": 0,
   "type": "sum"
  },
- "m33": {
-  "metric": "33",
+ "mPCTSSI": {
+  "metric": "PCTSSI",
+  "accuracy": "true",
   "category": "Economy",
   "prefix": "$",
-  "raw_label": "Percent",
+  "raw_label": "Dollars",
   "title": "Supplemental Security Income",
   "decimals": 1,
   "type": "normalize"
  },
- "m34": {
-  "metric": "34",
-  "category": "Housing",
-  "suffix": "%",
+ "mPCTSSI": {
+  "metric": "PCTSSI",
+  "accuracy": "true",
+  "category": "Economy",
+  "prefix": "$",
   "raw_label": "Dollars",
-  "title": "Renter-Occupied Housing",
+  "title": "Supplemental Security Income",
   "decimals": 1,
   "type": "normalize"
+ },
+ "mCOR": {
+  "metric": "COR",
+  "category": "Economy",
+  "suffix": "/sq. mile",
+  "raw_label": "",
+  "title": "Residential Certificates of Occupancy",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mCOB": {
+  "metric": "COB",
+  "category": "Economy",
+  "suffix": "/sq. mile",
+  "raw_label": "",
+  "title": "Commercial Certificates of Occupancy",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mPPSF": {
+  "metric": "PPSF",
+  "category": "Housing",
+  "title": "Median Price Per Square Foot",
+  "prefix": "$",
+  "raw_label": "$/sq. ft.",
+  "decimals": 2,
+  "type": "sum"
  }
 };
+var neighborhoodMetricConfig = {
+ "mCC45-n": {
+  "metric": "CC45-n",
+  "category": "Education",
+  "suffix": "%",
+  "raw_label": "Percent",
+  "title": "Child Care Centers with 4 or 5 Star Ratings",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mCCC-n": {
+  "metric": "CCC-n",
+  "category": "Education",
+  "title": "Child Care Centers",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mPPSF-n": {
+  "metric": "PPSF-n",
+  "category": "Housing",
+  "prefix": "$",
+  "raw_label": "Dollars",
+  "title": "Residential Sale Price per Square Foot",
+  "decimals": 0,
+  "type": "sum"
+ }
+};
+//~*~*~*~*~*TODO change metricConfig in the $(".censusRadio").click and $(".neighborhoodsRadio").click functions. 
+var metricConfig;
+if (loadLayer == "census"){
+	metricConfig = censusMetricConfig;
+}
+else{
+	metricConfig = neighborhoodMetricConfig;
+}
+ 
