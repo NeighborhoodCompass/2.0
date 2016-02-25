@@ -26082,7 +26082,7 @@ var censusMetricConfig = {
   "suffix": "",
   "raw_label": "",
   "decimals": 2,
-  "type": "sum"
+  "type": "normalize"
  },
  "mMEDAGE": {
   "metric": "MEDAGE",
