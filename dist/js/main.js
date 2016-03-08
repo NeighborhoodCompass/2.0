@@ -42314,7 +42314,7 @@ var censusMetricConfig = {
   "raw_label": "Dollars",
   "title": "Median Household Income",
   "decimals": 0,
-  "type": "sum"
+  "type": "normalize"
  },
  "mPCI": {
   "metric": "PCI",
@@ -42324,7 +42324,7 @@ var censusMetricConfig = {
   "raw_label": "Dollars",
   "title": "Per Capita Income",
   "decimals": 0,
-  "type": "sum"
+  "type": "normalize"
  },
  "mPCTSSI": {
   "metric": "PCTSSI",
