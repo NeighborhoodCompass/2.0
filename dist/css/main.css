@@ -8368,6 +8368,8 @@ body {
   text-align: center;
   font-weight: normal;
   font-size: .7em;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 .yearDisplay {
   margin-top: 5px;
