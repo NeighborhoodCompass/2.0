@@ -67,7 +67,7 @@ function modelChanges(changes) {
     if (_.contains(tasklist, "metric")) {
         processMetric();
         drawMap();
-        // drawBarChart();
+        drawBarChart();
         //*****Remove the line chart functions
         // lineChartCreate();
         updateMeta();
@@ -130,7 +130,7 @@ function changeYear() {
             return "q" + i;
         }));
     drawMap();
-    // drawBarChart();
+    drawBarChart();
     drawTable();
     updateStats();
 }

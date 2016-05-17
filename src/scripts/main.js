@@ -343,21 +343,21 @@ $(document).ready(function () {
     mapCreate();
 
     // initialize the bar chart
-    // valueChart = barChart();
+    valueChart = barChart();
 
 	//*****todo - redo this for new barcharts
     // Window resize listener so the bar chart can be responsive
-    // d3.select(window).on("resize", function () {
-        // if ($(".barchart").parent().width() !== barchartWidth) {
-            // // set up data quantile from extent
-            // quantize = d3.scale.quantile()
-                // .domain(x_extent)
-                // .range(d3.range(colorbreaks).map(function (i) {
-                    // return "q" + i;
-                // }));
-            // drawBarChart();
-        // }
-    // });
+    d3.select(window).on("resize", function () {
+        if ($(".barchart").parent().width() !== barchartWidth) {
+            // set up data quantile from extent
+            quantize = d3.scale.quantile()
+                .domain(x_extent)
+                .range(d3.range(colorbreaks).map(function (i) {
+                    return "q" + i;
+                }));
+            drawBarChart();
+        }
+    });
 
     // ****************************************
     // Initialize the observer
@@ -433,7 +433,17 @@ function changeModelTargetLayer(){
 var svg, g, xAxisG, xAxisLabel, yAxisG, xScale, yScale, xAxis, yAxis, bars;
 var xColumn, yColumn, xAxisLabelText, xAxisLabelOffset = 55;
 
-            
+
+function clickPill(pill){
+	if(pill.id == 'histogramPill'){
+		$("#verticalChart").fadeToggle("fast");
+		$("#barChart").fadeToggle("fast");
+    }
+	else if (pill.id == 'verticalPill'){
+		$("#verticalChart").fadeToggle("fast");
+		$("#barChart").fadeToggle("fast");
+	}
+}            
 
 function verticalBarChart() {
 	var classlist = [];
@@ -609,6 +619,6 @@ function verticalBarChart() {
 			}
 		}
 	}
-
 }
+
 
