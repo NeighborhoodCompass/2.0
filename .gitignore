@@ -81,3 +81,8 @@ crashlytics-build.properties
 fabric.properties
 
 # Created by .ignore support plugin (hsz.mobi)
+
+## Project-specific rules
+
+# Ignore gulp build target directory
+dist/
