@@ -43,6 +43,7 @@ jspm_packages
 .idea/dictionaries
 .idea/vcs.xml
 .idea/jsLibraryMappings.xml
+.metadata
 
 # Sensitive or high-churn files:
 .idea/dataSources.ids
