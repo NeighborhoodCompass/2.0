@@ -8,7 +8,7 @@ var gulp = require('gulp'),
     markdown = require('gulp-markdown'),
     gutil = require('gulp-util'),
     md2json = require('gulp-markdown-to-json'),
-    //gulp-markdown-table-to-json - https://www.npmjs.com/package/gulp-markdown-table-to-json;
+//gulp-markdown-table-to-json - https://www.npmjs.com/package/gulp-markdown-table-to-json;
     convert_cb = require('gulp-convert'),
     convert_nh = require('gulp-convert'),
     imagemin = require('gulp-imagemin'),
@@ -62,7 +62,7 @@ var jsReport = [
 ];
 
 // Web server
-gulp.task('browser-sync', function() {
+gulp.task('browser-sync', function () {
     browserSync(['./dist/**/*.css', './dist/**/*.js', './dist/**/*.html'], {
         server: {
             baseDir: "./dist"
@@ -72,13 +72,13 @@ gulp.task('browser-sync', function() {
 
 
 // Less processing
-gulp.task('less', function() {
+gulp.task('less', function () {
     return gulp.src(['src/less/main.less', 'src/less/report.less'])
         .pipe(less())
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
         .pipe(gulp.dest('dist/css'));
 });
-gulp.task('less-build', function() {
+gulp.task('less-build', function () {
     return gulp.src(['src/less/main.less', 'src/less/report.less'])
         .pipe(less())
         .pipe(autoprefixer('last 2 version', 'safari 5', 'ie 9', 'opera 12.1', 'ios 6', 'android 4'))
@@ -87,7 +87,7 @@ gulp.task('less-build', function() {
 });
 
 // JavaScript
-gulp.task('js', function() {
+gulp.task('js', function () {
     gulp.src(jsMain)
         .pipe(concat('main.js'))
         .pipe(gulp.dest('dist/js'));
@@ -95,7 +95,7 @@ gulp.task('js', function() {
         .pipe(concat('report.js'))
         .pipe(gulp.dest('dist/js'));
 });
-gulp.task('js-build', function() {
+gulp.task('js-build', function () {
     gulp.src(jsReport)
         .pipe(concat('report.js'))
         .pipe(uglify())
@@ -107,73 +107,79 @@ gulp.task('js-build', function() {
 });
 
 // markdown
-gulp.task('markdown_cb', ['clean'], function() {
+gulp.task('markdown_cb', ['clean'], function () {
     return gulp.src('src/data/meta/census/*.md')
         .pipe(markdown())
         .pipe(gulp.dest('dist/data/meta/'));
 });
 // markdown
-gulp.task('markdown_nh', ['clean'], function() {
+gulp.task('markdown_nh', ['clean'], function () {
     return gulp.src('src/data/meta/neighborhood/*.md')
         .pipe(markdown())
         .pipe(gulp.dest('dist/data/meta/'));
 });
 // CSV to JSON
-gulp.task('convert_cb', ['clean'], function() {
+gulp.task('convert_cb', ['clean'], function () {
     return gulp.src('src/data/metric/census/*.csv')
         .pipe(convert_cb({
             from: 'csv',
             to: 'json'
         }))
         .pipe(gulp.dest('dist/data/metric/'));
-        
+
 });
 // CSV to JSON
-gulp.task('convert_nh', ['clean'], function() {
+gulp.task('convert_nh', ['clean'], function () {
     return gulp.src('src/data/metric/neighborhood/*.csv')
         .pipe(convert_nh({
             from: 'csv',
             to: 'json'
         }))
         .pipe(gulp.dest('dist/data/metric/'));
-        
+
 });
 
-// merge metadata markdown into json. 
+// merge metadata markdown into json.
 //gulp.task('merge-meta_cb', ['clean', 'convert_cb'], function() {
-gulp.task('merge-meta_cb', function() {
+gulp.task('merge-meta_cb', function () {
     gulp.src(['src/data/meta/census/*.md'])
         .pipe(gutil.buffer())
-        .pipe(md2json('mergeMeta_cb.json',{
+        .pipe(md2json('mergeMeta_cb.json', {
             pedantic: true,
-            smartypants: true}))
+            smartypants: true
+        }))
         .pipe(gulp.dest("dist/data/meta"));
-});	
-// merge metadata markdown into json. 
+});
+// merge metadata markdown into json.
 // gulp.task('merge-meta_nh', ['clean', 'convert_nh'], function() {
-gulp.task('merge-meta_nh', function() {
+gulp.task('merge-meta_nh', function () {
     gulp.src(['src/data/meta/neighborhood/*.md'])
         .pipe(gutil.buffer())
-        .pipe(md2json('mergeMeta_nh.json',{
-            sanitize: true}))
+        .pipe(md2json('mergeMeta_nh.json', {
+            sanitize: true
+        }))
         .pipe(gulp.dest("dist/data/meta"));
-});	
+});
 
 // merge json
-gulp.task('merge-json_cb', ['clean', 'convert_cb'], function() {
-    return gulp.src(['dist/data/metric/*.json','!dist/data/metric/*-n.json'])
-        .pipe(jsoncombine("merge_cb.json", function(data){ return new Buffer(JSON.stringify(data)); }))
+gulp.task('merge-json_cb', ['clean', 'convert_cb'], function () {
+    return gulp.src(['dist/data/metric/*.json', '!dist/data/metric/*-n.json'])
+        .pipe(jsoncombine("merge_cb.json", function (data) {
+            return new Buffer(JSON.stringify(data));
+        }))
         .pipe(gulp.dest("dist/data"));
-    
+
 });
 // merge json
-gulp.task('merge-json_nh', ['clean', 'convert_nh'], function() {
+gulp.task('merge-json_nh', ['clean', 'convert_nh'], function () {
     return gulp.src("dist/data/metric/*-n.json")
-        .pipe(jsoncombine("merge_nh.json", function(data){ return new Buffer(JSON.stringify(data)); }))
+        .pipe(jsoncombine("merge_nh.json", function (data) {
+            return new Buffer(JSON.stringify(data));
+        }))
         .pipe(gulp.dest("dist/data/"));
 });
 // image processing
-gulp.task('imagemin', function() {
+gulp.task('imagemin', function () {
     return gulp.src('src/images/build/*')
         .pipe(imagemin({
             optimizationLevel: 3,
@@ -183,8 +189,21 @@ gulp.task('imagemin', function() {
         .pipe(gulp.dest('dist/images'));
 });
 
+// Copy over font files from src to dist.
+gulp.task('copy-fonts', function () {
+    return gulp.src('src/fonts/*')
+        .pipe(gulp.dest('dist/fonts'));
+});
+
+// Copy data files from src to dist.
+gulp.task('copy-data', function () {
+    return gulp.src(['src/data/*.zip', 'src/data/*.json'])
+        .pipe(gulp.dest('dist/data'));
+});
+
+
 // cache busting
-gulp.task('replace', function() {
+gulp.task('replace', function () {
     return gulp.src('src/*.html')
         .pipe(replace("{{cachebuster}}", Math.floor((Math.random() * 100000) + 1)))
         .pipe(replace("{{neighborhoodDescriptor}}", config.neighborhoodDescriptor))
@@ -200,40 +219,44 @@ gulp.task('watch', function () {
 });
 
 // rename files for basic setup
-gulp.task('init', function() {
+gulp.task('init', function () {
     // make sure people don't run this twice and end up with no search.js
-    fs.exists('src/scripts/functions/search.js.basic', function(exists) {
+    fs.exists('src/scripts/functions/search.js.basic', function (exists) {
         if (exists) {
             console.log("renaming search files...");
             // rename mecklenburg search file to search.js.meck
-            fs.rename('src/scripts/functions/search.js', 'src/scripts/functions/search.js.advanced', function(err) {
-                if ( err ) { console.log('ERROR: ' + err); }
+            fs.rename('src/scripts/functions/search.js', 'src/scripts/functions/search.js.advanced', function (err) {
+                if (err) {
+                    console.log('ERROR: ' + err);
+                }
             });
             // rename default search file to search.js
-            fs.rename('src/scripts/functions/search.js.basic', 'src/scripts/functions/search.js', function(err) {
-                if ( err ) { console.log('ERROR: ' + err); }
+            fs.rename('src/scripts/functions/search.js.basic', 'src/scripts/functions/search.js', function (err) {
+                if (err) {
+                    console.log('ERROR: ' + err);
+                }
             });
         }
-  });
+    });
 });
 
 // clean junk before build
-//~*~*~*~*~*run newly created merge_nh-json prior to creating the call to delete merge_nh.json below. 
-gulp.task('clean', function(cb) {
+//~*~*~*~*~*run newly created merge_nh-json prior to creating the call to delete merge_nh.json below.
+gulp.task('clean', function (cb) {
     process.stdout.write('startClean');
     del([
-    'dist/data/meta/*.html',
-    'dist/data/metric/*.json',
-    'dist/data/merge_cb.json',
-    'dist/data/meta/mergeMeta_cb.json',
-    'dist/data/meta/*.html',
-    'dist/data/metric/*.json',
-    'dist/data/merge_nh.json',
-    'dist/data/meta/mergeMeta_nh.json'
-  ], cb);
+        'dist/data/meta/*.html',
+        'dist/data/metric/*.json',
+        'dist/data/merge_cb.json',
+        'dist/data/meta/mergeMeta_cb.json',
+        'dist/data/meta/*.html',
+        'dist/data/metric/*.json',
+        'dist/data/merge_nh.json',
+        'dist/data/meta/mergeMeta_nh.json'
+    ], cb);
     process.stdout.write('endClean');
 });
 
 // controller tasks
 gulp.task('default', ['less', 'js', 'replace', 'watch', 'browser-sync']);
-gulp.task('build', ['clean', 'less-build', 'js-build', 'markdown_cb', 'markdown_nh', 'convert_cb', 'convert_nh', 'replace', 'imagemin', 'merge-json_cb', 'merge-json_nh','merge-meta_cb','merge-meta_nh']);
+gulp.task('build', ['clean', 'less-build', 'js-build', 'markdown_cb', 'markdown_nh', 'convert_cb', 'convert_nh', 'replace', 'imagemin', 'merge-json_cb', 'merge-json_nh', 'merge-meta_cb', 'merge-meta_nh', 'copy-fonts', 'copy-data']);
