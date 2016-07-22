@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   
     <!-- Set the title here -->
-    <title>Quality of Life Explorer</title>
+    <title>Neighborhood Compass</title>
 
     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -124,7 +124,7 @@
 				<td  height="40" style="vertical-align: middle">
 				<input type="radio" checked id="censusRadio" class="censusRadio input-large" name="selectedItem" value="1"/>
 				</td>
-				<td  height="40" style="vertical-align: middle">Neighborhoods: </td>
+				<td  height="40" style="vertical-align: middle">Tracts: </td>
 				<td  height="40" style="vertical-align: middle">
 				<input type="radio" id="neighborhoodsRadio" class="neighborhoodsRadio input-large" name="selectedItem" value="2" />
 				</td>
@@ -178,38 +178,39 @@
                         <div class="col-md-6 col-xs-6 stat-box stat-box-county"></div>
                     </div>
                 </div>
-                <div id="verticalChart" class = "pull-left">
-                	<!-- <div id="tooltip" class="hidden">
-					    <p><span id="value">100</span>
-					    </p>
-					</div> -->
-				</div>
-				<!-- <div id="verticalChart"></div> -->
-                <!-- <div id="barChart">
-                    <svg width="100%" height="100%" class="chart barchart">
-                        <g class="barchart-container">
-                            <g class="bar-container"></g>
-                            <g class="value-mean">
-                                <line></line>
-                                <text class="mean-text"></text>
-                            </g>
-                            <g class="value-hover"></g>
-                            <g class="value-select"></g>
-                            <g class="x axis"></g>
-                            <g class="y axis">
-                                <text transform="rotate(-90)" y="6" dy=".71em" style="text-anchor: end; opacity: 0;">Neighborhoods</text>
-                            </g>
-                        </g>
-                    </svg>
-                </div>
-                <div class="text-center chartLegend">
-                    <img src="images/legend-median.svg" style="height: 8px;" alt="median legend"> Median <span class="median"></span>
-                </div>
-                <div class="lineChart-container">
-                    <canvas id="lineChart" class="temporal"></canvas>
-                    <div class="chartLegend lineChartLegend temporal text-center"></div>
-                </div>
-                <div class="text-center social-links">
+                <!-- <ul class="nav nav-pills" id="myTab">
+				  <li class="active"><a data-target="#histogramTab" data-toggle="tab" id="histogramPill" onclick="clickPill(this)">Histogram</a></li>
+				  <li><a data-target="#barChartTab" data-toggle="tab" id="verticalPill" onclick="clickPill(this)">Bar Chart</a></li>
+				</ul>
+				<div id="verticalChart" class = "pull-left" style="display: none">
+	            </div> -->	
+				<div id="barChart">
+	                    <svg width="100%" height="100%" class="chart barchart">
+	                        <g class="barchart-container">
+	                            <g class="bar-container"></g>
+	                            <g class="value-mean">
+	                                <line></line>
+	                                <text class="mean-text"></text>
+	                            </g>
+	                            <g class="value-hover"></g>
+	                            <g class="value-select"></g>
+	                            <g class="x axis"></g>
+	                            <g class="y axis">
+	                                <text transform="rotate(-90)" y="6" dy=".71em" style="text-anchor: end; opacity: 0;">Neighborhoods</text>
+	                            </g>
+	                        </g>
+	                    </svg>
+	                </div>
+	                <div class="text-center chartLegend">
+	                    <img src="images/legend-median.svg" style="height: 8px;" alt="median legend"> Median <span class="median"></span>
+	                </div>
+	                <div class="lineChart-container">
+	                    <canvas id="lineChart" class="temporal"></canvas>
+	                    <div class="chartLegend lineChartLegend temporal text-center"></div>
+	                </div>
+			    <!-- <div id="verticalChart"></div> -->
+                
+                <!-- <div class="text-center social-links">
                     <p>
                         <a href="javascript:void(0)" data-url="https://twitter.com/intent/tweet?tw_p=tweetbutton&url="><i class="icon-twitter-bird" title="Share on Twitter"></i></a>
                         <a href="javascript:void(0)" data-url="http://www.facebook.com/sharer.php?u="><i class="icon-facebook-rect" title="Share on Facebook"></i></a>

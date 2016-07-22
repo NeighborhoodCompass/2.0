@@ -129,7 +129,7 @@ var censusMetricConfig = {
  "mPOPDENS": {
   "metric": "POPDENS",
   "category": "Demographics",
-  "raw_label": "People/Sq Mi",
+  "raw_label": "People",
   "title": "Population Density",
   "decimals": 0,
   "type": "normalize"
@@ -138,8 +138,8 @@ var censusMetricConfig = {
   "metric": "PTWHNL",
   "category": "Demographics",
   "suffix": "%",
-  "raw_label": "Percent",
-  "title": "White/Caucasion",
+  "raw_label": "People",
+  "title": "White or Caucasian",
   "decimals": 0,
   "type": "normalize"
  },
@@ -147,8 +147,8 @@ var censusMetricConfig = {
   "metric": "PTBLKNL",
   "category": "Demographics",
   "suffix": "%",
-  "raw_label": "Percent",
-  "title": "Black/African American",
+  "raw_label": "People",
+  "title": "Black or African American",
   "decimals": 0,
   "type": "normalize"
  },
@@ -156,7 +156,7 @@ var censusMetricConfig = {
   "metric": "PTASNL",
   "category": "Demographics",
   "suffix": "%",
-  "raw_label": "Percent",
+  "raw_label": "People",
   "title": "Asian",
   "decimals": 0,
   "type": "normalize"
@@ -174,7 +174,7 @@ var censusMetricConfig = {
   "metric": "PTOTHNL",
   "category": "Demographics",
   "suffix": "%",
-  "raw_label": "Percent",
+  "raw_label": "People",
   "title": "Other Race",
   "decimals": 0,
   "type": "normalize"
@@ -186,14 +186,13 @@ var censusMetricConfig = {
   "suffix": "",
   "raw_label": "",
   "decimals": 2,
-  "type": "normalize"
+  "type": "sum"
  },
  "mMEDAGE": {
   "metric": "MEDAGE",
   "accuracy": "true",
   "category": "Demographics",
   "title": "Median Age",
-  "raw_label": "years",
   "decimals": 1,
   "type": "sum"
  },
@@ -202,7 +201,7 @@ var censusMetricConfig = {
   "accuracy": "true",
   "category": "Infrastructure and Amenities",
   "suffix": "%",
-  "raw_label": "Percent",
+  "raw_label": "people",
   "title": "Commuting to work by Bicycle",
   "decimals": 1,
   "type": "normalize"
@@ -212,7 +211,7 @@ var censusMetricConfig = {
   "accuracy": "true",
   "category": "Infrastructure and Amenities",
   "suffix": "%",
-  "raw_label": "Percent",
+  "raw_label": "people",
   "title": "Commuting to work by Foot",
   "decimals": 1,
   "type": "normalize"
@@ -222,7 +221,7 @@ var censusMetricConfig = {
   "accuracy": "true",
   "category": "Infrastructure and Amenities",
   "suffix": "%",
-  "raw_label": "Percent",
+  "raw_label": "people",
   "title": "Working from Home",
   "decimals": 1,
   "type": "normalize"
@@ -232,7 +231,6 @@ var censusMetricConfig = {
   "accuracy": "true",
   "category": "Economy",
   "prefix": "$",
-  "raw_label": "Dollars",
   "title": "Median Household Income",
   "decimals": 0,
   "type": "normalize"
@@ -242,7 +240,6 @@ var censusMetricConfig = {
   "accuracy": "true",
   "category": "Economy",
   "prefix": "$",
-  "raw_label": "Dollars",
   "title": "Per Capita Income",
   "decimals": 0,
   "type": "normalize"
@@ -251,9 +248,80 @@ var censusMetricConfig = {
   "metric": "PCTSSI",
   "accuracy": "true",
   "category": "Economy",
-  "suffix": "%",
-  "raw_label": "",
+  "prefix": "%",
+  "raw_label": "people",
   "title": "Supplemental Security Income",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mCOR": {
+  "metric": "COR",
+  "category": "Economy",
+  "suffix": "",
+  "raw_label": "COs",
+  "title": "Residential Certificates of Occupancy",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mCOB": {
+  "metric": "COB",
+  "category": "Economy",
+  "suffix": "",
+  "raw_label": "COs",
+  "title": "Commercial Certificates of Occupancy",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mRPMTS": {
+  "metric": "RMPTS",
+  "category": "Economy",
+  "suffix": "",
+  "raw_label": "permits",
+  "title": "Residential Building Permit Values",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mPPSF": {
+  "metric": "PPSF",
+  "category": "Housing",
+  "title": "Median Price Per Square Foot",
+  "prefix": "$",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mRAVGYR": {
+  "metric": "RAVGYR",
+  "category": "Housing",
+  "title": "Average Year of Residential Construction",
+  "prefix": "",
+  "raw_label": "",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mMEDSV": {
+  "metric": "MEDSV",
+  "category": "Housing",
+  "title": "Median Sale Price",
+  "prefix": "$",
+  "raw_label": "",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mPRUNSD": {
+  "metric": "PRUNSD",
+  "category": "Housing",
+  "title": "Poor or Unsound State of Repair",
+  "suffix": "%",
+  "raw_label": "dwelling units",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mRCODE": {
+  "metric": "RCODE",
+  "category": "Housing",
+  "title": "Minimum Housing Code Violations",
+  "suffix": "%",
+  "raw_label": "dwelling units",
   "decimals": 1,
   "type": "normalize"
  },
@@ -261,38 +329,221 @@ var censusMetricConfig = {
   "metric": "PCTRENT",
   "accuracy": "true",
   "category": "Housing",
-  "suffix": "%",
-  "raw_label": "",
   "title": "Renter-Occupied Housing",
+  "suffix": "%",
+  "raw_label": "households",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mUNFRENT": {
+  "metric": "UNFRENT",
+  "accuracy": "true",
+  "category": "Housing",
+  "title": "Cost-Burdened Renters",
+  "suffix": "%",
+  "raw_label": "households",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mUNFOWN": {
+  "metric": "UNFOWN",
+  "accuracy": "true",
+  "category": "Housing",
+  "title": "Cost-Burdened Mortgage Holders",
+  "suffix": "%",
+  "raw_label": "households",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mPCTC30": {
+  "metric": "PCTC30",
+  "accuracy": "true",
+  "category": "Environment",
+  "title": "Long Commute Times",
+  "suffix": "%",
+  "raw_label": "commuters",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mDRALONE": {
+  "metric": "DRALONE",
+  "accuracy": "true",
+  "category": "Environment",
+  "title": "Single-Occupancy Commuters",
+  "suffix": "%",
+  "raw_label": "commuters",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mKWH": {
+  "metric": "KWH",
+  "category": "Environment",
+  "title": "Avg. Monthly Household Electricity Use",
+  "suffix": " kwh",
+  "decimals": 1,
+  "type": "sum"
+ },
+ "mPCTTREE": {
+  "metric": "PCTTREE",
+  "category": "Environment",
+  "title": "Tree Coverage",
+  "suffix": "%",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mPCTIMP": {
+  "metric": "PCTIMP",
+  "category": "Environment",
+  "title": "Impervious Area",
+  "suffix": "%",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mPTGNRL": {
+  "metric": "PTGNRL",
+  "category": "Engagement",
+  "title": "General Election Participation",
+  "suffix": "%",
+  "raw_label": "voters",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mPTPRIM": {
+  "metric": "PTPRIM",
+  "category": "Engagement",
+  "title": "Primary Election Participation",
+  "suffix": "%",
+  "raw_label": "voters",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mV_SQM": {
+  "metric": "V_SQM",
+  "category": "Safety",
+  "title": "Violent Crimes per Square Mile",
+  "suffix": "",
+  "raw_label": "incidents",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mP_SQM": {
+  "metric": "P_SQM",
+  "category": "Safety",
+  "title": "Property Crimes per Square Mile",
+  "suffix": "",
+  "raw_label": "incidents",
+  "decimals": 1,
+  "type": "normalize"
+ },
+  "mD_SQM": {
+  "metric": "D_SQM",
+  "category": "Safety",
+  "title": "Drug Crimes per Square Mile",
+  "suffix": "",
+  "raw_label": "incidents",
   "decimals": 1,
   "type": "normalize"
  }
 };
 var neighborhoodMetricConfig = {
- "mCC45-n": {
-  "metric": "CC45-n",
-  "category": "Education",
-  "suffix": "%",
-  "raw_label": "Percent",
-  "title": "Child Care Centers with 4 or 5 Star Ratings",
-  "decimals": 1,
-  "type": "normalize"
- },
- "mCCC-n": {
-  "metric": "CCC-n",
-  "category": "Education",
-  "title": "Child Care Centers",
-  "decimals": 1,
-  "type": "normalize"
- },
- "mPPSF-n": {
-  "metric": "PPSF-n",
-  "category": "Housing",
-  "prefix": "$",
-  "raw_label": "Dollars",
-  "title": "Residential Sale Price per Square Foot",
+ "mPOP-n": {
+  "metric": "POP-n",
+  "category": "Demographics",
+  "label": "People",
+  "title": "Population",
   "decimals": 0,
   "type": "sum"
+ },
+ "mPTWHNL-n": {
+  "metric": "PTWHNL-n",
+  "category": "Demographics",
+  "suffix": "%",
+  "raw_label": "People",
+  "title": "White or Caucasian",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mPTBLKNL-n": {
+  "metric": "PTBLKNL-n",
+  "category": "Demographics",
+  "suffix": "%",
+  "raw_label": "People",
+  "title": "Black or African American",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mPTHISP-n": {
+  "metric": "PTHISP-n",
+  "category": "Demographics",
+  "suffix": "%",
+  "raw_label": "People",
+  "title": "Latino or Hispanic",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mPTASNL-n": {
+  "metric": "PTASNL-n",
+  "category": "Demographics",
+  "suffix": "%",
+  "raw_label": "People",
+  "title": "Asian",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mMEDINC-n": {
+  "metric": "MEDINC-n",
+  "category": "Economy",
+  "prefix": "$",
+  "raw_label": "",
+  "title": "Median Household Income",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mMEDHV-n": {
+  "metric": "MEDHV-n",
+  "category": "Housing",
+  "title": "Median Home Value",
+  "prefix": "$",
+  "raw_label": "",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mHMLOAN-n": {
+  "metric": "HMLOAN-n",
+  "category": "Housing",
+  "title": "Median Home Loan Value",
+  "prefix": "$",
+  "raw_label": "",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mHMINC-n": {
+  "metric": "HMINC-n",
+  "category": "Housing",
+  "title": "Median Homebuyer Income",
+  "prefix": "$",
+  "raw_label": "",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mMEDGRENT-n": {
+  "metric": "MEDGRENT-n",
+  "accuracy": "true",
+  "category": "Housing",
+  "title": "Median Gross Rent",
+  "prefix": "$",
+  "raw_label": "",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mBACH-n": {
+  "metric": "BACH-n",
+  "category": "Education",
+  "title": "Bachelor's Degree or More",
+  "suffix": "%",
+  "raw_label": "",
+  "decimals": 0,
+  "type": "normalize"
  }
 };
 //~*~*~*~*~*TODO change metricConfig in the $(".censusRadio").click and $(".neighborhoodsRadio").click functions. 

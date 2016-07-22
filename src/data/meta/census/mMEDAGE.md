@@ -13,4 +13,4 @@ Source: American Community Survey (ACS)
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-|[American Community Survey (ACS)](https://www.census.gov/acs/www/) | The source of information about and data from the American Community Survey (ACS).
+|[American Community Survey (ACS)](https://www.census.gov/acs/www/) | A primary source of neighborhood-level data for the whole country, provided by the US Census Bureau.
