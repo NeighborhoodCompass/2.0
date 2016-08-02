@@ -1,28 +1,17 @@
-## Age of Residents
-Crimes with a Violent Component
+## Supplemental Security Income
+Supplemental Security Income
 
 ### Why is this important?
-The violent crime rate is an indicator of basic community safety and well-being. Residents, organizations, and government alike can use this information to address high rates of violent crime where they exist and to monitor the impact of efforts to stop violent crime.
+Supplemental Security Income (SSI) is a nationwide U.S. assistance program administered by the Social Security Administration that guarantees a minimum level of income for aged, blind, or disabled individuals.
 
-####How are we doing?
-Just dandy!
-
-####Related Variables
-
-####Did you know?
-Tyler Drives a beat up Dodge pickup?
 ### About the Data
-Violent crimes are commonly reported with parts 1 and 2 separate. This measurement is different, including all part 1 violent crimes and these part 2 crimes: simple assaults, certain sex offenses, child abuse and kidnapping. The number of these violent crimes occurring in each boundary is divided by the area (in square miles) of the boundary, rather than the population. This is intended to control for how crime often happens in areas that are less populated. For more detailed Durham crime reporting visit RAIDS Online.
+As with all measurements from the American Community Survey in the Neighborhood Compass, this data represents 5 years' worth of surveying. With each annual update, the 5-year period advances by dropping one year and incorporating the next. For this reason, annual releases of this ACS product are not suitable for true time series comparison until no overlap exists among the survey periods.
 
-_Source: Durham Police Department and Durham County Sheriff's Office (2013) 
+Source: Durham Police Department and Durham County Sheriff's Office (2013) 
 
 ### Additional Resources
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-<a href='http://durhamnc.gov/ich/op/DPD/Pages/PAC.aspx' target='_blank'>Partners Against Crime</a>
-|[RAIDS Online](http://raidsonline.com) | Online crime mapping application.
-|[Durham Police Department](http://durhamnc.gov/ich/op/DPD/Pages/Home.aspx)| City of Durham Police Department landing page.
-|[Durham County Office of the Sheriff](http://dconc.gov/government/departments-f-z/sheriff-s-office) | Durham County Office of the Sheriff landing page.
-|[Citizens Police Academy](http://durhamnc.gov/ich/op/DPD/Pages/CPA.aspx) | Durham Citizens Police Academy landing page.
-|[Partners Against Crime](http://durhamnc.gov/ich/op/DPD/Pages/PAC.aspx) | Durham Partners Against Crime (PAC) landing page.
+|[US Social Security Administration](https://www.socialsecurity.gov/ssi/) | Supplemental Security Income (SSI) is a Federal income supplement program funded by general tax revenues (not Social Security taxes) to help aged, blind, and disabled people who have little or no income and provide cash to meet basic needs for food, clothing, and shelter.
+|[American Community Survey (ACS)](https://www.census.gov/acs/www/) | The source of information about and data from the American Community Survey (ACS).

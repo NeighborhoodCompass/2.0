@@ -1,27 +1,16 @@
-## Age of Residents
-Residential Building Permit Values 
+## Asian Population
+Asian Population
 
 ### Why is this important?
-Residential building permit values reflect active investment in property, whether improvements or maintenance for existing residences or development of new homes.
+Information on race is required for many Federal programs and is critical in making policy decisions, particularly for civil rights. States use these data to meet legislative redistricting principles. Race data also are used to promote equal employment opportunities and to assess racial disparities in health and environmental risks.
 
-####How are we doing?
-Just dandy!
-
-####Related Variables
-
-####Did you know?
-Tyler Drives a beat up Dodge pickup?
 ### About the Data
-The value of residential building permits for each boundary divided by the area (in square miles) of each. These permits include new construction as well as renovations and exclude demolitions.
+The percent of the total population reporting their race to be Asian and ethnicity as not Latino or Hispanic. Ethnicity is a separate characteristic from race and individuals reporting their ethnicity to be Latino or Hispanic may also report a race description such as White or African American.
 
-_Source: Durham City/County Inspections Department (2013) 
+Source: U.S. Decennial Census (2010) 
 
 ### Additional Resources
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-<a href='http://durhamnc.gov/ich/cb/cdd/Pages/Home.aspx' target='_blank'>Durham Community Development Department</a>
-|[Durham Office of Economic and Workforce Development](http://durhamnc.gov/ich/cb/oewd/Pages/Home.aspx) | City of Durham, Office of Workforce Development landing page.
-|[Durham City/County Inspections](http://durhamnc.gov/ich/cb/ccid/Pages/Home.aspx)| Durham City/County Inspections Department landing page.
-|[Durham Community Development Department](http://gisweb.durhamnc.gov/durhammaps/developmenttracker/index.html) | The Durham City/County Planning Department Development Tracker is used to find out more information about developments, zoning and properties.
-|[Durham City-County Planning](http://durhamnc.gov/ich/cb/cdd/Pages/Home.aspx) | The Durham Community Development Department landing page. 
+|[Decennial Census 2010](http://www.census.gov/2010census/) | The source of information about and data from the U.S. Decennial Census.

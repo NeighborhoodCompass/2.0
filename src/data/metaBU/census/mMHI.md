@@ -1,28 +1,17 @@
-## Age of Residents
-Crimes with a Violent Component
+## Median Household Income
+Median Household Income
 
 ### Why is this important?
-The violent crime rate is an indicator of basic community safety and well-being. Residents, organizations, and government alike can use this information to address high rates of violent crime where they exist and to monitor the impact of efforts to stop violent crime.
+The median household income provides an indication of how well people are doing financially in a neighborhood. Lower wage earners may have higher percentages of their income devoted to consumption and less for saving, making them less resilient in economic downturns. Higher wage earners may have more of their income available for consumption and more savings that can enable them to be more resilient in economic downturns. Service providers and retailers look at income levels to help them locate their services.
 
-####How are we doing?
-Just dandy!
-
-####Related Variables
-
-####Did you know?
-Tyler Drives a beat up Dodge pickup?
 ### About the Data
-Violent crimes are commonly reported with parts 1 and 2 separate. This measurement is different, including all part 1 violent crimes and these part 2 crimes: simple assaults, certain sex offenses, child abuse and kidnapping. The number of these violent crimes occurring in each boundary is divided by the area (in square miles) of the boundary, rather than the population. This is intended to control for how crime often happens in areas that are less populated. For more detailed Durham crime reporting visit RAIDS Online.
+The household income at the midpoint of all households. Half of the households in this blockgroup earn a higher annual income and half earn a lower annual income. These amounts are inflation-adjusted for 2011.<br> As with all measurements from the American Community Survey in the Neighborhood Compass, this data represents 5 years' worth of surveying. With each annual update, the 5-year period advances by dropping one year and incorporating the next. For this reason, annual releases of this measurement are not suitable for true time series comparison until no overlap exists among the survey periods.
 
-_Source: Durham Police Department and Durham County Sheriff's Office (2013) 
+Source: American Community Survey (ACS) 
 
 ### Additional Resources
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-<a href='http://durhamnc.gov/ich/op/DPD/Pages/PAC.aspx' target='_blank'>Partners Against Crime</a>
-|[RAIDS Online](http://raidsonline.com) | Online crime mapping application.
-|[Durham Police Department](http://durhamnc.gov/ich/op/DPD/Pages/Home.aspx)| City of Durham Police Department landing page.
-|[Durham County Office of the Sheriff](http://dconc.gov/government/departments-f-z/sheriff-s-office) | Durham County Office of the Sheriff landing page.
-|[Citizens Police Academy](http://durhamnc.gov/ich/op/DPD/Pages/CPA.aspx) | Durham Citizens Police Academy landing page.
-|[Partners Against Crime](http://durhamnc.gov/ich/op/DPD/Pages/PAC.aspx) | Durham Partners Against Crime (PAC) landing page.
+|[American Community Survey (ACS)](https://www.census.gov/acs/www/) | The source of information about and data from the American Community Survey (ACS).
+

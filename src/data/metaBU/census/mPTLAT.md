@@ -1,25 +1,17 @@
-## Age of Residents
-Poor and Unsound State of Repair 
+## Hispanic or Latino Population
+Hispanic or Latino Population
 
 ### Why is this important?
-A property's state of repair is often directly influential on the quality of life of its occupants. This measure reports the two most severe categories of deterioration, poor and unsound, as a percentage of all owner- and renter-occupied residential units. For neighborhood areas showing the highest concentrations of poor and unsound properties (between 3.5% and 8% of all residences) the impacts can be considerable to neighborhood safety, public health, and even property values. In those areas, multiple poor and unsound properties can be found on a single block.
+Information on race is required for many Federal programs and is critical in making policy decisions, particularly for civil rights. States use these data to meet legislative redistricting principles. Race data also are used to promote equal employment opportunities and to assess racial disparities in health and environmental risks.
 
-####How are we doing?
-Just dandy!
-
-####Related Variables
-
-####Did you know?
-Tyler Drives a beat up Dodge pickup?
 ### About the Data
-State of repair for all properties is reported in 5 categories in the Tax Administration's property records. The five categories are good, normal, fair, poor, and unsound. The latter two are defined as follows: poor, showing marked deterioriation; unsound, may be unfit for habitation or condemned. For the measure reported here, these two categories are combined.
+A higher number in this measure reflects both a higher number of race and ethnicity categories present and more people of each race and ethnicity. A diversity measurement of 100 would mean all major race and ethnicity categories are present and equally represented, while a measure of 0 would indicate only one race or ethnicity is present. The calculation of this measurement uses the Simpson Index of Diversity.
 
-_Source: Durham County Tax Administration (2014) 
+Source: U.S. Decennial Census (2010) 
 
 ### Additional Resources
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-|[City of Durham Neighborhood Improvement Services](http://durhamnc.gov/ich/cb/nis/Pages/Home.aspx) | City of Durham Neighborhood Improvement Services landing page.
-|[City of Durham Community Development](http://durhamnc.gov/ich/cb/cdd/Pages/Home.aspx)| City of Durham Community Development landing page.
-|[Habitat Durham](http://www.durhamhabitat.org/) | Habitat for Humanity Durham.
+|[Decennial Census 2010](http://www.census.gov/2010census/) | The source of information about and data from the U.S. Decennial Census.
+

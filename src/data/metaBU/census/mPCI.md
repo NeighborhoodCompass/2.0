@@ -1,28 +1,16 @@
-## Age of Residents
-Crimes with a Violent Component
+## Per Capita Income
+Per Capita Income
 
 ### Why is this important?
-The violent crime rate is an indicator of basic community safety and well-being. Residents, organizations, and government alike can use this information to address high rates of violent crime where they exist and to monitor the impact of efforts to stop violent crime.
+Per capita income is a reflection of the comparative income of individuals, rather than households. While it is still a reflection of the economic resiliency of a neighborhood it is also influenced by the types of occupations residents pursue, whether they work full- or part-time, and local unemployment rates.
 
-####How are we doing?
-Just dandy!
-
-####Related Variables
-
-####Did you know?
-Tyler Drives a beat up Dodge pickup?
 ### About the Data
-Violent crimes are commonly reported with parts 1 and 2 separate. This measurement is different, including all part 1 violent crimes and these part 2 crimes: simple assaults, certain sex offenses, child abuse and kidnapping. The number of these violent crimes occurring in each boundary is divided by the area (in square miles) of the boundary, rather than the population. This is intended to control for how crime often happens in areas that are less populated. For more detailed Durham crime reporting visit RAIDS Online.
+Average obtained by dividing aggregate income by total population of an area. These amounts are inflation-adjusted for 2011. <br> As with all measurements from the American Community Survey in the Neighborhood Compass, this data represents 5 years' worth of surveying. With each annual update, the 5-year period advances by dropping one year and incorporating the next. For this reason, annual releases of this measurement are not suitable for true time series comparison until no overlap exists among the survey periods.
 
-_Source: Durham Police Department and Durham County Sheriff's Office (2013) 
+Source: American Community Survey (ACS) 
 
 ### Additional Resources
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-<a href='http://durhamnc.gov/ich/op/DPD/Pages/PAC.aspx' target='_blank'>Partners Against Crime</a>
-|[RAIDS Online](http://raidsonline.com) | Online crime mapping application.
-|[Durham Police Department](http://durhamnc.gov/ich/op/DPD/Pages/Home.aspx)| City of Durham Police Department landing page.
-|[Durham County Office of the Sheriff](http://dconc.gov/government/departments-f-z/sheriff-s-office) | Durham County Office of the Sheriff landing page.
-|[Citizens Police Academy](http://durhamnc.gov/ich/op/DPD/Pages/CPA.aspx) | Durham Citizens Police Academy landing page.
-|[Partners Against Crime](http://durhamnc.gov/ich/op/DPD/Pages/PAC.aspx) | Durham Partners Against Crime (PAC) landing page.
+|[American Community Survey (ACS)](https://www.census.gov/acs/www/) | The source of information about and data from the American Community Survey (ACS).

@@ -1,24 +1,16 @@
-## Age of Residents
-Households Within Walking Distance to Bus Stops
+## White or Caucasian Population
+White or Caucasian Population
 
 ### Why is this important?
-Household proximity to public transit indicates transportation options for those with cars and indicates access to regional transportation for those without cars. This measurement is one of three included in the Compass that gauge the effectiveness of public transit service to neighborhoods (daily and nightly bus arrivals are the other two).
-####How are we doing?
-Just dandy!
+Information on race is required for many Federal programs and is critical in making policy decisions, particularly for civil rights. States use these data to meet legislative redistricting principles. Race data also are used to promote equal employment opportunities and to assess racial disparities in health and environmental risks.
 
-####Related Variables
-<a href="javascript:void(0)" onclick="model.metricId = 'm7'">Commuting 30 Minutes or More/a>
-
-####Did you know?
-Tyler Drives a beat up Dodge pickup?
 ### About the Data
-Households include all residential units, not just residential parcels. The 1/4 mile distance is Euclidean, or as-the-crow-flies. Bus stop locations used in this calculation are those active in the spring of 2014.
+The percent of the total population reporting their race to be White and ethnicity as not Latino or Hispanic. Ethnicity is a separate characteristic from race and individuals reporting their ethnicity to be Latino or Hispanic may also report a race description such as White or African American.
 
-_Source: DATA/Triangle Transit, City/County Planning (2014) 
+Source: U.S. Decennial Census (2010) 
 
 ### Additional Resources
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-|[Triangle Transit](http://www.triangletransit.org/) | Traiangle Transit Authority aids in regional trainsportation planning.
-|[Durham Area Transit Authority](http://www.gotriangle.org/go-local/partners/durham-area-transit-authority/) | Learn more about durham area transit at Durham Area Transit Authority (DATA).
+|[Decennial Census 2010](http://www.census.gov/2010census/) | The source of information about and data from the U.S. Decennial Census.

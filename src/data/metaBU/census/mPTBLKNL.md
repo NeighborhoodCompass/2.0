@@ -1,24 +1,16 @@
-## Age of Residents
-Sidewalk-to-Roadway Ratio" 
+## Black or African American Population
+Black or African American Population
 
 ### Why is this important?
-This ratio indicates how well-served an area is by sidewalks. The ratio is to be read as the number of sidewalk feet for every hundred feet of roadway in a neighborhood. If the number is more than 100, it is likely due to sidewalks existing on both sides of many neighborhood streets.
+Information on race is required for many Federal programs and is critical in making policy decisions, particularly for civil rights. States use these data to meet legislative redistricting principles. Race data also are used to promote equal employment opportunities and to assess racial disparities in health and environmental risks.
 
-####How are we doing?
-Just dandy!
-
-####Related Variables
-
-####Did you know?
-Tyler Drives a beat up Dodge pickup?
 ### About the Data
-The intention of this measurement is to indicate how well neighborhood roads serve pedestrians. Pedestrian or bike paths not adjacent to roadways are not among the sidewalks counted here. Areas reporting 'N/A' are outside City limits and do not contain annexed communities - the City does not maintain or build sidewalks in those areas.
+The percent of the total population reporting their race to be Black or African American and ethnicity as not Latino or Hispanic. Ethnicity is a separate characteristic from race and individuals reporting their ethnicity to be Latino or Hispanic may also report a race description such as White or African American.
 
-_Source: City of Durham Public Works, 2013; 2014 
+Source: U.S. Decennial Census (2010) 
 
 ### Additional Resources
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-|[Construction and Design Projects - Active](http://durhamnc.gov/ich/op/pwd/consproj/Pages/home.aspx) | Active construction and design projects in the City of Durham.
-|[City-Maintained Streets](http://durhamnc.gov/ich/op/pwd/Pages/Powell_Bill_Report.pdf)| Streets which are maintained within the City of Durham.
+|[Decennial Census 2010](http://www.census.gov/2010census/) | The source of information about and data from the U.S. Decennial Census.
