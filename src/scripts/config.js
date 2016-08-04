@@ -48,6 +48,7 @@ var mapGeography = {
 var loadLayer = "census";
 var censusFeatures = "blockgroups";
 var neighborhoodFeatures = "neighborhoods";
+var tractFeatures = "tracts";
 var neighborhoods;
 if (loadLayer == "census"){
 	neighborhoods = censusFeatures;
@@ -96,10 +97,10 @@ catch(err) {}
 // }
 // ***********************************************************
 
-//COMPASSNOTE - these are the locations and names of the two target layer topojson files
+//COMPASSNOTE - these are the locations and names of the two target layer topojson files ###JPK 8/16: added tracts TODO: restructure if/else to trio of options
 var neighborhoodTOPOJSON = "data/neighborhood.topo.json";
 var censusTOPOJSON = "data/census.topo.json";
-
+var censusTOPOJSON = "data/tracts.topo.json";
 
 var activeTOPOJSON;
 if (loadLayer == "census"){
@@ -109,6 +110,7 @@ else{
 	activeTOPOJSON = neighborhoodTOPOJSON;
 }
 var censusMergeTOPOJSON = "data/merge_cb.json";
+var tractsMergeTOPOJSON = "data/merge_tr.json";
 var neighborhoodMergeTOPOJSON = "data/merge_nh.json";
 var activeMergeJSON;
 if (loadLayer == "census"){
@@ -445,7 +447,7 @@ var censusMetricConfig = {
   "type": "normalize"
  }
 };
-var neighborhoodMetricConfig = {
+var tractsMetricConfig = {
  "mPOP-n": {
   "metric": "POP-n",
   "category": "Demographics",
@@ -543,6 +545,60 @@ var neighborhoodMetricConfig = {
   "suffix": "%",
   "raw_label": "",
   "decimals": 0,
+  "type": "normalize"
+ }
+};
+var neighborhoodMetricConfig = {
+ "mCC45-n": {
+  "metric": "CC45-n",
+  "category": "Education",
+  "suffix": "%",
+  "raw_label": "Percent",
+  "title": "Child Care Centers with 4 or 5 Star Ratings",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mCCC-n": {
+  "metric": "CCC-n",
+  "category": "Education",
+  "title": "Child Care Centers",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mPPSF-n": {
+  "metric": "PPSF-n",
+  "category": "Housing",
+  "prefix": "$",
+  "raw_label": "Dollars",
+  "title": "Residential Sale Price per Square Foot",
+  "decimals": 0,
+  "type": "sum"
+ },
+ "mV_SQM-n": {
+  "metric": "V_SQM",
+  "category": "Safety",
+  "title": "Violent Crimes per Square Mile",
+  "suffix": "",
+  "raw_label": "incidents",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mP_SQM-n": {
+  "metric": "P_SQM",
+  "category": "Safety",
+  "title": "Property Crimes per Square Mile",
+  "suffix": "",
+  "raw_label": "incidents",
+  "decimals": 1,
+  "type": "normalize"
+ },
+  "mD_SQM-n": {
+  "metric": "D_SQM",
+  "category": "Safety",
+  "title": "Drug Crimes per Square Mile",
+  "suffix": "",
+  "raw_label": "incidents",
+  "decimals": 1,
   "type": "normalize"
  }
 };
