@@ -48,7 +48,7 @@ var mapGeography = {
 var loadLayer = "census";
 var censusFeatures = "blockgroups";
 var neighborhoodFeatures = "neighborhoods";
-var tractFeatures = "tracts";
+//var tractFeatures = "tracts";
 var neighborhoods;
 if (loadLayer == "census"){
 	neighborhoods = censusFeatures;
@@ -100,7 +100,7 @@ catch(err) {}
 //COMPASSNOTE - these are the locations and names of the two target layer topojson files ###JPK 8/16: added tracts TODO: restructure if/else to trio of options
 var neighborhoodTOPOJSON = "data/neighborhood.topo.json";
 var censusTOPOJSON = "data/census.topo.json";
-var censusTOPOJSON = "data/tracts.topo.json";
+//var censusTOPOJSON = "data/tracts.topo.json";
 
 var activeTOPOJSON;
 if (loadLayer == "census"){
@@ -110,7 +110,7 @@ else{
 	activeTOPOJSON = neighborhoodTOPOJSON;
 }
 var censusMergeTOPOJSON = "data/merge_cb.json";
-var tractsMergeTOPOJSON = "data/merge_tr.json";
+//var tractsMergeTOPOJSON = "data/merge_tr.json";
 var neighborhoodMergeTOPOJSON = "data/merge_nh.json";
 var activeMergeJSON;
 if (loadLayer == "census"){
@@ -447,133 +447,133 @@ var censusMetricConfig = {
   "type": "normalize"
  }
 };
-var tractsMetricConfig = {
- "mPOP-n": {
-  "metric": "POP-n",
-  "category": "Demographics",
-  "label": "People",
-  "title": "Population",
-  "decimals": 0,
-  "type": "sum"
- },
- "mPTWHNL-n": {
-  "metric": "PTWHNL-n",
-  "category": "Demographics",
-  "suffix": "%",
-  "raw_label": "People",
-  "title": "White or Caucasian",
-  "decimals": 0,
-  "type": "normalize"
- },
- "mPTBLKNL-n": {
-  "metric": "PTBLKNL-n",
-  "category": "Demographics",
-  "suffix": "%",
-  "raw_label": "People",
-  "title": "Black or African American",
-  "decimals": 0,
-  "type": "normalize"
- },
- "mPTHISP-n": {
-  "metric": "PTHISP-n",
-  "category": "Demographics",
-  "suffix": "%",
-  "raw_label": "People",
-  "title": "Latino or Hispanic",
-  "decimals": 0,
-  "type": "normalize"
- },
- "mPTASNL-n": {
-  "metric": "PTASNL-n",
-  "category": "Demographics",
-  "suffix": "%",
-  "raw_label": "People",
-  "title": "Asian",
-  "decimals": 0,
-  "type": "normalize"
- },
- "mMEDINC-n": {
-  "metric": "MEDINC-n",
-  "category": "Economy",
-  "prefix": "$",
-  "raw_label": "",
-  "title": "Median Household Income",
-  "decimals": 0,
-  "type": "normalize"
- },
- "mMEDHV-n": {
-  "metric": "MEDHV-n",
-  "category": "Housing",
-  "title": "Median Home Value",
-  "prefix": "$",
-  "raw_label": "",
-  "decimals": 0,
-  "type": "normalize"
- },
- "mHMLOAN-n": {
-  "metric": "HMLOAN-n",
-  "category": "Housing",
-  "title": "Median Home Loan Value",
-  "prefix": "$",
-  "raw_label": "",
-  "decimals": 0,
-  "type": "normalize"
- },
- "mHMINC-n": {
-  "metric": "HMINC-n",
-  "category": "Housing",
-  "title": "Median Homebuyer Income",
-  "prefix": "$",
-  "raw_label": "",
-  "decimals": 0,
-  "type": "normalize"
- },
- "mMEDGRENT-n": {
-  "metric": "MEDGRENT-n",
-  "accuracy": "true",
-  "category": "Housing",
-  "title": "Median Gross Rent",
-  "prefix": "$",
-  "raw_label": "",
-  "decimals": 0,
-  "type": "normalize"
- },
- "mBACH-n": {
-  "metric": "BACH-n",
-  "category": "Education",
-  "title": "Bachelor's Degree or More",
-  "suffix": "%",
-  "raw_label": "",
-  "decimals": 0,
-  "type": "normalize"
- }
-};
+//var tractsMetricConfig = {
+// "mPOP-n": {
+//  "metric": "POP-n",
+//  "category": "Demographics",
+//  "label": "People",
+//  "title": "Population",
+//  "decimals": 0,
+//  "type": "sum"
+// },
+// "mPTWHNL-n": {
+//  "metric": "PTWHNL-n",
+//  "category": "Demographics",
+//  "suffix": "%",
+//  "raw_label": "People",
+//  "title": "White or Caucasian",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
+// "mPTBLKNL-n": {
+//  "metric": "PTBLKNL-n",
+//  "category": "Demographics",
+//  "suffix": "%",
+//  "raw_label": "People",
+//  "title": "Black or African American",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
+// "mPTHISP-n": {
+//  "metric": "PTHISP-n",
+//  "category": "Demographics",
+//  "suffix": "%",
+//  "raw_label": "People",
+//  "title": "Latino or Hispanic",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
+// "mPTASNL-n": {
+//  "metric": "PTASNL-n",
+//  "category": "Demographics",
+//  "suffix": "%",
+//  "raw_label": "People",
+//  "title": "Asian",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
+// "mMEDINC-n": {
+//  "metric": "MEDINC-n",
+//  "category": "Economy",
+//  "prefix": "$",
+//  "raw_label": "",
+//  "title": "Median Household Income",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
+// "mMEDHV-n": {
+//  "metric": "MEDHV-n",
+//  "category": "Housing",
+//  "title": "Median Home Value",
+//  "prefix": "$",
+//  "raw_label": "",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
+// "mHMLOAN-n": {
+//  "metric": "HMLOAN-n",
+//  "category": "Housing",
+//  "title": "Median Home Loan Value",
+//  "prefix": "$",
+//  "raw_label": "",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
+// "mHMINC-n": {
+//  "metric": "HMINC-n",
+//  "category": "Housing",
+//  "title": "Median Homebuyer Income",
+//  "prefix": "$",
+// "raw_label": "",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
+// "mMEDGRENT-n": {
+//  "metric": "MEDGRENT-n",
+//  "accuracy": "true",
+//  "category": "Housing",
+//  "title": "Median Gross Rent",
+//  "prefix": "$",
+//  "raw_label": "",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
+// "mBACH-n": {
+//  "metric": "BACH-n",
+//  "category": "Education",
+//  "title": "Bachelor's Degree or More",
+//  "suffix": "%",
+//  "raw_label": "",
+//  "decimals": 0,
+//  "type": "normalize"
+// }
+//};
 var neighborhoodMetricConfig = {
- "mCC45-n": {
-  "metric": "CC45-n",
-  "category": "Education",
-  "suffix": "%",
-  "raw_label": "Percent",
-  "title": "Child Care Centers with 4 or 5 Star Ratings",
-  "decimals": 1,
-  "type": "normalize"
- },
- "mCCC-n": {
-  "metric": "CCC-n",
-  "category": "Education",
-  "title": "Child Care Centers",
-  "decimals": 1,
-  "type": "normalize"
- },
- "mPPSF-n": {
-  "metric": "PPSF-n",
-  "category": "Housing",
-  "prefix": "$",
-  "raw_label": "Dollars",
-  "title": "Residential Sale Price per Square Foot",
-  "decimals": 0,
-  "type": "sum"
- },
+// "mCC45-n": {
+//  "metric": "CC45-n",
+//  "category": "Education",
+//  "suffix": "%",
+//  "raw_label": "Percent",
+//  "title": "Child Care Centers with 4 or 5 Star Ratings",
+//  "decimals": 1,
+//  "type": "normalize"
+// },
+// "mCCC-n": {
+//  "metric": "CCC-n",
+//  "category": "Education",
+//  "title": "Child Care Centers",
+//  "decimals": 1,
+//  "type": "normalize"
+// },
+// "mPPSF-n": {
+//  "metric": "PPSF-n",
+//  "category": "Housing",
+//  "prefix": "$",
+//  "raw_label": "Dollars",
+//  "title": "Residential Sale Price per Square Foot",
+//  "decimals": 0,
+//  "type": "sum"
+// },
  "mV_SQM-n": {
   "metric": "V_SQM",
   "category": "Safety",

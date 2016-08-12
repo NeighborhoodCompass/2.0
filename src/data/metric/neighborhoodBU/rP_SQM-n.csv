@@ -7,7 +7,7 @@ American Tobacco Campus,32,56,16,52
 American Village,24,11,28,25
 Anderson St. / Wrightwood Park,37,69,62,65
 Archer Woods,7,7,4,4
-Arrowhead,2,7,10,10
+Arrowhead,2,11,12,10
 Artisan at Brightleaf,3,8,7,4
 Ashley Forest,1,6,11,14
 Ashton Hall,24,20,24,14
@@ -25,8 +25,10 @@ Bluffs of the Eno,0,0,1,3
 Bon Air Avenue,4,2,2,3
 Bradbury Glen,2,1,5,1
 Bradbury Trace,6,3,5,6
+Bradford,,,,
 Bragtown,154,139,138,158
 Brandon Ridge,11,5,8,6
+Briarcliff,,,,
 Brightleaf at the Park,17,23,30,13
 Brightwood Trails,0,6,7,5
 Brookstown,1,1,1,1
@@ -37,7 +39,7 @@ Cardinal Lake,24,17,19,13
 Carillon Forest,3,6,3,4
 Carolina Arbors,0,3,31,7
 Central Park,79,110,91,101
-Chancellors Ridge,5,6,10,18
+Chancellor's Ridge,5,6,10,18
 Chapel Hill Road,13,15,12,21
 Chelsea Meadows,2,5,9,3
 Cleveland-Holloway,136,130,140,103
@@ -47,7 +49,7 @@ Coles Pond,1,1,2,4
 College View,168,204,228,185
 Colonial Village,86,98,95,77
 Colony Park,3,8,9,9
-Colony Woods,NA,NA,NA,NA
+Colony Woods,0,0,0,0
 Colvard Farms,0,0,2,2
 Copper Creek,3,2,9,6
 Country Club Heights,8,2,4,2
@@ -70,7 +72,7 @@ Duke Homestead,25,24,14,5
 Duke Manor Apartments,86,67,49,51
 Duke Park,149,138,126,94
 Duke West Campus,33,34,59,37
-Eagles Pointe,2,2,3,10
+Eagle's Pointe,2,2,3,10
 Eastway Village,10,8,10,10
 Eastwood Park,3,4,1,4
 Edgemont,128,105,140,130
@@ -88,8 +90,8 @@ Folkstone,1,0,2,1
 Forest Acres,0,4,1,1
 Forest Hills,45,61,57,47
 Forest Oaks,9,7,1,2
-Fortunes Ridge,6,10,6,7
-Fox Run,2,4,2,2
+Fortune's Ridge,6,10,6,7
+Fox Run,2,4,2,4
 Franklin Village,23,32,31,15
 Garret Farms - Porchlight / Hartley,0,0,0,1
 Gatewood Forest,6,8,4,7
@@ -123,7 +125,7 @@ Landon Farms,36,46,62,44
 Latta Woods,2,1,1,0
 Lattamoor,2,2,6,4
 Lochaven Hills,8,11,16,6
-Lochnora,3,3,3,4
+Lochn'ora,3,3,3,4
 Lochside,11,3,1,18
 Long Meadow,13,15,23,18
 Lyon Park,38,41,46,38
@@ -160,13 +162,14 @@ Penrith,54,59,49,73
 Pine Valley,6,16,23,17
 Placid Valley,0,0,1,0
 Pleasant Drive,46,23,36,21
+Pleasant Green Woods,,,,
 Preston Avenue,1,1,7,0
 Preston Woods,14,11,19,16
 Providence Ridge,0,5,1,1
 Ravenstone,26,24,29,22
 Ridgefield,22,20,16,29
 Rigsbee Hill,5,2,1,1
-Rivers Edge,1,0,3,2
+River's Edge,1,0,3,2
 River Forest,9,9,9,1
 Rockwood,57,60,63,74
 Rougemont,8,11,7,2
@@ -180,7 +183,7 @@ Southpoint Manor,5,7,1,4
 Southside / St. Teresa,102,104,103,116
 Spring Valley,15,14,18,12
 Stadium Heights,121,131,134,123
-Stephens Woods,3,2,6,3
+Stephen's Woods,3,2,6,3
 Sterling Ridge,2,0,1,2
 Stillwood,1,4,10,7
 Stirrup Creek,1,3,10,3
@@ -190,12 +193,12 @@ Summer Meadow,27,21,24,21
 Sunningdale,10,4,6,7
 Surrey Green,0,3,4,3
 Swallows Ridge,0,0,0,0
-Swanns Mill,48,38,30,33
+Swann's Mill,48,38,30,33
 Taylor Estates,2,7,4,9
 Thaxton,7,5,4,4
 The Hills at Southpoint,2,6,6,6
 The Landing at Southpoint,0,1,2,0
-Townes at Brier Creek Crossing,0,0,1,2
+Townes at Brier Creek Crossing,0,0,4,6
 Treyburn,28,18,31,24
 Trinity Commons,9,5,1,2
 Trinity Heights,26,33,16,17
@@ -216,7 +219,7 @@ Wellington Forest,15,8,24,22
 Wellington Forest,15,8,24,22
 Wellons Village,159,186,201,227
 West End,69,87,74,65
-West Hills,14,17,22,13
+West Hills,14,18,23,13
 West Murray / Broad,2,9,9,5
 Westgate Townes,8,2,3,2
 Westwood Estates,7,11,7,4
