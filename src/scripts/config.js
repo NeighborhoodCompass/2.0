@@ -549,55 +549,37 @@ var censusMetricConfig = {
 // }
 //};
 var neighborhoodMetricConfig = {
-// "mCC45-n": {
-//  "metric": "CC45-n",
-//  "category": "Education",
-//  "suffix": "%",
-//  "raw_label": "Percent",
-//  "title": "Child Care Centers with 4 or 5 Star Ratings",
-//  "decimals": 1,
-//  "type": "normalize"
-// },
-// "mCCC-n": {
-//  "metric": "CCC-n",
-//  "category": "Education",
-//  "title": "Child Care Centers",
-//  "decimals": 1,
-//  "type": "normalize"
-// },
-// "mPPSF-n": {
-//  "metric": "PPSF-n",
-//  "category": "Housing",
-//  "prefix": "$",
-//  "raw_label": "Dollars",
-//  "title": "Residential Sale Price per Square Foot",
-//  "decimals": 0,
-//  "type": "sum"
-// },
+ "mCC45-n": {
+  "metric": "CC45-n",
+  "category": "Education",
+  "suffix": "%",
+  "raw_label": "Percent",
+  "title": "Child Care Centers with 4 or 5 Star Ratings",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mCCC-n": {
+  "metric": "CCC-n",
+  "category": "Education",
+  "title": "Child Care Centers",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mPPSF-n": {
+  "metric": "PPSF-n",
+  "category": "Housing",
+  "prefix": "$",
+  "raw_label": "Dollars",
+  "title": "Residential Sale Price per Square Foot",
+  "decimals": 0,
+  "type": "sum"
+ },
  "mV_SQM-n": {
-  "metric": "V_SQM",
+  "metric": "V_SQM-n",
   "category": "Safety",
-  "title": "Violent Crimes per Square Mile",
-  "suffix": "",
-  "raw_label": "incidents",
-  "decimals": 1,
-  "type": "normalize"
- },
- "mP_SQM-n": {
-  "metric": "P_SQM",
-  "category": "Safety",
-  "title": "Property Crimes per Square Mile",
-  "suffix": "",
-  "raw_label": "incidents",
-  "decimals": 1,
-  "type": "normalize"
- },
-  "mD_SQM-n": {
-  "metric": "D_SQM",
-  "category": "Safety",
-  "title": "Drug Crimes per Square Mile",
-  "suffix": "",
-  "raw_label": "incidents",
+  "title": "Crimes with a Violent Component",
+  "suffix": "/sq.mi.",
+  "raw_label": "",
   "decimals": 1,
   "type": "normalize"
  }
