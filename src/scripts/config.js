@@ -48,13 +48,17 @@ var mapGeography = {
 var loadLayer = "census";
 var censusFeatures = "blockgroups";
 var neighborhoodFeatures = "neighborhoods";
+var censusTractFeatures = "censusTracts";
 //var tractFeatures = "tracts";
 var neighborhoods;
 if (loadLayer == "census"){
 	neighborhoods = censusFeatures;
 }
-else{
+else if (loadLayer = "neighborhoods"){
 	neighborhoods = neighborhoodFeatures;
+}
+else if (loadLayer = "censusTracts"){
+    neighborhoods = censusTractFeatures;
 }
 var blInitMap = true;
 // If you have an additional data layer in your TopoJSON file, name it here.
@@ -100,24 +104,30 @@ catch(err) {}
 //COMPASSNOTE - these are the locations and names of the two target layer topojson files ###JPK 8/16: added tracts TODO: restructure if/else to trio of options
 var neighborhoodTOPOJSON = "data/neighborhood.topo.json";
 var censusTOPOJSON = "data/census.topo.json";
-//var censusTOPOJSON = "data/tracts.topo.json";
+var censusTractTOPOJSON = "data/tracts.topo.json";
 
 var activeTOPOJSON;
 if (loadLayer == "census"){
 	activeTOPOJSON = censusTOPOJSON;
 }
-else{
+else if (loadLayer = "neighborhoods"){
 	activeTOPOJSON = neighborhoodTOPOJSON;
 }
+else if (loadLayer = "censusTracts"){
+	activeTOPOJSON = censusTractTOPOJSON;
+}
 var censusMergeTOPOJSON = "data/merge_cb.json";
-//var tractsMergeTOPOJSON = "data/merge_tr.json";
+var censusTractsMergeTOPOJSON = "data/merge_tr.json";
 var neighborhoodMergeTOPOJSON = "data/merge_nh.json";
 var activeMergeJSON;
 if (loadLayer == "census"){
 	activeMergeJSON = censusMergeTOPOJSON;
 }
-else{
+else if (loadLayer = "neighborhoods"){
 	activeMergeJSON = neighborhoodMergeTOPOJSON;
+}
+else if (loadLayer = "censusTracts"){
+    neighborhoods = censusTractsMergeTOPOJSON;
 }
 var censusMetricConfig = {
  "mPOP": {
@@ -584,6 +594,18 @@ var neighborhoodMetricConfig = {
   "type": "normalize"
  }
 };
+
+censusTractMetricConfig = {
+    "mBACH-t": {
+      "metric": "BACH-t",
+      "category": "Education",
+      "suffix": "%",
+      "raw_label": "Percent",
+      "title": "Percent Adults with at least a Bachelor's Degree",
+      "decimals": 1,
+      "type": "normalize"
+    }
+}
 //~*~*~*~*~*TODO change metricConfig in the $(".censusRadio").click and $(".neighborhoodsRadio").click functions. 
 var metricConfig;
 if (loadLayer == "census"){

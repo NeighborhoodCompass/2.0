@@ -50,6 +50,10 @@ function fetchGeometry() {
 			//console.log("fetchGeometry activeLayer = "+activeLayer);
     		return $.get(neighborhoodTOPOJSON);
 		}
+		else if (activeLayer = "censusTracts"){
+			//console.log("fetchGeometry activeLayer = "+activeLayer);
+    		return $.get(censusTractTOPOJSON);
+		}
 	
     }
     else { return [[]]; }
@@ -87,14 +91,14 @@ function fetchMetricData(m, callback) {
                 		//feature.each(function(index, value) { console.log(value.id);});
                 		// console.log ("sum raw model.geom = " + feature.length); 
                 	}
-                	else{
-                		feature = geom[0].objects.neighborhoods.geometries;
-                		// for (i=0;i<feature.length;i++){
-                			// console.log("feature id = " + feature[i].id);
-                		// }
-                		//feature.each(function(index, value) { console.log(value.id);});
-                		// console.log ("sum raw model.geom = " + feature.length); 
-                	}
+                	else if(activeLayer == "neighborhood"){
+                        feature = geom[0].objects.neighborhoods.geometries;
+                		
+                    }
+                    else if (activeLayer = "censusTracts"){
+                        feature = geom[0].objects.censusTracts.geometries;
+                		
+                    }
                 	//console.log ("sum raw model.geom = " + JSON.stringify(feature, null, 2)); 
                 	model.geom = geom[0]; 
                 }
@@ -122,13 +126,11 @@ function fetchMetricData(m, callback) {
                 		//feature.each(function(index, value) { console.log(value.id);});
                 		// console.log ("sum mean model.geom = " + feature.length); 
                 	}
-                	else{
-                		feature = geom[0].objects.neighborhoods.geometries;
-                		// for (i=0;i<feature.length;i++){
-                			// console.log("feature id = " + feature[i].id);
-                		// }
-                		//feature.each(function(index, value) { console.log(value.id);});
-                		// console.log ("sum mean model.geom = " + feature.length); 
+                	else if(activeLayer == "neighborhood"){
+                        feature = geom[0].objects.neighborhoods.geometries;
+                	}
+                    else if (activeLayer = "censusTracts"){
+                        feature = geom[0].objects.censusTracts.geometries;
                 	}
                 	//console.log ("sum raw model.geom = " + JSON.stringify(feature, null, 2)); 
                 	model.geom = geom[0]; 
@@ -156,13 +158,11 @@ function fetchMetricData(m, callback) {
                 		//feature.each(function(index, value) { console.log(value.id);});
                 		// console.log ("sum normalize model.geom = " + feature.length); 
                 	}
-                	else{
-                		feature = geom[0].objects.neighborhoods.geometries;
-                		// for (i=0;i<feature.length;i++){
-                			// console.log("feature id = " + feature[i].id);
-                		// }
-                		//feature.each(function(index, value) { console.log(value.id);});
-                		// console.log ("sum normalize feature.length = " + feature.length); 
+                	else if(activeLayer == "neighborhood"){
+                        feature = geom[0].objects.neighborhoods.geometries;
+                	}
+                    else if (activeLayer = "censusTracts"){
+                        feature = geom[0].objects.censusTracts.geometries;
                 	}
                 	// console.log ("sum raw model.geom = " + JSON.stringify(feature, null, 2)); 
                 	model.geom = geom[0]; 
