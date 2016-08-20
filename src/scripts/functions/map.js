@@ -130,7 +130,7 @@ function initMap() {
 	    // }
 //    
     // });
-    
+    console.log("activeLayer: " + activeLayer);
     if (activeLayer == "census"){
     	//console.log("census d3CensusLayer added");
     	d3CensusLayer = L.geoJson(topojson.feature(model.geom, model.geom.objects[censusFeatures]), {
@@ -144,6 +144,7 @@ function initMap() {
 	}
 	else if (activeLayer == "neighborhood"){
     	//console.log("neighborhood d3NeighborhoodLayer added");
+        console.log("neighborhoodFeatures: " + JSON.stringify(neighborhoodFeatures));
     	d3NeighborhoodLayer = L.geoJson(topojson.feature(model.geom, model.geom.objects[neighborhoodFeatures]), {
 		    style: {
 		        "fillColor": "rgba(100,100,100,100)",
@@ -152,6 +153,19 @@ function initMap() {
 		    }
 		}).addTo(map);
 		d3Layer = d3NeighborhoodLayer;
+	}
+    else if (activeLayer == "censusTracts"){
+    	//console.log("neighborhood d3NeighborhoodLayer added");
+        console.log("censusTractFeatures: " + JSON.stringify(censusTractFeatures));
+    	console.log ("model.geom: " + JSON.stringify(model.geom))
+        d3CensusTractLayer = L.geoJson(topojson.feature(model.geom, model.geom.objects[censusTractFeatures]), {
+		    style: {
+		        "fillColor": "rgba(100,100,100,100)",
+		        "color": "none",
+		        "fillOpacity": 1
+		    }
+		}).addTo(map);
+		d3Layer = d3CensusTractLayer;
 	}
 	
     //console.log("map.hasLayer(d3NeighborhoodLayer) "+ map.hasLayer(d3NeighborhoodLayer));

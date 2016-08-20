@@ -142,6 +142,7 @@ function getMetricValues(){
         // console.log("genericMetric = "+el.title);
     // });
 	// load metrics
+    console.log("metricConfig: " + JSON.stringify(metricConfig));
     var selectVals = '',
         selectGroup = '';
     _.each(metricConfig, function(el, key) {
