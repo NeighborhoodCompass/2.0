@@ -322,7 +322,7 @@ function barChart() {
 // Initialize the bar chart
 // ****************************************
 function drawBarChart() {
-	//console.log("drawBarChart Fired");
-    // valueChart.container("barChart");
-    // valueChart();
+	console.log("drawBarChart Fired");
+    valueChart.container("barChart");
+    valueChart();
 }

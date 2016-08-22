@@ -1,28 +1,21 @@
-## Age of Residents
-Crimes with a Violent Component
+## Renter-Occupied Housing
+Renter-Occupied Housing
 
 ### Why is this important?
-The violent crime rate is an indicator of basic community safety and well-being. Residents, organizations, and government alike can use this information to address high rates of violent crime where they exist and to monitor the impact of efforts to stop violent crime.
+Higher percentages of rental units in a blockgroup may indicate an increased need for certain services, such as proactive rental inspection (PRIP). Combined with gross rent as a percentage of household income, the percent of renter-occupied units can help determine where affordable housing programming can be effective.
 
-####How are we doing?
-Just dandy!
-
-####Related Variables
-
-####Did you know?
-Tyler Drives a beat up Dodge pickup?
 ### About the Data
-Violent crimes are commonly reported with parts 1 and 2 separate. This measurement is different, including all part 1 violent crimes and these part 2 crimes: simple assaults, certain sex offenses, child abuse and kidnapping. The number of these violent crimes occurring in each boundary is divided by the area (in square miles) of the boundary, rather than the population. This is intended to control for how crime often happens in areas that are less populated. For more detailed Durham crime reporting visit RAIDS Online.
+All occupied units which are not owner occupied, whether they are rented for cash rent or occupied without payment of cash rent, are classified as renter-occupied. Renter-occupied status also applies to units in continuing care arrangements, such as assisted living. <br> As with all measurements from the American Community Survey in the Neighborhood Compass, this data represents 5 years' worth of surveying. With each annual update, the 5-year period advances by dropping one year and incorporating the next. For this reason, annual releases of this measurement are not suitable for true time series comparison until no overlap exists among the survey periods.
 
-_Source: Durham Police Department and Durham County Sheriff's Office (2013) 
+Source: American Community Survey (ACS)  
 
 ### Additional Resources
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-<a href='http://durhamnc.gov/ich/op/DPD/Pages/PAC.aspx' target='_blank'>Partners Against Crime</a>
-|[RAIDS Online](http://raidsonline.com) | Online crime mapping application.
-|[Durham Police Department](http://durhamnc.gov/ich/op/DPD/Pages/Home.aspx)| City of Durham Police Department landing page.
-|[Durham County Office of the Sheriff](http://dconc.gov/government/departments-f-z/sheriff-s-office) | Durham County Office of the Sheriff landing page.
-|[Citizens Police Academy](http://durhamnc.gov/ich/op/DPD/Pages/CPA.aspx) | Durham Citizens Police Academy landing page.
-|[Partners Against Crime](http://durhamnc.gov/ich/op/DPD/Pages/PAC.aspx) | Durham Partners Against Crime (PAC) landing page.
+|[City of Durham Proactive Rental Inspection Program (PRIP)](http://durhamnc.gov/604/Proactive-Rental-Inspection-Program-PRIP) | The program works to proactively identify and remediate rental housing that does not meet the City of Durham’s Minimum Housing Code and all related ordinances or state unsafe building laws.
+|[City of Durham Community Development](http://durhamnc.gov/445/Community-Development)|  The city’s community development and neighborhood stabilization and revitalization efforts including financial empowerment and home retention, affordable housing, and homelessness services programs.
+|[Habitat Durham](http://www.durhamhabitat.org/) | Dedicated to eliminating substandard housing locally and worldwide through constructing, rehabilitating and preserving homes; by advocating for fair and just housing policies; and by providing training and access to resources to help families improve their shelter conditions.
+|[City of Durham Human Relations (Fair Housing)](http://durhamnc.gov/617/Human-Relations) | Working to eliminate discrimination in the areas of employment, housing and public accommodations; prioritizing community outreach and educational activities to meet the needs of our citizens.
+|[Durham Housing Authority](http://www.durhamhousingauthority.org/) | Striving to increase self-sufficiency of residents by providing them with an opportunity to develop specific strategies that will assist them in becoming more independent and breaking the cycle of poverty. DHA programs include HOPE VI, conventional housing and Section 8.
+|[American Community Survey (ACS)](https://www.census.gov/acs/www/) | The source of information about and data from the American Community Survey (ACS).

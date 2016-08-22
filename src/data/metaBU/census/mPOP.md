@@ -1,29 +1,21 @@
-## Age of Residents
-Retirement-Age Population 
+## Total Population
+Total Population
 
 ### Why is this important?
-This measurement indicates the total 65 and-up population of an area. Higher concentrations of aging adults can reflect a greater need for supportive programming, accessible public and private facilities, and proximity to core needs and services.
+Total population indicates the number of people living in a selected area. It is used to calculate density, and other per capita data. Trends of population increase or decrease can help the City, County and other service providers know where infrastructure and other services may be needed.
 
-####How are we doing?
-Just dandy!
-
-####Related Variables
-<a href="javascript:void(0)" onclick="model.metricId = 'mPOP'">Population Density</a>
-
-####Did you know?
-Tyler Drives a beat up Dodge pickup?
 ### About the Data
-The percent of population 65 years of age and older is calculated using the same Decennial Census counts of population as those used for total population, population density, and race and ethnicity. The population 65 years and older is divided by the total population for each blockgroup.
+This data is from the 2010 Decennial Census. The Neighborhood Compass will report 100% population counts from the 2010 Decennial Census until population estimates for blockgroups are available through the American Community Survey (ACS) for 2010-2014. Annual population updates will then be made from the ACS until the 2020 Decennial Census.
 
-_Source: U.S. Decennial Census, 2010 
+Source: U.S. Decennial Census, 2010 
 
 ### Additional Resources
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-|[Durham City/County Comprehensive Plan](http://durhamnc.gov/ich/cb/ccpd/Pages/Durham-Comprehensive-Plan.aspx) | Durham goals and aspirations for land use, transportation, housing, utilities and recreation.
-|[City of Durham](http://durhamnc.gov/Pages/Home.aspx)| City of Durham landing page.
-|[Durham County](http://dconc.gov/) | Durham County landing page.
-|[Durham City-County Planning](http://durhamnc.gov/ich/cb/ccpd/Pages/Home.aspx) | Durham City-County Planning landing page.
-|[Triangle J Council of Governments](http://www.tjcog.org/) | Regional council of governments Including Chatham, Durham, Johnston, Lee, Moore, Orange and Wake counties.
-|[Decennial Census 2010](http://www.census.gov/2010census/) | 2010 US census report.
+|[Durham City/County Comprehensive Plan](http://durhamnc.gov/346/Comprehensive-Plan) | Comprehensive plans are intended to guide growth and development in an organized, efficient, and sustainable manner. To do so, they look to the future to anticipate trends and issues that could impact how growth and development occur. 
+|[North Carolina Population Projections](http://www.osbm.state.nc.us/ncosbm/facts_and_figures/socioeconomic_data/population_estimates.shtm)| The State Demographics branch of OSBM is responsible for producing population estimates and projections. The annual estimates of the population of North Carolina counties and municipalities are used in the distribution of state shared revenues to local governments.
+|[Durham County](http://dconc.gov/) | Durham County government and its departments, including Public Health, Social Services and the Board of Elections.
+|[Durham City-County Planning](http://durhamnc.gov/338/City-County-Planning) | The Durham City-County Planning Department is the planning agency for the City and County of Durham. The Department works with the community to develop long-range and special area plans containing policies to direct growth.
+|[Triangle J Council of Governments](http://www.tjcog.org/) | Serving Chatham, Durham, Johnston, Lee, Moore, Orange and Wake counties. In this diverse seven-county region, TJCOG promotes collaboration among local governments, stakeholders and partners, tackling challenges that cross jurisdictional lines.
+|[Decennial Census 2010](http://www.census.gov/2010census/) | The source of information about and data from the U.S. Decennial Census.

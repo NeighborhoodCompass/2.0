@@ -67,7 +67,7 @@ function modelChanges(changes) {
     if (_.contains(tasklist, "metric")) {
         processMetric();
         drawMap();
-        // drawBarChart();
+        drawBarChart();
         //*****Remove the line chart functions
         // lineChartCreate();
         updateMeta();
@@ -130,7 +130,7 @@ function changeYear() {
             return "q" + i;
         }));
     drawMap();
-    // drawBarChart();
+    drawBarChart();
     drawTable();
     updateStats();
 }
@@ -142,6 +142,7 @@ function getMetricValues(){
         // console.log("genericMetric = "+el.title);
     // });
 	// load metrics
+    console.log("metricConfig: " + JSON.stringify(metricConfig));
     var selectVals = '',
         selectGroup = '';
     _.each(metricConfig, function(el, key) {

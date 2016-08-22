@@ -9,6 +9,7 @@ var map,                // leaflet map
     marker,             // marker for geocode
     d3CensusLayer,
     d3NeighborhoodLayer,
+    d3CensusTractLayer,
     d3Layer,            // the d3Layer on leaflet
     tour,               // I-don't-want-to-do-real-help thing
     recordHistory = false;  // stupid global toggle so it doesn't record page load metric etc. to google analytics
@@ -73,9 +74,12 @@ $(document).ready(function () {
 	if (loadLayer == "census"){
 		model.targetLayer = "census";
 	}
-	else{
-		model.targetLayer = "neighborhood";
-	}
+	else if (loadLayer = "neighborhoods"){
+        model.targetLayer = "neighborhood";
+    }
+    else if (loadLayer = "censusTracts"){
+        model.targetLayer = "censusTracts";
+    }
 	
 	// Start with random metric if none passed
     if (getURLParameter("t") !== "null"){
@@ -143,35 +147,59 @@ $(document).ready(function () {
 	  //TODO - record last selected neighborhood metric to that it may be reset if neighborhoods are selected again
 	  //TODO - set last selected census metric again 
 	  //console.log("censusRadioClicked");
-	  activeLayer = "census";
-      if (model.selected.length > 0){
-      	  document.addEventListener("targetLayerChanged",changeModelTargetLayer());
-          blTargetLayerChange = true;
-      	  model.selected = [];
-          if (recordHistory) { recordMetricHistory(); }
+      if(activeLayer != "census"){    
+          activeLayer = "census";
+          if (model.selected.length > 0){
+              document.addEventListener("targetLayerChanged",changeModelTargetLayer());
+              blTargetLayerChange = true;
+              model.selected = [];
+              if (recordHistory) { recordMetricHistory(); }
+          }
+          else{
+            switchToCensusTargetLayer();
+          }
       }
-      else{
-      	switchToCensusTargetLayer();
-      }
-
     });
     $(".neighborhoodsRadio").click(function() {
+        console.log(".neighborhoodsRadio.click")
 	  //TODO - record last selected census metric to that it may be reset if census is selected again
 	  //TODO - set last selected neighborhood metric again
 	  //console.log("neighborhood radio Clicked");
 	  //console.log("model.selected.length = "+model.selected.length);
-	  activeLayer = "neighborhood";
-      if (model.selected.length > 0){
-      	  //console.log("more than one selected feature");
-      	  document.addEventListener("targetLayerChanged",changeModelTargetLayer());
-          blTargetLayerChange = true;
-      	  model.selected = [];
-      	  if (recordHistory) { recordMetricHistory(); }
+      if(activeLayer != "neighborhood"){
+          activeLayer = "neighborhood";
+          if (model.selected.length > 0){
+              //console.log("more than one selected feature");
+              document.addEventListener("targetLayerChanged",changeModelTargetLayer());
+              blTargetLayerChange = true;
+              model.selected = [];
+              if (recordHistory) { recordMetricHistory(); }
+          }
+          else{
+            switchToNeighborhoodTargetLayer();
+          }
       }
-      else{
-      	switchToNeighborhoodTargetLayer();
+    });
+    $(".tractsRadio").click(function() {
+	  console.log("tractsClick");
+      //TODO - record last selected census metric to that it may be reset if census is selected again
+	  //TODO - set last selected neighborhood metric again
+	  //console.log("neighborhood radio Clicked");
+	  //console.log("model.selected.length = "+model.selected.length);
+      console.log("activeLayer: " + activeLayer)
+      if(activeLayer != "censusTracts"){
+          activeLayer = "censusTracts";
+          if (model.selected.length > 0){
+              //console.log("more than one selected feature");
+              document.addEventListener("targetLayerChanged",changeModelTargetLayer());
+              blTargetLayerChange = true;
+              model.selected = [];
+              if (recordHistory) { recordMetricHistory(); }
+          }
+          else{
+            switchToCensusTractTargetLayer();
+          }
       }
-      
     });
     // Social media links
     $(".social-links a").on("click", function() {
@@ -343,21 +371,21 @@ $(document).ready(function () {
     mapCreate();
 
     // initialize the bar chart
-    // valueChart = barChart();
+    valueChart = barChart();
 
 	//*****todo - redo this for new barcharts
     // Window resize listener so the bar chart can be responsive
-    // d3.select(window).on("resize", function () {
-        // if ($(".barchart").parent().width() !== barchartWidth) {
-            // // set up data quantile from extent
-            // quantize = d3.scale.quantile()
-                // .domain(x_extent)
-                // .range(d3.range(colorbreaks).map(function (i) {
-                    // return "q" + i;
-                // }));
-            // drawBarChart();
-        // }
-    // });
+    d3.select(window).on("resize", function () {
+        if ($(".barchart").parent().width() !== barchartWidth) {
+            // set up data quantile from extent
+            quantize = d3.scale.quantile()
+                .domain(x_extent)
+                .range(d3.range(colorbreaks).map(function (i) {
+                    return "q" + i;
+                }));
+            drawBarChart();
+        }
+    });
 
     // ****************************************
     // Initialize the observer
@@ -386,11 +414,11 @@ function switchToCensusTargetLayer(){
       
 	  neighborhoods = censusFeatures;
   	        metricConfig = censusMetricConfig;
-	        metricConfig = neighborhoodMetricConfig;
-	  		var modelTargetLayer = model.targetLayer;
+	        var modelTargetLayer = model.targetLayer;
 	    	//console.log('model.targetLayer = '+modelTargetLayer);
 	    	metricConfig = censusMetricConfig;
-	        map.removeLayer(d3NeighborhoodLayer);
+	        if (map.hasLayer(d3CensusTractLayer)) {map.removeLayer(d3CensusTractLayer)};
+	        if (map.hasLayer(d3NeighborhoodLayer)) {map.removeLayer(d3NeighborhoodLayer)};
 	        getMetricValues();
 	        model.metricId =  $("#metric").val();
 	        d3Layer = undefined;
@@ -402,13 +430,35 @@ function switchToNeighborhoodTargetLayer(){
       //console.log("switchToNeighborhoodTargetLayer");
       model.targetLayer = "neighborhood";
       
-          		neighborhoods = neighborhoodFeatures;
+            neighborhoods = neighborhoodFeatures;
       		metricConfig = neighborhoodMetricConfig;
 	  		var modelTargetLayer = model.targetLayer;
 	    	//console.log('model.targetLayer = '+modelTargetLayer);
 	        map.removeLayer(d3CensusLayer);
+            if (map.hasLayer(d3CensusLayer)) {map.removeLayer(d3CensusLayer)};
+	        if (map.hasLayer(d3CensusTractLayer)) {map.removeLayer(d3CensusTractLayer)};
 	        getMetricValues();
 	        model.metricId =  $("#metric").val();
+	        console.log('switchToNeighbohroodTargetLayer model.metricID' + model.metricId);
+	        d3Layer = undefined;
+	        // fetchMetricData(model.metricId, changeTargetLayer);
+	        fetchMetricData(model.metricId);
+}
+function switchToCensusTractTargetLayer(){
+	blInitMap = true;
+      //console.log("switchToNeighborhoodTargetLayer");
+      model.targetLayer = "censusTracts";
+      
+          	neighborhoods = censusTractFeatures;
+      		metricConfig = censusTractMetricConfig;
+	  		var modelTargetLayer = model.targetLayer;
+            console.log("modelTargetLayer: " + model.targetLayer);
+	    	//console.log('model.targetLayer = '+modelTargetLayer);
+	        if (map.hasLayer(d3CensusLayer)) {map.removeLayer(d3CensusLayer)};
+	        if (map.hasLayer(d3NeighborhoodLayer)) {map.removeLayer(d3NeighborhoodLayer)};
+	        getMetricValues();
+	        model.metricId =  $("#metric").val();
+            console.log('switchToCensusTractTargetLayer model.metricID' + model.metricId);
 	        d3Layer = undefined;
 	        // fetchMetricData(model.metricId, changeTargetLayer);
 	        fetchMetricData(model.metricId);
@@ -423,6 +473,9 @@ function changeModelTargetLayer(){
 		//console.log("switch to neighborhood target layer");
 		switchToNeighborhoodTargetLayer();
 	}
+    else if (activeLayer == "tracts"){
+        switchToCensusTractTargetLayer();
+    }
 	if (blTargetLayerChange == true){
 		document.removeEventListener("targetLayerChanged",changeModelTargetLayer);
 		blTargetLayerChange = false;
@@ -433,7 +486,17 @@ function changeModelTargetLayer(){
 var svg, g, xAxisG, xAxisLabel, yAxisG, xScale, yScale, xAxis, yAxis, bars;
 var xColumn, yColumn, xAxisLabelText, xAxisLabelOffset = 55;
 
-            
+
+function clickPill(pill){
+	if(pill.id == 'histogramPill'){
+		$("#verticalChart").fadeToggle("fast");
+		$("#barChart").fadeToggle("fast");
+    }
+	else if (pill.id == 'verticalPill'){
+		$("#verticalChart").fadeToggle("fast");
+		$("#barChart").fadeToggle("fast");
+	}
+}            
 
 function verticalBarChart() {
 	var classlist = [];
@@ -609,6 +672,6 @@ function verticalBarChart() {
 			}
 		}
 	}
-
 }
+
 

@@ -118,6 +118,11 @@ gulp.task('markdown_nh', ['clean'], function () {
         .pipe(markdown())
         .pipe(gulp.dest('dist/data/meta/'));
 });
+gulp.task('markdown_tr', ['clean'], function () {
+    return gulp.src('src/data/meta/tracts/*.md')
+        .pipe(markdown())
+        .pipe(gulp.dest('dist/data/meta/'));
+});
 // CSV to JSON
 gulp.task('convert_cb', ['clean'], function () {
     return gulp.src('src/data/metric/census/*.csv')
@@ -131,6 +136,16 @@ gulp.task('convert_cb', ['clean'], function () {
 // CSV to JSON
 gulp.task('convert_nh', ['clean'], function () {
     return gulp.src('src/data/metric/neighborhood/*.csv')
+        .pipe(convert_nh({
+            from: 'csv',
+            to: 'json'
+        }))
+        .pipe(gulp.dest('dist/data/metric/'));
+
+});
+
+gulp.task('convert_tr', ['clean'], function () {
+    return gulp.src('src/data/metric/tracts/*.csv')
         .pipe(convert_nh({
             from: 'csv',
             to: 'json'
@@ -160,6 +175,14 @@ gulp.task('merge-meta_nh', function () {
         }))
         .pipe(gulp.dest("dist/data/meta"));
 });
+gulp.task('merge-meta_tr', function () {
+    gulp.src(['src/data/meta/tracts/*.md'])
+        .pipe(gutil.buffer())
+        .pipe(md2json('mergeMeta_tr.json', {
+            sanitize: true
+        }))
+        .pipe(gulp.dest("dist/data/meta"));
+});
 
 // merge json
 gulp.task('merge-json_cb', ['clean', 'convert_cb'], function () {
@@ -174,6 +197,13 @@ gulp.task('merge-json_cb', ['clean', 'convert_cb'], function () {
 gulp.task('merge-json_nh', ['clean', 'convert_nh'], function () {
     return gulp.src("dist/data/metric/*-n.json")
         .pipe(jsoncombine("merge_nh.json", function (data) {
+            return new Buffer(JSON.stringify(data));
+        }))
+        .pipe(gulp.dest("dist/data/"));
+});
+gulp.task('merge-json_tr', ['clean', 'convert_tr'], function () {
+    return gulp.src("dist/data/metric/*-t.json")
+        .pipe(jsoncombine("merge_tr.json", function (data) {
             return new Buffer(JSON.stringify(data));
         }))
         .pipe(gulp.dest("dist/data/"));
@@ -259,4 +289,4 @@ gulp.task('clean', function (cb) {
 
 // controller tasks
 gulp.task('default', ['less', 'js', 'replace', 'watch', 'browser-sync']);
-gulp.task('build', ['clean', 'less-build', 'js-build', 'markdown_cb', 'markdown_nh', 'convert_cb', 'convert_nh', 'replace', 'imagemin', 'merge-json_cb', 'merge-json_nh', 'merge-meta_cb', 'merge-meta_nh', 'copy-fonts', 'copy-data']);
+gulp.task('build', ['clean', 'less-build', 'js-build', 'markdown_cb', 'markdown_nh', 'markdown_tr', 'convert_cb', 'convert_nh', 'convert_tr', 'replace', 'imagemin', 'merge-json_cb', 'merge-json_nh', 'merge-json_tr', 'merge-meta_cb', 'merge-meta_nh', 'merge-meta_tr', 'copy-fonts', 'copy-data']);
