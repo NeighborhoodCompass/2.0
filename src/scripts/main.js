@@ -147,17 +147,18 @@ $(document).ready(function () {
 	  //TODO - record last selected neighborhood metric to that it may be reset if neighborhoods are selected again
 	  //TODO - set last selected census metric again 
 	  //console.log("censusRadioClicked");
-	  activeLayer = "census";
-      if (model.selected.length > 0){
-      	  document.addEventListener("targetLayerChanged",changeModelTargetLayer());
-          blTargetLayerChange = true;
-      	  model.selected = [];
-          if (recordHistory) { recordMetricHistory(); }
+      if(activeLayer != "census"){    
+          activeLayer = "census";
+          if (model.selected.length > 0){
+              document.addEventListener("targetLayerChanged",changeModelTargetLayer());
+              blTargetLayerChange = true;
+              model.selected = [];
+              if (recordHistory) { recordMetricHistory(); }
+          }
+          else{
+            switchToCensusTargetLayer();
+          }
       }
-      else{
-      	switchToCensusTargetLayer();
-      }
-
     });
     $(".neighborhoodsRadio").click(function() {
         console.log(".neighborhoodsRadio.click")
@@ -165,18 +166,19 @@ $(document).ready(function () {
 	  //TODO - set last selected neighborhood metric again
 	  //console.log("neighborhood radio Clicked");
 	  //console.log("model.selected.length = "+model.selected.length);
-	  activeLayer = "neighborhood";
-      if (model.selected.length > 0){
-      	  //console.log("more than one selected feature");
-      	  document.addEventListener("targetLayerChanged",changeModelTargetLayer());
-          blTargetLayerChange = true;
-      	  model.selected = [];
-      	  if (recordHistory) { recordMetricHistory(); }
+      if(activeLayer != "neighborhood"){
+          activeLayer = "neighborhood";
+          if (model.selected.length > 0){
+              //console.log("more than one selected feature");
+              document.addEventListener("targetLayerChanged",changeModelTargetLayer());
+              blTargetLayerChange = true;
+              model.selected = [];
+              if (recordHistory) { recordMetricHistory(); }
+          }
+          else{
+            switchToNeighborhoodTargetLayer();
+          }
       }
-      else{
-      	switchToNeighborhoodTargetLayer();
-      }
-      
     });
     $(".tractsRadio").click(function() {
 	  console.log("tractsClick");
@@ -184,18 +186,20 @@ $(document).ready(function () {
 	  //TODO - set last selected neighborhood metric again
 	  //console.log("neighborhood radio Clicked");
 	  //console.log("model.selected.length = "+model.selected.length);
-	  activeLayer = "tracts";
-      if (model.selected.length > 0){
-      	  //console.log("more than one selected feature");
-      	  document.addEventListener("targetLayerChanged",changeModelTargetLayer());
-          blTargetLayerChange = true;
-      	  model.selected = [];
-      	  if (recordHistory) { recordMetricHistory(); }
+      console.log("activeLayer: " + activeLayer)
+      if(activeLayer != "censusTracts"){
+          activeLayer = "censusTracts";
+          if (model.selected.length > 0){
+              //console.log("more than one selected feature");
+              document.addEventListener("targetLayerChanged",changeModelTargetLayer());
+              blTargetLayerChange = true;
+              model.selected = [];
+              if (recordHistory) { recordMetricHistory(); }
+          }
+          else{
+            switchToCensusTractTargetLayer();
+          }
       }
-      else{
-      	switchToCensusTractTargetLayer();
-      }
-      
     });
     // Social media links
     $(".social-links a").on("click", function() {
