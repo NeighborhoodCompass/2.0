@@ -6,7 +6,7 @@
     <meta charset="utf-8">
 
     <!-- Set the title here -->
-    <title>Summary Report - Quality of Life Explorer</title>
+    <title>Summary Report - Durham Neighborhood Compass</title>
 
     <!-- metadata -->
     <meta name="description" content="Quality of Life Dashboard.">
@@ -55,13 +55,13 @@
             <div class="row">
                 <div class="col-xs-6">
                     <p>
-                        The <a href="http://mcmap.org/qol/">Quality of Life Explorer</a> is an interactive online tool to help neighborhoods, government leaders and staff, businesses, community organizations, new residents and others learn more about our county and the diverse neighborhoods within it.  The Explorer features over 80 variables that reflect you, the places you live and work, and collectively, our community.
+                        The <a href="http://compass.durhamnc.gov/tracts">Neighborhood Compass</a> is a primary community resource for information that is regularly-updated, serving meaningful data to the community openly.
                     </p>
                     <p>
-                        On these pages, you’ll find information about the selected area’s social, housing, economic and environmental conditions.  Check out the Explorer online to learn more about what’s happening, see trends over time, and connect to resources to take action on the issues that matter to you.
+                        Each year the Compass grows and learns along with its users, adding data sets with strong community resonance and longitudinal importance.
                     </p>
                     <p>
-                        Learn More.  Take Action.  Create Change.
+                        A quantitative project with qualitative values.
                     </p>
                 </div>
                 <div class="col-xs-6 text-right">
@@ -138,7 +138,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <table class="table table-condensed table-<%= rc.featureID+"-"+rc.category.replace(/\s+/g, "-") %>">
+                    <table class="table table-condensed table-<%=rc.category.replace(/\s+/g, "-") %>">
                       <thead>
                         <!-- <tr>
                           <th>Variable</th>
@@ -184,7 +184,7 @@
 		  <div class="row">
 			  <div class="col-md-12">
 				  <h3><a target="_blank" href="./?m=<%= rc.id %>&n=<%= theFilter.join(',') %>"><%= rc.title %></a></h3>
-				  <table class="table table-striped" border="1" style="width:100%">
+				  <!-- <table class="table table-striped" id="lineChart<%- rc.id %>" border="1" style="width:100%">
   				  	<tr>
 					    <th>Year</th>
 					    <th>Feature Value</th> 
@@ -200,11 +200,13 @@
 				  		<td class="active"><%- v[3] %></td>
 				  	</tr>
 			     <% }); %>
-				</table>
+				</table> -->
 				<div class="col-md-6">
 					<div id="lineChartContainer" class="lineChart-container">
-						<canvas id="lineChart<%- rc.id +rc.feature%>" class="temporal"></canvas>
-						<div id="chartLegend<%- rc.id +rc.feature%>" class="chartLegend lineChartLegend temporal text-center"></div>
+						<canvas id="barChart<%- rc.id%>" class="temporal" style = "display: none"></canvas>
+						<div id="barChartLegend<%- rc.id%>" class="chartLegend lineChartLegend temporal text-center" style = "display: none"></div>
+						<canvas id="lineChart<%- rc.id%>" class="temporal" style = "display: none"></canvas>
+						<div id="lineChartLegend<%- rc.id%>" class="chartLegend lineChartLegend temporal text-center" style = "display: none"></div>
 					</div>
 				</div>
 				<div class = 'row meta-container'>

@@ -67,13 +67,13 @@ function getTrend(x1, x2) {
 // Format metric data
 // ****************************************
 function dataRound(theValue, theDecimals) {
-	var otherValue = 12.0123;
-	otherValue = otherValue.toFixed(2);
-	
-	otherValue = 12;
-	otherValue = otherValue.toFixed(2);
-	//console.log("theValue = " + theValue + " theDecimals = " + theDecimals);
-	return Number(theValue.toFixed(theDecimals));
+    console.log("theValue = " + theValue + " theDecimals = " + theDecimals);
+	if(typeof stringValue != 'string'){
+        return Number(theValue.toFixed(theDecimals));
+    }
+    else{
+        return theValue;
+    }
 }
 function dataFormat(theValue, theMetric) {
   var prefix = "",
@@ -89,17 +89,30 @@ function dataFormat(theValue, theMetric) {
 }
 function getPrefix(theMetric){
 	var prefix = "";
-    if (theMetric) {
-	  	var prefix = nullCheck(metricConfig[theMetric].prefix);
+    if (metricConfig[theMetric]) {
+        var prefix
+        //console.log("metricConfig[theMetric]: " + metricConfig[theMetric]);
+        if (metricConfig[theMetric].hasOwnProperty('prefix')){
+	  	    prefix = nullCheck(metricConfig[theMetric].prefix);
+        }
+        else{
+            prefix = "";
+        }
 	}
 	// if (prefix=="$"){prefix = "%";}
 	return prefix;
 }
 function getSuffix(theMetric){
 	var suffix = "";
-    if (theMetric) {
-	    suffix = nullCheck(metricConfig[theMetric].suffix);
-	}
+    console.log("metricConfig: " + JSON.stringify(metricConfig));
+    console.log("theMetric: " + theMetric);
+    console.log("metricConfig[theMetric]: " + JSON.stringify(metricConfig[theMetric]));
+    if (metricConfig[theMetric].hasOwnProperty('suffix')){
+        suffix = nullCheck(metricConfig[theMetric].suffix);
+    }
+    else{
+        suffix = "";
+    }
 	// console.log("suffix = "+suffix);
 	// if (suffix=="%"){return "%";}
 	// else{return suffix;}
