@@ -47,6 +47,10 @@ function getYear(m) {
 // ****************************************
 function setModel(m) {
     model.metricId = m;
+    if (!(m in metricConfig)) {
+        console.log("Error: metricConfig is undefined for " + m);
+        return;
+    }
     switch(metricConfig[m].type) {
         case 'sum':
             model.metric = theData['r' + metricConfig[m].metric];
@@ -325,6 +329,11 @@ function createData(featureSet) {
 						//console.log(status, desc);
 					},
 					complete : function() {
+                        if (!(m in metricConfig)) {
+                            console.log("Error: metricConfig is undefined for " + m);
+                            return;
+                        }
+
 						var tdata = {
 							"id" : m,
 							"feature" : feature,
@@ -407,8 +416,7 @@ function createData(featureSet) {
 								tdata.selectedRaw = '<br>' + theStat;
 							}
 							// front page
-                            
-                            console.log("m: " + m);
+
 							if ($('[data-metric="' + m + '"]').length > 0) {
 								$('[data-metric="' + m + '"]').text(tdata.selectedVal);
 							}

@@ -37,7 +37,6 @@ String.prototype.toProperCase = function(opt_lowerCaseTheRest) {
 // Get URL GET Parameters
 // ****************************************
 function getURLParameter(name) {
-	console.log("getURLParameter name = "+name);
     return decodeURI(
         (new RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
     );
@@ -96,19 +95,12 @@ function getPrefix(theMetric){
 }
 function getSuffix(theMetric){
 	var suffix = "";
-    console.log("metricConfig: " + JSON.stringify(metricConfig));
-    console.log("theMetric: " + theMetric);
-    console.log("metricConfig[theMetric]: " + JSON.stringify(metricConfig[theMetric]));
-    if (metricConfig[theMetric].hasOwnProperty('suffix')){
+    if (!(theMetric in metricConfig)) {
+        console.log("Error: metricConfig is undefined for " + theMetric);
+    }
+    else if (metricConfig[theMetric].hasOwnProperty('suffix')){
         suffix = nullCheck(metricConfig[theMetric].suffix);
     }
-    else{
-        suffix = "";
-    }
-	// console.log("suffix = "+suffix);
-	// if (suffix=="%"){return "%";}
-	// else{return suffix;}
-	// console.log('suffix = '+suffix);
 	return suffix;
 }
 function nullCheck(theCheck) {
