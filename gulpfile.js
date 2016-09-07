@@ -16,7 +16,9 @@ var gulp = require('gulp'),
     jsoncombine = require("gulp-jsoncombine"),
     fs = require('fs'),
     del = require('del'),
-    config = require('./src/scripts/config.js');
+    config = require('./src/scripts/config.js'),
+    swig = require('gulp-swig'),
+    data = require('gulp-data');
 
 
 var jsMain = [
@@ -231,19 +233,24 @@ gulp.task('copy-data', function () {
         .pipe(gulp.dest('dist/data'));
 });
 
-
-// cache busting
-gulp.task('replace', function () {
+// Compile templates
+gulp.task('compile-templates', function() {
+    var getJsonData = function(file) {
+        return require('./src/data/config/site.json');
+    };
     return gulp.src('src/*.html')
-        .pipe(replace("{{cachebuster}}", Math.floor((Math.random() * 100000) + 1)))
-        .pipe(replace("{{neighborhoodDescriptor}}", config.neighborhoodDescriptor))
-        .pipe(replace("{{gaKey}}", config.gaKey))
+        .pipe(data(getJsonData))
+        .pipe(swig({
+            data: {
+                cachebuster: Math.floor((Math.random() * 100000) + 1)
+            }
+        }))
         .pipe(gulp.dest('dist/'));
 });
 
 // watch
 gulp.task('watch', function () {
-    gulp.watch(['./src/*.html'], ['replace']);
+    gulp.watch(['./src/*.html', './data/config/*.json'], ['compile-templates']);
     gulp.watch(['./src/less/**/*.less'], ['less']);
     gulp.watch('src/scripts/**/*.js', ['js']);
 });
@@ -288,5 +295,5 @@ gulp.task('clean', function (cb) {
 });
 
 // controller tasks
-gulp.task('default', ['less', 'js', 'replace', 'watch', 'browser-sync']);
-gulp.task('build', ['clean', 'less-build', 'js-build', 'markdown_cb', 'markdown_nh', 'markdown_tr', 'convert_cb', 'convert_nh', 'convert_tr', 'replace', 'imagemin', 'merge-json_cb', 'merge-json_nh', 'merge-json_tr', 'merge-meta_cb', 'merge-meta_nh', 'merge-meta_tr', 'copy-fonts', 'copy-data']);
+gulp.task('default', ['less', 'js', 'compile-templates', 'watch', 'browser-sync']);
+gulp.task('build', ['clean', 'less-build', 'js-build', 'markdown_cb', 'markdown_nh', 'markdown_tr', 'convert_cb', 'convert_nh', 'convert_tr', 'compile-templates', 'imagemin', 'merge-json_cb', 'merge-json_nh', 'merge-json_tr', 'merge-meta_cb', 'merge-meta_nh', 'merge-meta_tr', 'copy-fonts', 'copy-data']);

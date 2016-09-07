@@ -4,15 +4,15 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Quality of Life Dashboard.">
-    <meta name="keywords" content="GIS,Mecklenburg County,parks,libraries,schools,environment,impervious surface,floodplain,zoning,assessment,tax,photos,government">
-    <meta name="author" content="Tobin Bradley">
+    <meta name="description" content="{{ header.description }}">
+    <meta name="keywords" content="{{ header.keywords }}">
+    <meta name="author" content="{{ header.author }}">
 
-	
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
     <!-- Set the title here -->
-    <title>Neighborhood Compass</title>
+    <title>{{ header.title }}</title>
 
     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -21,7 +21,7 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Windows 8.1 garbage -->
-    <meta name="application-name" content="Quality of Life Explorer"/>
+    <meta name="application-name" content="{{ header.title }}"/>
     <meta name="msapplication-TileColor" content="#1e59bd"/>
 
 	<!-- Favicon -->
@@ -32,7 +32,7 @@
     <meta name="theme-color" content="#db5945">
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/main.css?foo={{cachebuster}}">
+    <link rel="stylesheet" href="css/main.css?foo={{ cachebuster }}">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel='stylesheet' type='text/css'>
 
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
@@ -57,8 +57,8 @@
     <nav class="navbar navbar-default navbar-fixed-top navbar-main" role="navigation" style=" background-color: #000000">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-            
-            
+
+
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -108,7 +108,7 @@
 		                	<label for="searchbox" class="hide">Type an address: 505 W Chapel Hill</label>
 		                	<input id="searchbox" class="input-large span4 transition" style="width: 250px" type="textbox" placeholder="Type an address: 505 W Chapel Hill" rel="popover" data-content="Search for an address (try <em>700 N</em>) or location (try <em>freedom</em>)." data-original-title="Search" data-placement="bottom" data-html="true" data-trigger="manual">
 		                	<input id="btnSearch" type="button" class="geocodeButton" value="Search">
-		                </form>    		
+		                </form>
 	            	</li>
                 </ul>
             </div>
@@ -187,7 +187,7 @@
 				  <li><a data-target="#barChartTab" data-toggle="tab" id="verticalPill" onclick="clickPill(this)">Bar Chart</a></li>
 				</ul>
 				<div id="verticalChart" class = "pull-left" style="display: none">
-	            </div> -->	
+	            </div> -->
 				<div id="barChart">
 	                    <svg width="100%" height="100%" class="chart barchart">
 	                        <g class="barchart-container">
@@ -213,7 +213,7 @@
 	                    <div class="chartLegend lineChartLegend temporal text-center"></div>
 	                </div>
 			    <!-- <div id="verticalChart"></div> -->
-                
+
                 <!-- <div class="text-center social-links">
                     <p>
                         <a href="javascript:void(0)" data-url="https://twitter.com/intent/tweet?tw_p=tweetbutton&url="><i class="icon-twitter-bird" title="Share on Twitter"></i></a>
@@ -255,7 +255,7 @@
                 	<!-- <img src="images/CountyLogo.jpg" style="padding-left: 30px" height="5%" width="5%" alt="City Logo"> -->
                 	<a href="javascript:void(0)" class="pull-left" style="padding-left: 5%; padding-top: 20px" data-toggle="modal" data-target="#modalContact">Contact</a>
                 </p>
-                
+
             </footer>
         </div>
     </div>
@@ -317,7 +317,7 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        
+
 	      </div>
 	      <div class="modal-body">
 	          <div class="infoContact">
@@ -334,7 +334,7 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        
+
 	      </div>
 	      <div class="modal-body">
 	          <div class="infoContact">
@@ -351,7 +351,7 @@
 	  <div class="modal-dialog" role="document">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        
+
 	      </div>
 	      <div class="modal-body">
 	          <div class="infoContact">
@@ -531,12 +531,12 @@
     <!-- End jQuery Tourbus -->
 
     <!-- scripts at the bottom yo -->
-    <script src="js/main.js?foo={{cachebuster}}"></script>
+    <script src="js/main.js?foo={{ cachebuster }}"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
     <!--   Google Analytics -->
 	<script>
-        var _gaq=[['_setAccount','UA-46577629-1'],['_trackPageview']];//compass = UA-46577629-1; compassLab = UA-47136977-1 
+        var _gaq=[['_setAccount','{{ gaKey }}'],['_trackPageview']];//compass = UA-46577629-1; compassLab = UA-47136977-1
         (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
         g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
         s.parentNode.insertBefore(g,s);}(document,'script'));
