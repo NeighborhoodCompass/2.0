@@ -364,7 +364,7 @@ function createData(featureSet) {
 						var selectedValues = [];
 						var countyValues = [];
                         var lineCharts = [];
-                        for ( iii = 0; iii < keys.length; iii++) {
+                        for (iii = 0; iii < keys.length; iii++) {
 							theYear = keys[iii];
 							model.years = keys;
 							//*****Can I use dataPretty here?
@@ -409,7 +409,9 @@ function createData(featureSet) {
 						if (years.length > 1) {
 							lineChartObject.years = years;
 							lineChartObject.featurevalues = featureValues;
-							lineChartObject.selectedvalues = selectedValues;
+                            if (theFilter.length > 1) {
+							    lineChartObject.selectedvalues = selectedValues;
+                            }
 							lineChartObject.countyvalues = countyValues;
 							lineCharts.push(lineChartObject);
 						}
@@ -583,68 +585,64 @@ function pageTemplates(layer,geoms,IDs) {
 	        }
 	    }).addTo(largeMap);
 		L.tileLayer(baseTilesURL).addTo(largeMap);
-		
+
 		//console.log("layoutMap.id = "+mapEle.id);
 	 	ticker ++;
 	 	_.each(categories, function(el) {
 	        cat = el.toLowerCase();
 	        //console.log("cat = " + cat);
-	
+
 	        // get vis if available
 	        if ($("#template-vis-" + cat).length > 0) {
 	            vis = _.template($("#template-vis-" + cat.replace(/\s+/g, "-")).html());
 	        } else {
 	            vis = "";
 	        }
-	
+
 	        // drop in category page
 	        pages.append(template({ "vis": vis, "category": cat ,"featureID":geomID}));
 	    });
 	 });
 }
 function lineChartData(lineChart) {
-    //console.log("lineChart = " + JSON.stringify(lineChart));
     var featureValues = lineChart.featurevalues,
     	npaMean = lineChart.selectedvalues,
         countyMean = lineChart.countyvalues,
         keys = _.without(_.keys(model.metric[0]), "id");
-	// get stats
-    // _.each(lineChart.year, function(year) {
-        // countyMean.push(dataCrunch(year));
-       	// npaMean.push(dataCrunch(year, lineChart.selectedvalues));
-       	// featureValues.push(dataCrunch(year, model.featurevalues));
-    // });
-    //console.log("countyMean = " + countyMean);
-	//console.log("npaMean = "+npaMean);
-    //console.log("featureValues = "+featureValues);
-    // console.log("model.fgeatureValue = "+model.featurevalues);
-    // make sure selected stuff really has a value
-    // _.each(npaMean, function(el) {
-        // if (!$.isNumeric(el)) {
-            // npaMean = null;
-        // }
-    // });
-//     
-    // _.each(featureValues, function(el) {
-        // if (!$.isNumeric(el)) {
-            // featureValues = null;
-        // }
-    // });
 
     var data = {
         labels: [],
-        datasets: [
-        	{
-                label: 'Feature',
-                fillColor : "rgba(239,223,0,0.2)",
-                strokeColor : "rgba(239,223,0,1)",
-                pointColor : "rgba(239,223,0,1)",
-                pointStrokeColor : "#fff",
-                pointHighlightFill : "#fff",
-                pointHighlightStroke : "rgba(239,223,0,1)",
-                data :[]
-            },
-            {
+        datasets: []
+    };
+
+    // Set axis labels.
+    _.each(lineChart.years, function(el, i) {
+        data.labels.push(el.replace("y_", ""));
+    });
+
+    // Add feature values (if set).
+    if (featureValues && featureValues.length > 0) {
+        var featureValuesData = {
+            label: 'Feature',
+            fillColor : "rgba(239,223,0,0.2)",
+            strokeColor : "rgba(239,223,0,1)",
+            pointColor : "rgba(239,223,0,1)",
+            pointStrokeColor : "#fff",
+            pointHighlightFill : "#fff",
+            pointHighlightStroke : "rgba(239,223,0,1)",
+            data :[]
+        };
+
+        _.each(featureValues, function(el, i){
+            featureValuesData.data.push(el);
+        });
+
+        data.datasets.push(featureValuesData);
+    }
+
+    // Add average for selection (if set).
+    if (npaMean && npaMean.length > 0) {
+        var npaMeanData = {
                 label: 'Selected',
                 fillColor : "rgba(81,164,75,0.2)",
                 strokeColor : "rgba(81,164,75,1)",
@@ -653,51 +651,44 @@ function lineChartData(lineChart) {
                 pointHighlightFill : "#fff",
                 pointHighlightStroke : "rgba(81,164,75,1)",
                 data :[]
-            },
-            {
-                label: "County",
-                fillColor : "rgba(220,220,220,0.5)",
-                strokeColor : "rgba(220,220,220,1)",
-                pointColor : "rgba(220,220,220,1)",
-                pointStrokeColor : "#fff",
-                pointHighlightFill : "#fff",
-                pointHighlightStroke : "rgba(220,220,220,1)",
-                data : []
-            }
-        ]
-    };
-	//console.log("npaMean = "+npaMean);
-	
-	//console.log("featureValues = "+featureValues);
-	_.each(featureValues, function(el, i){
-		//console.log("each featureValues");
-		//console.log("model.metricID el = "+el);
-		data.datasets[0].data.push(el);
-	});
-	_.each(npaMean, function(el, i){
-		//console.log("each NPAmean");
-		if (npaMean !== null) { data.datasets[1].data.push(Math.round(npaMean[i] * 10) / 10); };
-    });
-    //console.log("countyMean = "+countyMean);
-    _.each(countyMean, function(el, i) {
-		//console.log("each Countymean");
-        data.labels.push(lineChart.years[i].replace("y_", ""));
-        data.datasets[2].data.push(Math.round(el * 10) / 10);        
-    });
-    // console.log(model.metricID + " " + model.feature);
-	// console.log("data.datasets[0;1;&2].data = "+ data.datasets[0].data +"; "+data.datasets[1].data +";& "+data.datasets[2].data);
-    // remove select mean if no values are there
-    if (!npaMean || npaMean === null) { data.datasets.shift(); }
-	//console.log("data = "+ JSON.stringify(data));
+            };
+        _.each(npaMean, function (el, i) {
+            npaMeanData.data.push(Math.round(el * 10) / 10);
+        });
+
+        data.datasets.push(npaMeanData);
+    }
+
+    // Add county mean (if set).
+    if (countyMean && countyMean.length > 0) {
+
+        var countyMeanData = {
+            label: "County",
+            fillColor : "rgba(220,220,220,0.5)",
+            strokeColor : "rgba(220,220,220,1)",
+            pointColor : "rgba(220,220,220,1)",
+            pointStrokeColor : "#fff",
+            pointHighlightFill : "#fff",
+            pointHighlightStroke : "rgba(220,220,220,1)",
+            data : []
+        };
+
+        _.each(countyMean, function (el, i) {
+            countyMeanData.data.push(Math.round(el * 10) / 10);
+        });
+
+        data.datasets.push(countyMeanData);
+    }
+
     return data;
 }
+
 var thePrefix, theSuffix;
 function lineChartCreate(lineCharts) {
 	_.each(lineCharts, function(lineChart, i){
 		thePrefix = lineChart.prefix;
         theSuffix = lineChart.suffix;
 	    if (window.myLine) { window.myLine.destroy(); }
-	    lineChartData(lineChart);
 	    var ctx = document.getElementById("lineChart"+lineChart.id+lineChart.feature).getContext("2d");
 	    window.myLine = new Chart(ctx).Line(lineChartData(lineChart), {
 	        responsive: true,
