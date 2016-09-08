@@ -18,7 +18,9 @@ var gulp = require('gulp'),
     del = require('del'),
     config = require('./src/scripts/config.js'),
     swig = require('gulp-swig'),
-    data = require('gulp-data');
+    data = require('gulp-data'),
+    sourcemaps = require('gulp-sourcemaps');
+
 
 
 var jsMain = [
@@ -91,10 +93,14 @@ gulp.task('less-build', function () {
 // JavaScript
 gulp.task('js', function () {
     gulp.src(jsMain)
+        .pipe(sourcemaps.init())
         .pipe(concat('main.js'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/js'));
     return gulp.src(jsReport)
+        .pipe(sourcemaps.init())
         .pipe(concat('report.js'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('dist/js'));
 });
 gulp.task('js-build', function () {

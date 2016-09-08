@@ -26,7 +26,8 @@
     "gulp-uglify": "*",
     "gulp-util": "^3.0.7",
     "gulp-data": "^1.2.1",
-    "gulp-swig": "^0.8.0"
+    "gulp-swig": "^0.8.0",
+    "gulp-sourcemaps": "*"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
