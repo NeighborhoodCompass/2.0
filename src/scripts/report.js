@@ -419,6 +419,13 @@ function createData(featureSet) {
 						// Write out stuff
 						theTable.append(template(tdata));
 
+                        // Hide "Selected features" if there is only one feature selected.
+                        if (theFilter.length == 1) {
+                            _.each(document.querySelectorAll(".metric-table__selection-average"), function (el, i) {
+                                el.style.display = "none";
+                            });
+                        }
+
                         // Create line charts if they exist.
 						if (lineCharts.length > 0) {
 						    console.log("Creating line chart for " + m)
