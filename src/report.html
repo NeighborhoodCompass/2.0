@@ -57,13 +57,13 @@
             <div class="row">
                 <div class="col-xs-6">
                     <p>
-                        The <a href="http://mcmap.org/qol/">Quality of Life Explorer</a> is an interactive online tool to help neighborhoods, government leaders and staff, businesses, community organizations, new residents and others learn more about our county and the diverse neighborhoods within it.  The Explorer features over 80 variables that reflect you, the places you live and work, and collectively, our community.
+                        The <a href="http://compass.durhamnc.gov/tracts">Neighborhood Compass</a> is a primary community resource for information that is regularly-updated, serving meaningful data to the community openly.
                     </p>
                     <p>
-                        On these pages, you’ll find information about the selected area’s social, housing, economic and environmental conditions.  Check out the Explorer online to learn more about what’s happening, see trends over time, and connect to resources to take action on the issues that matter to you.
+                        Each year the Compass grows and learns along with its users, adding data sets with strong community resonance and longitudinal importance.
                     </p>
                     <p>
-                        Learn More.  Take Action.  Create Change.
+                        A quantitative project with qualitative values.
                     </p>
                 </div>
                 <div class="col-xs-6 text-right">
@@ -155,51 +155,26 @@
             </div>
         </div>
     </script>
-	<!-- Underscore row template -->
-    <!-- <script type="text/template" class="template-row">
-      <tr data-metric="<%= rc.id %>">
-          Name (year)
-          <td class='text-left label-<%= rc.id %>' data-val="<%= metricConfig[rc.id].title %>">
-              <a target="_blank" href="./?m=<%= rc.id %>&n=<%= theFilter.join(',') %>"><%= metricConfig[rc.id].title %></a>
-            (<%= rc.year %>)
-          </td>
-          Selected Value
-          <td class='text-right data-<%= rc.id %> report-column-selected' data-selected-val="<%= rc.selectedNVal %>" data-county-val="<%= rc.countyNVal %>">
-              <%= rc.selectedVal %><%= rc.selectedRaw %>
-          </td>
-          County Value
-          <td class='text-right report-column-county'>
-              <%= rc.countyVal %><%= rc.countyRaw %>
-          </td>
-          Units
-          <td class='text-left report-units'>
-              <%= metricConfig[rc.id].label %>
-              <% if (metricConfig[rc.id].raw_label) { %>
-                  <br><%= metricConfig[rc.id].raw_label %>
-              <% } %>
-          </td>
-      </tr>
-    </script> -->
-    <!-- Underscore row template -->
+
     <script type="text/template" class="template-metric">
       <div class="container-fluid">
 		  <div class="row">
 			  <div class="col-md-12">
 				  <h3><a target="_blank" href="./?m=<%= rc.id %>&n=<%= theFilter.join(',') %>"><%= rc.title %></a></h3>
-				  <table class="table table-striped" border="1" style="width:100%">
+				  <table class="table table-striped metric-table" border="1" style="width:100%">
   				  	<tr>
-					    <th>Year</th>
-					    <th>Feature Value</th> 
-					    <th>Selection Average</th> 
-					    <th>County Average</th>
+					    <th class="metric-table__year">Year</th>
+					    <th class="metric-table__feature-value">Feature Value</th>
+					    <th class="metric-table__selection-average">Selection Average</th>
+					    <th class="metric-table__county-average">County Average</th>
 					</tr>
-  				  <% 
+  				  <%
 				  _.each (rc.typeValues,function(v){ %>
 				  	<tr>
-				  		<td><%- v[1] %></td>
-				  		<td class="warning"><%- v[0] %></td>
-				  		<td class="success"><%- v[2] %></td>
-				  		<td class="active"><%- v[3] %></td>
+				  		<td class="metric-table__year"><%- v[1] %></td>
+				  		<td class="metric-table__feature-value"><%- v[0] %></td>
+				  		<td class="metric-table__selection-average"><%- v[2] %></td>
+				  		<td class="metric-table__county-average"><%- v[3] %></td>
 				  	</tr>
 			     <% }); %>
 				</table>

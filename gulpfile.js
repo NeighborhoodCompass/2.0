@@ -250,8 +250,8 @@ gulp.task('compile-templates', function() {
 
 // watch
 gulp.task('watch', function () {
-    gulp.watch(['./src/*.html', './data/config/*.json'], ['compile-templates']);
-    gulp.watch(['./src/less/**/*.less'], ['less']);
+    gulp.watch(['src/*.html', 'data/config/*.json'], ['compile-templates']);
+    gulp.watch(['src/less/**/*.less'], ['less']);
     gulp.watch('src/scripts/**/*.js', ['js']);
 });
 
