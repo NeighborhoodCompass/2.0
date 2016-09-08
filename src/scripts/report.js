@@ -84,152 +84,6 @@ function setModel(m) {
     }
 }
 
-
-// ****************************************
-// Create charts
-// ****************************************
-function createCharts() {
-    // var colors = ["#5C2B2D", "#7A9993", "#959BA9", "#FAFBDD", "#C3DBDE"];
-// 
-    // // doughnut charts
-    // $(".chart-doughnut").each(function() {
-        // var data = [];
-        // var selector = $(this).data("selector");
-        // _.each($(this).data('chart').split(','), function(el, i) {
-            // dataTypeKey = el;
-            // data.push({
-                // value: Number($(".data-" + el).data(selector)),
-                // color: colors[i],
-                // label: $(".label-" + el).data("val").replace('Race/Ethnicity - ', '')
-            // });
-        // });
-        // ctx = document.getElementById($(this).prop("id")).getContext("2d");
-        // var chart = new Chart(ctx).Doughnut(data, {
-            // showTooltips: true,
-            // legendTemplate : '<% for (var i=0; i<segments.length; i++){%><span style="border-color:<%=segments[i].fillColor%>" class="title"><%if(segments[i].label){%><%=segments[i].label%><%}%></span><%}%>',
-            // tooltipTemplate: "<%= dataPretty(value, '" + dataTypeKey + "') %>",
-            // multiTooltipTemplate: "<%= dataPretty(value, '" + dataTypeKey + "') %>",
-        // });
-        // $("#" + $(this).prop("id") + "-legend").html(chart.generateLegend());
-    // });
-// 
-    // // bar charts
-    // $(".chart-bar").each(function() {
-        // // prep the data
-        // var data = {};
-        // var dataTypeKey = "";
-// 
-        // datasets = [
-            // {
-                // fillColor: "rgba(151,187,205,0.5)",
-                // strokeColor: "rgba(151,187,205,0.8)",
-                // data: [],
-                // label: "Selected " + neighborhoodDescriptor + "s"
-            // },
-            // {
-                // fillColor: "rgba(220,220,220,0.5)",
-                // strokeColor: "rgba(220,220,220,0.8)",
-                // data: [],
-                // label: "County"
-            // }
-        // ];
-// 
-        // data.labels = $(this).data('labels').split(",");
-// 
-        // _.each($(this).data('chart').split(','), function(el) {
-            // datasets[0].data.push($(".data-" + el).data("selected-val"));
-            // datasets[1].data.push($(".data-" + el).data("county-val"));
-            // dataTypeKey = el;
-        // });
-// 
-        // if (!$.isNumeric(datasets[0].data[0])) {
-            // datasets.shift();
-        // }
-// 
-        // data.datasets = datasets;
-// 
-        // ctx = document.getElementById($(this).prop("id")).getContext("2d");
-        // var chart = new Chart(ctx).Bar(data, {
-            // showTooltips: true,
-            // legendTemplate : '<% for (var i=0; i<datasets.length; i++){%><span class="title"  style="border-color:<%=datasets[i].strokeColor%>"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span><%}%>',
-            // scaleLabel: "<%= dataFormat(dataRound(Number(value), 2), '" + dataTypeKey + "') %>",
-            // tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= dataPretty(value, '" + dataTypeKey + "') %>",
-            // multiTooltipTemplate: "<%= dataPretty(value, '" + dataTypeKey + "') %>",
-        // });
-// 
-        // $("#" + $(this).prop("id") + "-legend").html(chart.generateLegend());
-// 
-    // });
-// 
-    // // line charts
-    // $(".chart-line").each(function() {
-        // var m = $(this).data("chart"),
-            // npaMean = [],
-            // countyMean = [];
-// 
-        // setModel(m);
-        // keys = getYear(m);
-// 
-        // // stats
-        // _.each(keys, function(year) {
-            // countyMean.push(dataCrunch(year));
-            // npaMean.push(dataCrunch(year, theFilter));
-            // dataTypeKey = m;
-        // });
-// 
-        // // make sure selected stuff really has a value
-        // _.each(npaMean, function(el) {
-            // if (!$.isNumeric(el)) {
-                // npaMean = null;
-            // }
-        // });
-// 
-        // var data = {
-            // labels: [],
-            // datasets: [
-                // {
-                    // fillColor: "rgba(151,187,205,0.2)",
-                    // strokeColor: "rgba(151,187,205,1)",
-                    // pointColor: "rgba(151,187,205,1)",
-                    // pointStrokeColor: "#fff",
-                    // data: [],
-                    // label: "Selected " + neighborhoodDescriptor + "s"
-                // },
-                // {
-                    // fillColor: "rgba(220,220,220,0.2)",
-                    // strokeColor: "rgba(220,220,220,1)",
-                    // pointColor: "rgba(220,220,220,1)",
-                    // pointStrokeColor: "#fff",
-                    // data: [],
-                    // label: "County"
-                // }
-            // ]
-        // };
-// 
-        // _.each(countyMean, function(el, i) {
-            // data.labels.push(keys[i].replace("y_", ""));
-            // if (npaMean !== null) { data.datasets[0].data.push(Math.round(npaMean[i] * 10) / 10); }
-            // data.datasets[1].data.push(Math.round(el * 10) / 10);
-        // });
-// 
-        // // remove select mean if no values are there
-        // if (!npaMean || npaMean === null) { data.datasets.shift(); }
-// 
-        // ctx = document.getElementById($(this).prop("id")).getContext("2d");
-        // var chart = new Chart(ctx).Line(data, {
-            // showTooltips: true,
-            // legendTemplate : '<% for (var i=0; i<datasets.length; i++){%><span class="title"  style="border-color:<%=datasets[i].strokeColor%>"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span><%}%>',
-            // scaleLabel: "<%= dataFormat(dataRound(Number(value), 2), '" + m + "') %>",
-            // tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= dataPretty(value, '" + dataTypeKey + "') %>",
-            // multiTooltipTemplate: "<%= dataPretty(value, '" + dataTypeKey + "') %>",
-        // });
-// 
-        // if ($("#" + $(this).prop("id") + "-legend").length > 0) {
-            // $("#" + $(this).prop("id") + "-legend").html(chart.generateLegend());
-        // }
-    // });
-}
-
 // ****************************************
 // Return the nth instance of a substring
 // ****************************************
@@ -280,48 +134,23 @@ function createData(featureSet) {
 					type : 'GET',
 					dataType : 'text',
 					success : function(data) {
-						//console.log("data = " + JSON.stringify(data));
-						// $('.meta-subtitle').html(
-						// data.substring(GetSubstringIndex(data, '</h2>', 1) + 5, GetSubstringIndex(data, '<h3', 1))
-						// );
-						// $('.meta-important').html(
-						// data.substring(GetSubstringIndex(data, '</h3>', 1) + 5, GetSubstringIndex(data, '<h3', 2))
-						// );
 						metricTitle = data.substring(GetSubstringIndex(data, '</p>', 1), GetSubstringIndex(data, '<p', 1) + 3);
-						// console.log("GetSubstringIndex(data, '<h3', 3) = "+GetSubstringIndex(data, '<h3', 3));
 						aboutHTML = data.substring(GetSubstringIndex(data, '</h3>', 2) + 5, GetSubstringIndex(data, '<h3', 3));
-						// console.log("data = " + data);
-						// console.log("aboutHTML = " + aboutHTML);
 						importance = data.substring(GetSubstringIndex(data, '</p>', 2), GetSubstringIndex(data, '<p', 2) + 3);
-						//console.log("importance = "+importance);
-						//var additionalResourcesHTML = data.substring(GetSubstringIndex(data, '</tbody>', 1),GetSubstringIndex(data, '<tbody', 1));
-						additionalResourcesHTML = "<table><thead></thead>" + data.substring(GetSubstringIndex(data, '</tbody>', 1) + 8, GetSubstringIndex(data, '<tbody', 1)) + "</body>";
-						// console.log("additionalResourcesHTML = " + additionalResourcesHTML);
+						var additionalResourcesHTML = "<table><thead></thead>" + data.substring(GetSubstringIndex(data, '</tbody>', 1) + 8, GetSubstringIndex(data, '<tbody', 1)) + "</body>";
 						var parser = new DOMParser();
 						var parserDoc = parser.parseFromString(additionalResourcesHTML, "text/html");
 						//var table = parserDoc.getElementsByTagName('table');
 						var tableTRs = parserDoc.getElementsByTagName("tr");
 						var trTDs;
-						var additionalResourceLink;
-						additionalResourcesLinks = "";
-						//console.log("outside");
+                        var additionalResourcesLinks = "";
 						for (var i = 0; i < tableTRs.length; i++) {
-							//console.log("tableTRs iteration = " + i);
-							//console.log('tableTRs[i].innerHTML = '+tableTRs[i].innerHTML);
 							parserDoc = parser.parseFromString("<table><tr>" + tableTRs[i].innerHTML + "</tr></table>", "text/html");
 							trTDs = parserDoc.getElementsByTagName("td");
-							//console.log('trTDs[0].innerHTML = '+trTDs[0].innerHTML);
-							additionalResourceLink = "<div>" + [trTDs[0].innerHTML.slice(0, 3), 'title="' + trTDs[1].innerHTML + '"', trTDs[0].innerHTML.slice(3)].join('') + "</div>";
-							//console.log("additionalResourceLink = "+ additionalResourceLink);
-							additionalResourcesLinks += additionalResourceLink;
-							//console.log("additionalResourcesLinks = "+ i + " "+ additionalResourcesLinks);
-							// for (var ii=0; ii<trTDs.length; ii++){
-							// console.log('trTDs[i].innerHTML = '+trTDs[i].innerHTML);
-							// }
+							additionalResourcesLinks += "<div>" + [trTDs[0].innerHTML.slice(0, 3), 'title="' + trTDs[1].innerHTML + '"', trTDs[0].innerHTML.slice(3)].join('') + "</div>";;
 						}
 					},
 					error : function(error, status, desc) {
-						//console.log(status, desc);
 					},
 					complete : function() {
                         if (!(m in metricConfig)) {
@@ -485,90 +314,53 @@ function createMap(data){
     //console.log("geom.style = " + geom);
     // add base tiles at the end so no extra image grabs/FOUC
     L.tileLayer(baseTilesURL).addTo(smallMap);
-    
+
     //console.log("selectedFeature = "+JSON.stringify(selectedFeatures[0]));
     //console.log("selectedIDs = "+selectedIDs[0]+","+selectedIDs[1]);
     // scaffold in category pages
     pageTemplates(geom,selectedFeatures,selectedIDs);
 }
 
-function createLargeMaps(geom){
-	// onEachFeature: function(feature, layer) {
-            // var pt = L.geoJson(feature).getBounds().getCenter();
-            // label = new L.Label();
-            // label.setContent(feature.id.toString());
-            // label.setLatLng(pt);
-            // largeMap.showLabel(label);
-        // }
-    // var largeMap = L.map("largemap", {
-        // attributionControl: false,
-        // zoomControl: false,
-        // touchZoom: false
-    // });
-	// // Disable drag and zoom handlers.
-    // largeMap.dragging.disable();
-    // largeMap.touchZoom.disable();
-    // largeMap.doubleClickZoom.disable();
-    // largeMap.scrollWheelZoom.disable();
-//     
-    // // zoom large map
-    // largeMap.fitBounds(geom.getBounds());
-    // // add base tiles at the end so no extra image grabs/FOUC
-    // L.tileLayer(baseTilesURL).addTo(largeMap);
-}
 // ****************************************
 // get pages in for data categories
 // ****************************************
 function pageTemplates(layer,geoms,IDs) {
     var template = _.template($("#template-category").html()),
-    	// mapTemplate = _.template($("#template-bigMap").html()),
         categories = _.uniq(_.pluck(metricConfig, 'category')),
         pages = $(".category-pages");
-        
-        //console.log("categories = "+ categories);
-		
-		//console.log('geoms = '+JSON.stringify(geoms));
+
 	var mapEle;
 	var ticker = 0;
 	_.each(geoms, function(geom){
-		var geomID = geom.id;	
-	 	
+		var geomID = geom.id;
+
 	 	var poly = L.polygon(geom.geometry.coordinates);
-		//console.log('L.poly.getbounds = '+ JSON.stringify(poly.getBounds()));
 		var polyBounds = poly.getBounds();
-		//console.log('polyBounds._southWest.lat = '+polyBounds._southWest.lat);
 		var swLng = polyBounds._southWest.lat,
 		swLat = polyBounds._southWest.lng,
 		neLng = polyBounds._northEast.lat,
 		neLat = polyBounds._northEast.lng;
-		//console.log('swLat = '+swLat);
-		//console.log('swLng = '+swLng);
-		//console.log('neLat = '+neLat);
-		//console.log('neLng = '+neLng);
-		
+
 		mapEle = document.createElement('div');
-	 	
+
 		mapEle = document.createElement('div');
-		// mapEle.setAttribute("id", "mapPage");
 		mapEle.setAttribute("class", "page page-category");
-		
+
 		mapEle.innerHTML = '<div><h3>'+geomID+'</h3></div><div class="row text-center"><div id="bigMap'+ticker+'"></div></div>';
 		pages.append(mapEle);
-		
+
 		var bigMap = document.getElementById('bigMap'+ticker);
 		bigMap.style.width = '670px';
 		bigMap.style.height = '900px';
 		bigMap.style.margin = 'auto';
-		
-		//console.log("bigmap.id = " + bigMap.id);
+
 		var largeMap = L.map('bigMap'+ticker,{
 	        attributionControl: false,
 	        zoomControl: false,
 	        touchZoom: false
 	    });
 	    largeMap.fitBounds([[swLat,swLng],[neLat,neLng]]);
-		
-	    // largeMp.fitBounds(polyBounds);
+
 	    largeMap.dragging.disable();
 	    largeMap.touchZoom.disable();
 	    largeMap.doubleClickZoom.disable();
@@ -593,11 +385,9 @@ function pageTemplates(layer,geoms,IDs) {
 	    }).addTo(largeMap);
 		L.tileLayer(baseTilesURL).addTo(largeMap);
 
-		//console.log("layoutMap.id = "+mapEle.id);
 	 	ticker ++;
 	 	_.each(categories, function(el) {
 	        cat = el.toLowerCase();
-	        //console.log("cat = " + cat);
 
 	        // get vis if available
 	        if ($("#template-vis-" + cat).length > 0) {
@@ -706,11 +496,8 @@ function lineChartCreate(lineCharts) {
 	        tooltipEvents: ["mousemove", "touchstart", "touchmove"],
 	        tooltipTemplate: "<%if (label){%><%=label%>: <%}%><%= value %>",
 	        multiTooltipTemplate: "<%= value %>",
-	        //scaleLabel: "<%= '$'+value+'%'%>",
 	        scaleLabel: '<%= thePrefix + value + theSuffix %>',
-	        //scaleLabel: "<%console.log('model.metricId = '+model.metricId+' dataFormat(dataRound(Number(value), 2), model.metricId)  = '+dataFormat(dataRound(Number(value), 2), model.metricId) );%><%= dataFormat(dataRound(Number(value), 2), model.metricId) %>",
 	        legendTemplate : '<% for (var i=0; i<datasets.length; i++){%><span class="title"  style="background-color:<%=datasets[i].strokeColor%>; margin-right: 5px">&nbsp;&nbsp;&nbsp;</span><span class="title"  style="margin-right: 5px"><%if(datasets[i].label){%><%=datasets[i].label%><%}%></span><%}%>'
-	    	//legendTemplate : "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].strokeColor%>\"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>"
 	    });
 	    $("#chartLegend"+lineChart.id+lineChart.feature).html(myLine.generateLegend());
 	});
@@ -754,11 +541,8 @@ $(document).ready(function() {
     }
 
     // fetch the metrics and make numbers and charts
-    //console.log("activeMergeJSON = " + activeMergeJSON);
     $.get(activeMergeJSON, function(data) {
-    	//console.log("activeMergeJSON data = "+JSON.stringify(data));
         theData = data;
-        // console.log("theData = "+ JSON.stringify(theData));
         createData(theFilter);
         createCharts();
     });
