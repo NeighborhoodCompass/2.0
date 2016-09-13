@@ -844,15 +844,6 @@ $(document).ready(function() {
 
     setMetricAndNeighborhoodConfig(loadLayer);
 
-    $.ajax({
-		url : 'data/merge_cb.json',
-		type : 'GET',
-		dataType : 'json',
-		success : function(data) {
-			theMetadata = data;
-		}
-	});
-
     // fetch map data and make map
     $.get(activeTOPOJSON, function(data) {
         createMap(data);
