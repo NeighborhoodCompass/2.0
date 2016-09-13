@@ -17,7 +17,7 @@
 // ****************************************
 var theFilter = ["434","372","232"],        // default list of neighborhoods if none passed
     theData,
-    theMetadata,                                // global for fetched raw data
+    jsonMetadata = {},                                // global for fetched raw data
     model = {};
 
 _.templateSettings.variable = "rc";
@@ -271,167 +271,332 @@ function createData(featureSet) {
 				//console.log("JSON.stringify(val) = "+JSON.stringify(val));
 				//console.log("metric = " + m);
 				setModel(m);
-				var aboutHTML;
-				var importance;
-				var metricTitle;
-				var additionalResourcesLinks;
-				var additionalResourcesHTML;
-				$.ajax({
-					url : 'data/meta/' + m + '.html',
-					type : 'GET',
-					dataType : 'text',
-					success : function(data) {
-						//console.log("data = " + JSON.stringify(data));
-						// $('.meta-subtitle').html(
-						// data.substring(GetSubstringIndex(data, '</h2>', 1) + 5, GetSubstringIndex(data, '<h3', 1))
-						// );
-						// $('.meta-important').html(
-						// data.substring(GetSubstringIndex(data, '</h3>', 1) + 5, GetSubstringIndex(data, '<h3', 2))
-						// );
-						metricTitle = data.substring(GetSubstringIndex(data, '</p>', 1), GetSubstringIndex(data, '<p', 1) + 3);
-						// console.log("GetSubstringIndex(data, '<h3', 3) = "+GetSubstringIndex(data, '<h3', 3));
-						aboutHTML = data.substring(GetSubstringIndex(data, '</h3>', 2) + 5, GetSubstringIndex(data, '<h3', 3));
-						// console.log("data = " + data);
-						// console.log("aboutHTML = " + aboutHTML);
-						importance = data.substring(GetSubstringIndex(data, '</p>', 2), GetSubstringIndex(data, '<p', 2) + 3);
-						//console.log("importance = "+importance);
-						//var additionalResourcesHTML = data.substring(GetSubstringIndex(data, '</tbody>', 1),GetSubstringIndex(data, '<tbody', 1));
-						additionalResourcesHTML = "<table><thead></thead>" + data.substring(GetSubstringIndex(data, '</tbody>', 1) + 8, GetSubstringIndex(data, '<tbody', 1)) + "</body>";
-						// console.log("additionalResourcesHTML = " + additionalResourcesHTML);
-						var parser = new DOMParser();
-						var parserDoc = parser.parseFromString(additionalResourcesHTML, "text/html");
-						//var table = parserDoc.getElementsByTagName('table');
-						var tableTRs = parserDoc.getElementsByTagName("tr");
-						var trTDs;
-						var additionalResourceLink;
-						additionalResourcesLinks = "";
-						//console.log("outside");
-						for (var i = 0; i < tableTRs.length; i++) {
-							//console.log("tableTRs iteration = " + i);
-							//console.log('tableTRs[i].innerHTML = '+tableTRs[i].innerHTML);
-							parserDoc = parser.parseFromString("<table><tr>" + tableTRs[i].innerHTML + "</tr></table>", "text/html");
-							trTDs = parserDoc.getElementsByTagName("td");
-							//console.log('trTDs[0].innerHTML = '+trTDs[0].innerHTML);
-							additionalResourceLink = "<div>" + [trTDs[0].innerHTML.slice(0, 3), 'title="' + trTDs[1].innerHTML + '"', trTDs[0].innerHTML.slice(3)].join('') + "</div>";
-							//console.log("additionalResourceLink = "+ additionalResourceLink);
-							additionalResourcesLinks += additionalResourceLink;
-							//console.log("additionalResourcesLinks = "+ i + " "+ additionalResourcesLinks);
-							// for (var ii=0; ii<trTDs.length; ii++){
-							// console.log('trTDs[i].innerHTML = '+trTDs[i].innerHTML);
-							// }
-						}
-					},
-					error : function(error, status, desc) {
-						//console.log(status, desc);
-					},
-					complete : function() {
-						var tdata = {
-							"id" : m,
-							"feature" : feature,
-							"title" : metricTitle,
-							"year" : "",
-							"typeValues" : "",
-							"about" : aboutHTML,
-							"important" : importance,
-							"additionalResources" : additionalResourcesLinks,
-							"selectedVal" : "",
-							"selectedRaw" : "",
-							"selectedNVal" : "",
-							"countyVal" : "",
-							"countyRaw" : "",
-							"countyNVal" : ""
-						};
-							var keys = getYear(m);
-						setModel(m);
-							// year
-						var year = keys[keys.length - 1];
-						var yearTDs = "";
-						var types = [];
-						model.metricID = m;
-						model.prefix = getPrefix(m);
-						model.suffix = getSuffix(m);
-						//console.log("model.metric = "+JSON.stringify(model.metric));
-						var theYear;
-						var yeariii;
-						var iii;
-						var years = [];
-						var featureValue;
-						var featureNValue;
-						var featureValues = [];
-						var selectedValues = [];
-						var countyValues = [];
-						for ( iii = 0; iii < keys.length; iii++) {
-							theYear = keys[iii];
-							model.years = keys;
-							//*****Can I use dataPretty here?
-							featureNValue = metricValuesByIDYear(model.metric, feature, theYear, m);
-							featureValue = dataPretty(featureNValue, m);
-							//console.log("Metric = " + m + " theYear = "+theYear+ " feature = "+feature+" featureValue = " + featureValue);
-							yeariii = keys[iii].replace('y_', '');
-							// console.log("yeariii = " + yeariii);
-							tdata.countyNVal = dataCrunch('y_' + yeariii);
-							tdata.selectedNVal = dataCrunch('y_' + yeariii, theFilter);
-							//console.log("val.suffix = " + val.suffix);
-							model.suffix = val.suffix;
-							if (model.suffix == "%") {
-								featureValue = dataPretty(featureNValue * 100, m);
-								//console.log("val.suffix = " + val.suffix);
-								featureNValue = featureNValue * 100;
-								tdata.selectedNVal = tdata.selectedNVal * 100;
-								tdata.countyNVal = tdata.countyNVal * 100;
-							}
-							tdata.selectedVal = dataPretty(tdata.selectedNVal, m);
-							// console.log("tdata.selectedVal = " + tdata.selectedVal);
-							tdata.countyVal = dataPretty(tdata.countyNVal, m);
-							// console.log("yeariii = " + yeariii);
-							// console.log("createData featureValue = " + featureValue);
-							years.push(yeariii);
-							//metricConfig[theMetric].decimals
-							//dataRound(theValue, theDecimals)
-							featureValues.push(dataRound(featureNValue, metricConfig[m].decimals));
-							selectedValues.push(dataRound(tdata.selectedNVal, metricConfig[m].decimals));
-							countyValues.push(dataRound(tdata.countyNVal, metricConfig[m].decimals));
-							//console.log("tdata.selectedVal = " + tdata.selectedVal);
-							types.push([featureValue, yeariii, tdata.selectedVal, tdata.countyVal]);
-							// model.featurevalues = featureValues;
-							// types.push("Selected");
-							// types.push("County");
-							tdata.typeValues = types;
-							$(".dataValues").innerHTML = yearTDs;
-							if (metricConfig[m].raw_label) {
-								tdata.countyRaw = '<br>' + dataSum(model.metricRaw, year).toFixed(0).commafy();
-								theStat = dataSum(model.metricRaw, year, theFilter);
-								if ($.isNumeric(theStat)) {
-									theStat = theStat.toFixed(0).commafy();
-								}
-								tdata.selectedRaw = '<br>' + theStat;
-							}
-							// front page
-                            
-                            console.log("m: " + m);
-							if ($('[data-metric="' + m + '"]').length > 0) {
-								$('[data-metric="' + m + '"]').text(tdata.selectedVal);
-							}
-							if ($('[data-metric="r' + val.metric + '"]').length > 0) {
-								$('[data-metric="r' + val.metric + '"]').text(tdata.selectedRaw.replace('<br>', ''));
-							}
-						}
-						if (years.length > 1) {
-							lineChartObject.years = years;
-							lineChartObject.featurevalues = featureValues;
-							lineChartObject.selectedvalues = selectedValues;
-							lineChartObject.countyvalues = countyValues;
-							lineCharts.push(lineChartObject);
-						}
-						// console.log("lineCharts = " + JSON.stringify(lineCharts));
-						// Write out stuff
-						theTable.append(template(tdata));
-						// console.log("theTableID = " + "lineChart" + tdata.id + tdata.feature);
-						if (iii > 0) {
-							lineChartCreate(lineCharts);
-						}
+				// var aboutHTML;
+				// var importance;
+				// var metricTitle;
+				// var additionalResourcesLinks;
+// 				
+				// var additionalResourcesHTML;
+				// //console.log("data = " + JSON.stringify(data));
+				// // $('.meta-subtitle').html(
+				// // data.substring(GetSubstringIndex(data, '</h2>', 1) + 5, GetSubstringIndex(data, '<h3', 1))
+				// // );
+				// // $('.meta-important').html(
+				// // data.substring(GetSubstringIndex(data, '</h3>', 1) + 5, GetSubstringIndex(data, '<h3', 2))
+				// // );
+				// //console.log("m = "+m);
+				// var stringMetadata = JSON.stringify(theMetadata[m]);
+				// //console.log("theMetadata[m] = "+ stringMetadata);
+				// metricTitle = stringMetadata.substring(GetSubstringIndex(stringMetadata, '</p>', 1), GetSubstringIndex(stringMetadata, '<p', 1) + 3);
+				// //console.log("metricTitle = "+metricTitle);
+				// // console.log("GetSubstringIndex(data, '<h3', 3) = "+GetSubstringIndex(data, '<h3', 3));
+				// aboutHTML = stringMetadata.substring(GetSubstringIndex(stringMetadata, '</h3>', 2) + 5, GetSubstringIndex(stringMetadata, '<h3', 3));
+				// // console.log("data = " + data);
+				// //console.log("aboutHTML = " + aboutHTML);
+				// importance = stringMetadata.substring(GetSubstringIndex(stringMetadata, '</p>', 2), GetSubstringIndex(stringMetadata, '<p', 2) + 3);
+				// //console.log("importance = "+importance);
+				// //var additionalResourcesHTML = data.substring(GetSubstringIndex(data, '</tbody>', 1),GetSubstringIndex(data, '<tbody', 1));
+				// additionalResourcesHTML = "<table><thead></thead>" + stringMetadata.substring(GetSubstringIndex(stringMetadata, '</tbody>', 1) + 8, GetSubstringIndex(stringMetadata, '<tbody', 1)) + "</body>";
+				// //console.log("additionalResourcesHTML = " + additionalResourcesHTML);
+				// var parser = new DOMParser();
+				// var parserDoc = parser.parseFromString(additionalResourcesHTML, "text/html");
+				// //var table = parserDoc.getElementsByTagName('table');
+				// var tableTRs = parserDoc.getElementsByTagName("tr");
+				// var trTDs;
+				// var additionalResourceLink;
+// 				
+				// additionalResourcesLinks = "";
+				// //console.log("1");
+				// for (var i = 0; i < tableTRs.length; i++) {
+					// //console.log("tableTRs iteration = " + i);
+					// //console.log('tableTRs[i].innerHTML = '+tableTRs[i].innerHTML);
+					// parserDoc = parser.parseFromString("<table><tr>" + tableTRs[i].innerHTML + "</tr></table>", "text/html");
+					// trTDs = parserDoc.getElementsByTagName("td");
+					// //console.log('trTDs[0].innerHTML = '+trTDs[0].innerHTML);
+					// additionalResourceLink = "<div>" + [trTDs[0].innerHTML.slice(0, 3), 'title="' + trTDs[1].innerHTML + '"', trTDs[0].innerHTML.slice(3)].join('') + "</div>";
+					// //console.log("additionalResourceLink = "+ additionalResourceLink);
+					// additionalResourcesLinks += additionalResourceLink;
+					// //console.log("additionalResourcesLinks = "+ i + " "+ additionalResourcesLinks);
+					// // for (var ii=0; ii<trTDs.length; ii++){
+					// // console.log('trTDs[i].innerHTML = '+trTDs[i].innerHTML);
+					// // }
+				// }
+				console.log("JSON.stringify(jsonMetadata) = " + JSON.stringify(jsonMetadata[m]));
+				var tdata = {
+					"id" : m,
+					"feature" : feature,
+					"title" : jsonMetadata[m].metricTitle,
+					"year" : "",
+					"typeValues" : "",
+					"about" : jsonMetadata[m].aboutHTML,
+					"important" : jsonMetadata[m].importance,
+					"additionalResources" : jsonMetadata[m].additionalResourcesLinks,
+					"selectedVal" : "",
+					"selectedRaw" : "",
+					"selectedNVal" : "",
+					"countyVal" : "",
+					"countyRaw" : "",
+					"countyNVal" : ""
+				};
+				var keys = getYear(m);
+				setModel(m);
+				// year
+				var year = keys[keys.length - 1];
+				var yearTDs = "";
+				var types = [];
+				model.metricID = m;
+				model.prefix = getPrefix(m);
+				model.suffix = getSuffix(m);
+				//console.log("model.metric = "+JSON.stringify(model.metric));
+				var theYear;
+				var yeariii;
+				var iii;
+				var years = [];
+				var featureValue;
+				var featureNValue;
+				var featureValues = [];
+				var selectedValues = [];
+				var countyValues = [];
+				console.log("feature = " + feature);
+				console.log('m = '+m);
+				console.log("keys = "+keys);
+				for ( iii = 0; iii < keys.length; iii++) {
+					theYear = keys[iii];
+					model.years = keys;
+					//*****Can I use dataPretty here?
+					featureNValue = metricValuesByIDYear(model.metric, feature, theYear, m);
+					if (typeof(featureNValue)!= 'number'){featureNValue = Number(featureNValue);}
+					featureValue = dataPretty(featureNValue, m);
+					//console.log("Metric = " + m + " theYear = "+theYear+ " feature = "+feature+" featureValue = " + featureValue);
+					yeariii = keys[iii].replace('y_', '');
+					// console.log("yeariii = " + yeariii);
+					tdata.countyNVal = dataCrunch('y_' + yeariii);
+					tdata.selectedNVal = dataCrunch('y_' + yeariii, theFilter);
+					//console.log("val.suffix = " + val.suffix);
+					model.suffix = val.suffix;
+					
+					if (model.suffix == "%") {
+						featureValue = dataPretty(featureNValue * 100, m);
+						//console.log("val.suffix = " + val.suffix);
+						featureNValue = featureNValue * 100;
+						tdata.selectedNVal = tdata.selectedNVal * 100;
+						tdata.countyNVal = tdata.countyNVal * 100;
 					}
-				});
+					tdata.selectedVal = dataPretty(tdata.selectedNVal, m);
+					// console.log("tdata.selectedVal = " + tdata.selectedVal);
+					tdata.countyVal = dataPretty(tdata.countyNVal, m);
+					// console.log("yeariii = " + yeariii);
+					// console.log("createData featureValue = " + featureValue);
+					years.push(yeariii);
+					//metricConfig[theMetric].decimals
+					//dataRound(theValue, theDecimals)
+					featureValues.push(dataRound(featureNValue, metricConfig[m].decimals));
+					selectedValues.push(dataRound(tdata.selectedNVal, metricConfig[m].decimals));
+					countyValues.push(dataRound(tdata.countyNVal, metricConfig[m].decimals));
+					//console.log("tdata.selectedVal = " + tdata.selectedVal);
+					
+					//console.log("2");
+					types.push([featureValue, yeariii, tdata.selectedVal, tdata.countyVal]);
+					// model.featurevalues = featureValues;
+					// types.push("Selected");
+					// types.push("County");
+					tdata.typeValues = types;
+					
+					//console.log("3");
+					$(".dataValues").innerHTML = yearTDs;
+					if (metricConfig[m].raw_label) {
+						//console.log("4 dataSum(model.metricRaw, year) = "+ dataSum(model.metricRaw, year));
+						if (dataSum(model.metricRaw, year) != "N/A"){tdata.countyRaw = '<br>' + dataSum(model.metricRaw, year).toFixed(0).commafy();}
+						else{tdata.countyRaw = "N/A";}
+						//console.log("5");
+						theStat = dataSum(model.metricRaw, year, theFilter);
+						//console.log("6");
+						if ($.isNumeric(theStat)) {
+							theStat = theStat.toFixed(0).commafy();
+						}
+						tdata.selectedRaw = '<br>' + theStat;
+					}
+					// front page
+					
+					//console.log("2");
+					if ($('[data-metric="' + m + '"]').length > 0) {
+						$('[data-metric="' + m + '"]').text(tdata.selectedVal);
+					}
+					if ($('[data-metric="r' + val.metric + '"]').length > 0) {
+						$('[data-metric="r' + val.metric + '"]').text(tdata.selectedRaw.replace('<br>', ''));
+					}
+				}
+					
+				if (years.length > 1) {
+					lineChartObject.years = years;
+					lineChartObject.featurevalues = featureValues;
+					lineChartObject.selectedvalues = selectedValues;
+					lineChartObject.countyvalues = countyValues;
+					lineCharts.push(lineChartObject);
+				}
+				// console.log("lineCharts = " + JSON.stringify(lineCharts));
+				// Write out stuff
+				theTable.append(template(tdata));
+				// console.log("theTableID = " + "lineChart" + tdata.id + tdata.feature);
+				if (iii > 0) {
+					lineChartCreate(lineCharts);
+				}
+
+				
+				// $.ajax({
+					// url : 'data/meta/' + m + '.html',
+					// type : 'GET',
+					// dataType : 'text',
+					// success : function(data) {
+						// //console.log("data = " + JSON.stringify(data));
+						// // $('.meta-subtitle').html(
+						// // data.substring(GetSubstringIndex(data, '</h2>', 1) + 5, GetSubstringIndex(data, '<h3', 1))
+						// // );
+						// // $('.meta-important').html(
+						// // data.substring(GetSubstringIndex(data, '</h3>', 1) + 5, GetSubstringIndex(data, '<h3', 2))
+						// // );
+						// metricTitle = data.substring(GetSubstringIndex(data, '</p>', 1), GetSubstringIndex(data, '<p', 1) + 3);
+						// // console.log("GetSubstringIndex(data, '<h3', 3) = "+GetSubstringIndex(data, '<h3', 3));
+						// aboutHTML = data.substring(GetSubstringIndex(data, '</h3>', 2) + 5, GetSubstringIndex(data, '<h3', 3));
+						// // console.log("data = " + data);
+						// // console.log("aboutHTML = " + aboutHTML);
+						// importance = data.substring(GetSubstringIndex(data, '</p>', 2), GetSubstringIndex(data, '<p', 2) + 3);
+						// //console.log("importance = "+importance);
+						// //var additionalResourcesHTML = data.substring(GetSubstringIndex(data, '</tbody>', 1),GetSubstringIndex(data, '<tbody', 1));
+						// additionalResourcesHTML = "<table><thead></thead>" + data.substring(GetSubstringIndex(data, '</tbody>', 1) + 8, GetSubstringIndex(data, '<tbody', 1)) + "</body>";
+						// // console.log("additionalResourcesHTML = " + additionalResourcesHTML);
+						// var parser = new DOMParser();
+						// var parserDoc = parser.parseFromString(additionalResourcesHTML, "text/html");
+						// //var table = parserDoc.getElementsByTagName('table');
+						// var tableTRs = parserDoc.getElementsByTagName("tr");
+						// var trTDs;
+						// var additionalResourceLink;
+						// additionalResourcesLinks = "";
+						// //console.log("outside");
+						// for (var i = 0; i < tableTRs.length; i++) {
+							// //console.log("tableTRs iteration = " + i);
+							// //console.log('tableTRs[i].innerHTML = '+tableTRs[i].innerHTML);
+							// parserDoc = parser.parseFromString("<table><tr>" + tableTRs[i].innerHTML + "</tr></table>", "text/html");
+							// trTDs = parserDoc.getElementsByTagName("td");
+							// //console.log('trTDs[0].innerHTML = '+trTDs[0].innerHTML);
+							// additionalResourceLink = "<div>" + [trTDs[0].innerHTML.slice(0, 3), 'title="' + trTDs[1].innerHTML + '"', trTDs[0].innerHTML.slice(3)].join('') + "</div>";
+							// //console.log("additionalResourceLink = "+ additionalResourceLink);
+							// additionalResourcesLinks += additionalResourceLink;
+							// //console.log("additionalResourcesLinks = "+ i + " "+ additionalResourcesLinks);
+							// // for (var ii=0; ii<trTDs.length; ii++){
+							// // console.log('trTDs[i].innerHTML = '+trTDs[i].innerHTML);
+							// // }
+						// }
+					// },
+					// error : function(error, status, desc) {
+						// //console.log(status, desc);
+					// },
+					// complete : function() {
+						// var tdata = {
+							// "id" : m,
+							// "feature" : feature,
+							// "title" : metricTitle,
+							// "year" : "",
+							// "typeValues" : "",
+							// "about" : aboutHTML,
+							// "important" : importance,
+							// "additionalResources" : additionalResourcesLinks,
+							// "selectedVal" : "",
+							// "selectedRaw" : "",
+							// "selectedNVal" : "",
+							// "countyVal" : "",
+							// "countyRaw" : "",
+							// "countyNVal" : ""
+						// };
+							// var keys = getYear(m);
+						// setModel(m);
+							// // year
+						// var year = keys[keys.length - 1];
+						// var yearTDs = "";
+						// var types = [];
+						// model.metricID = m;
+						// model.prefix = getPrefix(m);
+						// model.suffix = getSuffix(m);
+						// //console.log("model.metric = "+JSON.stringify(model.metric));
+						// var theYear;
+						// var yeariii;
+						// var iii;
+						// var years = [];
+						// var featureValue;
+						// var featureNValue;
+						// var featureValues = [];
+						// var selectedValues = [];
+						// var countyValues = [];
+						// for ( iii = 0; iii < keys.length; iii++) {
+							// theYear = keys[iii];
+							// model.years = keys;
+							// //*****Can I use dataPretty here?
+							// featureNValue = metricValuesByIDYear(model.metric, feature, theYear, m);
+							// featureValue = dataPretty(featureNValue, m);
+							// //console.log("Metric = " + m + " theYear = "+theYear+ " feature = "+feature+" featureValue = " + featureValue);
+							// yeariii = keys[iii].replace('y_', '');
+							// // console.log("yeariii = " + yeariii);
+							// tdata.countyNVal = dataCrunch('y_' + yeariii);
+							// tdata.selectedNVal = dataCrunch('y_' + yeariii, theFilter);
+							// //console.log("val.suffix = " + val.suffix);
+							// model.suffix = val.suffix;
+							// if (model.suffix == "%") {
+								// featureValue = dataPretty(featureNValue * 100, m);
+								// //console.log("val.suffix = " + val.suffix);
+								// featureNValue = featureNValue * 100;
+								// tdata.selectedNVal = tdata.selectedNVal * 100;
+								// tdata.countyNVal = tdata.countyNVal * 100;
+							// }
+							// tdata.selectedVal = dataPretty(tdata.selectedNVal, m);
+							// // console.log("tdata.selectedVal = " + tdata.selectedVal);
+							// tdata.countyVal = dataPretty(tdata.countyNVal, m);
+							// // console.log("yeariii = " + yeariii);
+							// // console.log("createData featureValue = " + featureValue);
+							// years.push(yeariii);
+							// //metricConfig[theMetric].decimals
+							// //dataRound(theValue, theDecimals)
+							// featureValues.push(dataRound(featureNValue, metricConfig[m].decimals));
+							// selectedValues.push(dataRound(tdata.selectedNVal, metricConfig[m].decimals));
+							// countyValues.push(dataRound(tdata.countyNVal, metricConfig[m].decimals));
+							// //console.log("tdata.selectedVal = " + tdata.selectedVal);
+							// types.push([featureValue, yeariii, tdata.selectedVal, tdata.countyVal]);
+							// // model.featurevalues = featureValues;
+							// // types.push("Selected");
+							// // types.push("County");
+							// tdata.typeValues = types;
+							// $(".dataValues").innerHTML = yearTDs;
+							// if (metricConfig[m].raw_label) {
+								// tdata.countyRaw = '<br>' + dataSum(model.metricRaw, year).toFixed(0).commafy();
+								// theStat = dataSum(model.metricRaw, year, theFilter);
+								// if ($.isNumeric(theStat)) {
+									// theStat = theStat.toFixed(0).commafy();
+								// }
+								// tdata.selectedRaw = '<br>' + theStat;
+							// }
+							// // front page
+							// if ($('[data-metric="' + m + '"]').length > 0) {
+								// $('[data-metric="' + m + '"]').text(tdata.selectedVal);
+							// }
+							// if ($('[data-metric="r' + val.metric + '"]').length > 0) {
+								// $('[data-metric="r' + val.metric + '"]').text(tdata.selectedRaw.replace('<br>', ''));
+							// }
+						// }
+						// if (years.length > 1) {
+							// lineChartObject.years = years;
+							// lineChartObject.featurevalues = featureValues;
+							// lineChartObject.selectedvalues = selectedValues;
+							// lineChartObject.countyvalues = countyValues;
+							// lineCharts.push(lineChartObject);
+						// }
+						// // console.log("lineCharts = " + JSON.stringify(lineCharts));
+						// // Write out stuff
+						// theTable.append(template(tdata));
+						// // console.log("theTableID = " + "lineChart" + tdata.id + tdata.feature);
+						// if (iii > 0) {
+							// lineChartCreate(lineCharts);
+						// }
+					// }
+				// });
 				// var tdata = {
 							// "id" : m,
 							// "feature" : feature,
@@ -818,7 +983,7 @@ function lineChartCreate(lineCharts) {
         theSuffix = lineChart.suffix;
 	    if (window.myLine) { window.myLine.destroy(); }
 	    lineChartData(lineChart);
-	    //console.log('linchartCreate id =  '+"lineChart"+lineChart.id+lineChart.feature);
+	    console.log('linchartCreate id =  '+"lineChart"+lineChart.id+lineChart.feature);
 	    var ctx = document.getElementById("lineChart"+lineChart.id+lineChart.feature).getContext("2d");
 	    window.myLine = new Chart(ctx).Line(lineChartData(lineChart), {
 	        responsive: true,
@@ -844,11 +1009,74 @@ function lineChartCreate(lineCharts) {
 $(document).ready(function() {
     
     $.ajax({
-		url : 'data/meta/merge_cb.json',
+		url : 'data/meta/mergeMeta_cb.json',
 		type : 'GET',
 		dataType : 'json',
 		success : function(data) {
-			theMetadata = data;
+			var theMetadata = data;
+			for (var key in theMetadata){
+				// console.log("JSON.stringify(key) = " + JSON.stringify(key));
+				
+				var aboutHTML;
+				var importance;
+				var metricTitle;
+				var additionalResourcesLinks;
+				
+				var additionalResourcesHTML;
+				//console.log("data = " + JSON.stringify(data));
+				// $('.meta-subtitle').html(
+				// data.substring(GetSubstringIndex(data, '</h2>', 1) + 5, GetSubstringIndex(data, '<h3', 1))
+				// );
+				// $('.meta-important').html(
+				// data.substring(GetSubstringIndex(data, '</h3>', 1) + 5, GetSubstringIndex(data, '<h3', 2))
+				// );
+				//console.log("m = "+m);
+				var stringMetadata = JSON.stringify(theMetadata[key]);
+				//console.log("theMetadata[m] = "+ stringMetadata);
+				metricTitle = stringMetadata.substring(GetSubstringIndex(stringMetadata, '</p>', 1), GetSubstringIndex(stringMetadata, '<p', 1) + 3);
+				//console.log("metricTitle = "+metricTitle);
+				// console.log("GetSubstringIndex(data, '<h3', 3) = "+GetSubstringIndex(data, '<h3', 3));
+				aboutHTML = stringMetadata.substring(GetSubstringIndex(stringMetadata, '</h3>', 2) + 5, GetSubstringIndex(stringMetadata, '<h3', 3));
+				// console.log("data = " + data);
+				//console.log("aboutHTML = " + aboutHTML);
+				importance = stringMetadata.substring(GetSubstringIndex(stringMetadata, '</p>', 2), GetSubstringIndex(stringMetadata, '<p', 2) + 3);
+				//console.log("importance = "+importance);
+				//var additionalResourcesHTML = data.substring(GetSubstringIndex(data, '</tbody>', 1),GetSubstringIndex(data, '<tbody', 1));
+				additionalResourcesHTML = "<table><thead></thead>" + stringMetadata.substring(GetSubstringIndex(stringMetadata, '</tbody>', 1) + 8, GetSubstringIndex(stringMetadata, '<tbody', 1)) + "</body>";
+				//console.log("additionalResourcesHTML = " + additionalResourcesHTML);
+				var parser = new DOMParser();
+				var parserDoc = parser.parseFromString(additionalResourcesHTML, "text/html");
+				//var table = parserDoc.getElementsByTagName('table');
+				var tableTRs = parserDoc.getElementsByTagName("tr");
+				var trTDs;
+				var additionalResourceLink;
+				
+				additionalResourcesLinks = "";
+				//console.log("1");
+				for (var i = 0; i < tableTRs.length; i++) {
+					//console.log("tableTRs iteration = " + i);
+					//console.log('tableTRs[i].innerHTML = '+tableTRs[i].innerHTML);
+					parserDoc = parser.parseFromString("<table><tr>" + tableTRs[i].innerHTML + "</tr></table>", "text/html");
+					trTDs = parserDoc.getElementsByTagName("td");
+					//console.log('trTDs[0].innerHTML = '+trTDs[0].innerHTML);
+					additionalResourceLink = "<div>" + [trTDs[0].innerHTML.slice(0, 3), 'title="' + trTDs[1].innerHTML + '"', trTDs[0].innerHTML.slice(3)].join('') + "</div>";
+					//console.log("additionalResourceLink = "+ additionalResourceLink);
+					additionalResourcesLinks += additionalResourceLink;
+					//console.log("additionalResourcesLinks = "+ i + " "+ additionalResourcesLinks);
+					// for (var ii=0; ii<trTDs.length; ii++){
+					// console.log('trTDs[i].innerHTML = '+trTDs[i].innerHTML);
+					// }
+				}
+				var attributes = {
+					"aboutHTML": aboutHTML,
+					"importance": importance,
+					"metricTitle": metricTitle,
+					"additionalResourcesLinks": additionalResourcesLinks
+				};
+				jsonMetadata[key] = attributes;
+		        console.log("key = "+ key);
+				// console.log("jsonMetadata = " + JSON.stringify(jsonMetadata));
+			}
 		}
 	});
     

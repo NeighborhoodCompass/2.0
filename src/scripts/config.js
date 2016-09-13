@@ -2,19 +2,22 @@
 
 //searching for other configurable items
 //There are other configurable items that i have found throughout the project that may be of use. I have peppered
-//the applicaiton with the following search terms so that these items may be altered as needed. To find these search
+//the applicaiton with the following search terms so that these items may be altered as needed. To find these search 
 //terms, search the entire project for the following words:
 //1. Quantile Color Breaks - this is where the color scheme for the map quantiles is stored these values are RGB values
-// and are indexed starting a q0 and ending with q4. do not change the number of 'q' values without changing the
+// and are indexed starting a q0 and ending with q4. do not change the number of 'q' values without changing the 
 //'colorbreaks' variable listed in this file below. Always that q0 is the first instance so if colorbreaks = n then
 //the 'q' values should extend from q0 to qn-1.
+
+// Stick your Google Analytics key here
+var gaKey = "UA-47136977-1";
 
 // Here's where to put what you are calling your neighborhoods. We call them NPA,
 // you might call them NSA or precinct or even something crazy like "neighborhood".
 // Shorter is better lest you run into some unintended wrapping text issues.
-//TODO - set these variables according to selected target layer.
+//TODO - set these variables according to selected target layer. 
+var neighborhoodDescriptor = "Block Group";
 var neighborhoodDefinition = "Census block groups";
-var neighborhoodDescriptor = "";
 
 // The URL for your base map tiles.
 // Here's a good place to find some:
@@ -70,6 +73,15 @@ var blInitMap = true;
 // "chart and map colors" if you change this number. A good guide for color
 // breaks is at http://colorbrewer2.org
 var colorbreaks = 5;
+
+// we're going to export a few of our vars for the node build/watch process. Done in a try/catch
+// so a browser reading this will barf quietly to itself.
+try {
+    exports.neighborhoodDescriptor = neighborhoodDescriptor;
+    exports.gaKey = gaKey;
+}
+catch(err) {}
+
 
 // ***********************************************************
 // Ye Olde Metric Configuration
@@ -594,7 +606,7 @@ censusTractMetricConfig = {
       "type": "normalize"
     }
 }
-//~*~*~*~*~*TODO change metricConfig in the $(".censusRadio").click and $(".neighborhoodsRadio").click functions.
+//~*~*~*~*~*TODO change metricConfig in the $(".censusRadio").click and $(".neighborhoodsRadio").click functions. 
 var metricConfig;
 if (loadLayer == "census"){
 	metricConfig = censusMetricConfig;
@@ -602,3 +614,4 @@ if (loadLayer == "census"){
 else{
 	metricConfig = neighborhoodMetricConfig;
 }
+ 

@@ -8,11 +8,8 @@
     <meta name="keywords" content="GIS,Mecklenburg County,parks,libraries,schools,environment,impervious surface,floodplain,zoning,assessment,tax,photos,government">
     <meta name="author" content="Tobin Bradley">
 
-	
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-  
     <!-- Set the title here -->
-    <title>Neighborhood Compass</title>
+    <title>Quality of Life Explorer</title>
 
     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -24,26 +21,23 @@
     <meta name="application-name" content="Quality of Life Explorer"/>
     <meta name="msapplication-TileColor" content="#1e59bd"/>
 
-	<!-- Favicon -->
-    <link rel="shortcut icon" type="image/png" href="images/compass_notext.png" />
-    <link rel="apple-touch-icon-precomposed" href="images/compass_notext.png"/>
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
+    <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png" />
 
     <!-- Theme color for Android -->
     <meta name="theme-color" content="#db5945">
 
     <!-- Stylesheets -->
     <link rel="stylesheet" href="css/main.css?foo={{cachebuster}}">
-    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel='stylesheet' type='text/css'>
 
-	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-	<script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
     <!--[if lt IE 9]>
         <p class="oldie alert-info text-center">You are using an outdated browser. <a href="http://whatbrowser.org/">Upgrade your browser today</a> to better experience this site.</p>
     <![endif]-->
-    <!-- <div class="jumbotron text-center">
+    <div class="jumbotron text-center">
       <div class="container">
           <h1>Quality of Life Explorer</h1>
           <p>
@@ -53,12 +47,10 @@
               <a href="javascript:void(0)" class="btn btn-warning btn-lg scrollToStart" role="button"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span> Get Started</a>
           </p>
       </div>
-    </div> -->
-    <nav class="navbar navbar-default navbar-fixed-top navbar-main" role="navigation" style=" background-color: #000000">
+    </div>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-main" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
-            
-            
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
                     <span class="sr-only">Toggle navigation</span>
@@ -66,50 +58,32 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-	            <a class="brand" href="./index.html">
-					<img src="images/compass_final_logo_white_text10Pct.png" style="vertical-align: middle">
-	            </a>
+                <a class="navbar-brand" href="./"><strong>Quality of Life Explorer</strong></a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                    	<!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalData">
-						  Launch demo modal
-						</button> -->
-                    	<!-- <a data-toggle="modal" href="#modalData">Open Modal</a> -->
-                    	<a href="#modalData" data-toggle="modal" data-target="#modalData" style="color: white"><strong>Data</strong></a>
-                    </li>
-                    <li class="dropdown">
-                        <a class="dropdown-toggle" href="javascript:void(0)" id = "dropdownMenu"data-toggle="dropdown" style="color: white"><strong>Links </strong><span class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-						    <li role="presentation"><a role="menuitem" href='http://census.gov/programs-surveys/acs/guidance/handbooks.html' target="_blank">Guides to Using ACS Data</a></li>
-						    <li role="presentation"><a role="menuitem" href='http://www.census.gov/glossary/' target="_blank">Census Bureau Glossary</a></li>
-						    <li role="presentation"><a role="menuitem"  href="http://durhamnc.maps.arcgis.com/home/webmap/viewer.html?webmap=46923bc1822c459da3fd26c882a3fd64" target="_blank">Durham Neighborhoods and Census Areas</a></li>
-						    <li role="presentation"><a role="menuitem" href="http://durhamnc.gov/414/Unified-Development-Ordinance-UDO" target="_blank">Zoning Classifications</a></li>
-						    <li role="presentation"><a role="menuitem" href="http://durhamnc.gov/documentcenter/view/1171" target="blank">Durham City/County Future Land Use</a></li>
-						    <li role="presentation"><a role="menuitem"  href="http://gisweb2.durhamnc.gov/durhammaps/developmenttracker/index.html" target="_blank">City of Durham Development Tracker</a></li>
-						    <li role="presentation"><a role="menuitem"  href="http://gisweb.durhamnc.gov/sp/index.cfm" target="_blank">Other City of Durham Map Applications</a></li>
-						    <!-- <li role="presentation"><a role="menuitem"  href="http://durhamhoods.com" target="_blank">Durham Hoods</a></li> -->
-						</ul>
+                        <a href="http://qol.charmeck.org/">About</a>
                     </li>
                     <li>
-                        <!-- <a href="javascript:void(0)" class="btn-help" style="color: white"><strong>Help</strong></a> -->
+                        <a href="data/qol-data.zip">Get Data</a>
                     </li>
-                    <li><a href="https://www.surveymonkey.com/s/BHT5VP5" target="_blank" style="color: white"><strong>Feedback</strong></a></li>
-                    <li><a href="data/CompassTutorial.pdf" target="_blank" style="color: white" onclick="fireGAEvent('Help', 'Click', 'Help');"><strong>Help</strong></a></li>
-                	<li>
-                		<a class="brand" href="https://twitter.com/durhamcompass">
-							<img src="images/Twitter_logo_white4pct.png" target="_blank" style="vertical-align: top">
-	            		</a>
-	            	</li>
-	            	<li>
-	        			<form class="navbar-form pull-right" onkeypress="isEnter(this, event)">
-		                	<label for="searchbox" class="hide">Type an address: 505 W Chapel Hill</label>
-		                	<input id="searchbox" class="input-large span4 transition" style="width: 250px" type="textbox" placeholder="Type an address: 505 W Chapel Hill" rel="popover" data-content="Search for an address (try <em>700 N</em>) or location (try <em>freedom</em>)." data-original-title="Search" data-placement="bottom" data-html="true" data-trigger="manual">
-		                	<input id="btnSearch" type="button" class="geocodeButton" value="Search">
-		                </form>    		
-	            	</li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown">Contact <span class="caret"></span></a>
+                        <div class="dropdown-menu contact">
+                            <form action="" method="post" accept-charset="UTF-8">
+                                <label for="email" class="sr-only">Email Address (optional)</label>
+                                <input id="email" class="form-control" type="email" name="email" size="30" placeholder="Email Address (optional)" />
+                                <label for="message" class="sr-only">Message</label>
+                                <textarea id="message" name="message" class="form-control" rows="3" placeholder="Message"></textarea>
+                                <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Send" />
+                            </form>
+                        </div>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="btn-help">Help</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -120,17 +94,13 @@
     <div class="container container-content">
     	<div class="span3">
 	    	<table>
-				<td  height="40" class="targetLayerRadioLabel" style="vertical-align: middle">Blockgroups: </td>
+				<td  height="40" style="vertical-align: middle">Blockgroups: </td>
 				<td  height="40" style="vertical-align: middle">
 				<input type="radio" checked id="censusRadio" class="censusRadio input-large" name="selectedItem" value="1"/>
 				</td>
-				<td  height="40" class="targetLayerRadioLabel" style="vertical-align: middle">Neighborhoods: </td>
+				<td  height="40" style="vertical-align: middle">Neighborhoods: </td>
 				<td  height="40" style="vertical-align: middle">
 				<input type="radio" id="neighborhoodsRadio" class="neighborhoodsRadio input-large" name="selectedItem" value="2" />
-				</td>
-				<td  height="40" class="targetLayerRadioLabel" style="vertical-align: middle">Tracts: </td>
-				<td  height="40" style="vertical-align: middle">
-				<input type="radio" id="tractsRadio" class="tractsRadio input-large" name="selectedItem" value="3" />
 				</td>
 			</table>
 		</div>
@@ -167,7 +137,7 @@
                     </div>
                     <div class="col-md-7 col-xs-6 text-right">
                         <div class="btn-group datatoggle text-right">
-                            <button type="button" id = "mapToggle" class="btn btn-default btn-sm toggle-map">Hide Map</button>
+                            <button type="button" class="btn btn-default btn-sm toggle-map">Show Map</button>
                             <button type="button" class="btn btn-default btn-sm select-clear">Clear Selected</button>
                             <button type="button" class="btn btn-default btn-sm report-launch disabled">Report</button>
                         </div>
@@ -182,46 +152,38 @@
                         <div class="col-md-6 col-xs-6 stat-box stat-box-county"></div>
                     </div>
                 </div>
-                <!-- <ul class="nav nav-pills" id="myTab">
-				  <li class="active"><a data-target="#histogramTab" data-toggle="tab" id="histogramPill" onclick="clickPill(this)">Histogram</a></li>
-				  <li><a data-target="#barChartTab" data-toggle="tab" id="verticalPill" onclick="clickPill(this)">Bar Chart</a></li>
-				</ul>
-				<div id="verticalChart" class = "pull-left" style="display: none">
-	            </div> -->	
-				<div id="barChart">
-	                    <svg width="100%" height="100%" class="chart barchart">
-	                        <g class="barchart-container">
-	                            <g class="bar-container"></g>
-	                            <g class="value-mean">
-	                                <line></line>
-	                                <text class="mean-text"></text>
-	                            </g>
-	                            <g class="value-hover"></g>
-	                            <g class="value-select"></g>
-	                            <g class="x axis"></g>
-	                            <g class="y axis">
-	                                <text transform="rotate(-90)" y="6" dy=".71em" style="text-anchor: end; opacity: 0;">Neighborhoods</text>
-	                            </g>
-	                        </g>
-	                    </svg>
-	                </div>
-	                <div class="text-center chartLegend">
-	                    <img src="images/legend-median.svg" style="height: 8px;" alt="median legend"> Median <span class="median"></span>
-	                </div>
-	                <div class="lineChart-container">
-	                    <canvas id="lineChart" class="temporal"></canvas>
-	                    <div class="chartLegend lineChartLegend temporal text-center"></div>
-	                </div>
-			    <!-- <div id="verticalChart"></div> -->
-                
-                <!-- <div class="text-center social-links">
+                <div id="barChart">
+                    <svg width="100%" height="100%" class="chart barchart">
+                        <g class="barchart-container">
+                            <g class="bar-container"></g>
+                            <g class="value-mean">
+                                <line></line>
+                                <text class="mean-text"></text>
+                            </g>
+                            <g class="value-hover"></g>
+                            <g class="value-select"></g>
+                            <g class="x axis"></g>
+                            <g class="y axis">
+                                <text transform="rotate(-90)" y="6" dy=".71em" style="text-anchor: end; opacity: 0;">Neighborhoods</text>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="text-center chartLegend">
+                    <img src="images/legend-median.svg" style="height: 8px;" alt="median legend"> Median <span class="median"></span>
+                </div>
+                <div class="lineChart-container">
+                    <canvas id="lineChart" class="temporal"></canvas>
+                    <div class="chartLegend lineChartLegend temporal text-center"></div>
+                </div>
+                <div class="text-center social-links">
                     <p>
                         <a href="javascript:void(0)" data-url="https://twitter.com/intent/tweet?tw_p=tweetbutton&url="><i class="icon-twitter-bird" title="Share on Twitter"></i></a>
                         <a href="javascript:void(0)" data-url="http://www.facebook.com/sharer.php?u="><i class="icon-facebook-rect" title="Share on Facebook"></i></a>
                         <a href="javascript:void(0)" data-url="https://plus.google.com/share?url="><i class="icon-googleplus-rect" title="Share on Google+"></i></a>
                         <a href="javascript:void(0)" data-url="https://www.linkedin.com/shareArticle?mini=true&title=Quality%20of%20Life%20Dashboard&summary=&source=&url="><i class="icon-linkedin-rect" title="Share on Linkedin"></i></a>
                     </p>
-                </div> -->
+                </div>
             </div>
         </div>
         <div class="row">
@@ -246,148 +208,18 @@
             </div>
         </div>
         <div class="row">
-            <footer class="textcenter" class="span9 pull-left">
-            	<p>
-            		<img src="images/CompassFlagFooter.png" class="span4 pull-left" height="50%" width="50%"style="padding-left: 18%">
-                    <a href="javascript:void(0)" class="pull-left" style="padding-left: 5%; padding-top: 20px" data-toggle="modal" data-target="#modalAbout">About</a>
-                	<!-- <img src="images/DurhamLogo.jpg" style="padding-right: 30px" height="4%" width="4%" alt="City Logo"> -->
-                    <a href="javascript:void(0)" class="pull-left" style="padding-left: 5%; padding-top: 20px"data-toggle="modal" data-target="#modalDisclaimer">Disclaimer</a>
-                	<!-- <img src="images/CountyLogo.jpg" style="padding-left: 30px" height="5%" width="5%" alt="City Logo"> -->
-                	<a href="javascript:void(0)" class="pull-left" style="padding-left: 5%; padding-top: 20px" data-toggle="modal" data-target="#modalContact">Contact</a>
+            <footer class="text-center page-footer">
+                <p>
+                    <img src="images/seals.png" width="177" height="36" alt="City and County Seals">
                 </p>
-                
+                <p class="text-muted">
+                    Created by <a href="http://charmeck.org/mecklenburg/county/Pages/Default.aspx">Mecklenburg County</a>, the <a href="http://charmeck.org/city/charlotte/Pages/default.aspx">City of Charlotte</a>, and <a href="http://www.uncc.edu/">UNCC</a>
+                    <br>Source code on <a href="https://github.com/tobinbradley/Mecklenburg-County-Quality-of-Life-Dashboard">Github</a>
+                </p>
             </footer>
         </div>
     </div>
 
-	<!-- BEGIN: Modals-->
-	<div class="modal fade" id="modalData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3>Data</h3>
-	      </div>
-	      <div class="modal-body">
-	        <p>
-                <h4>Download the Data</h4>
-                <ul>
-                 	<li><a href="data/CompassCSV.zip" onclick="fireGAEvent('Data', 'Download', 'CSV');">CSV/Excel</a></li>
-                    <li><a href="data/CompassSHP.zip" onclick="fireGAEvent('Data', 'Download', 'Shapefile');">GIS Shapefile</a></li>
-                    <li><a href="data/CompassKML.zip" onclick="fireGAEvent('Data', 'Download', 'KML');">KML</a></li>
-                    <li><a href="data/CompassJSON.zip" onclick="fireGAEvent('Data', 'Download', 'JSON');">JSON</a></li>
-                </ul>
-                <h6 id="dataLastUpdated"></h6>
-                <hr style="width: 100%">
-                <a href="data/Requirements For Data Provision.pdf">Contribute Data</a>
-            </p>
-	      </div>
-	      <div class="modal-footer">
-	        <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<div class="modal fade" id="modalContact" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h4 class="modal-title" id="myModalLabel">Contact</h4>
-	      </div>
-	      <div class="modal-body">
-	          <div class="infoContact">
-              	  <h3>Contact Us</h3>
-                  <h5><p>We want to hear from you! How are you using the Neighborhood Compass? Would you like to learn more about it or simply share your thoughts?</p>
-                  	<div style="margin-left: 2em;"><p>Contact John Killeen at:
-                	(919)560-1647 x: 34274 or John.Killeen@durhamnc.gov</p></div>
-                	<!-- <br>
-                	<p>Are you a web developer? Do you want to report a bug or learn more about the application's functionality?</p>
-                	<div style="margin-left: 2em;"><p>Contact Tyler Waring at:
-                	(919)560-4122 x: 33218 or Tyler.Waring@durhamnc.gov</p></div> -->
-                  </h5>
-              </div>
-	      </div>
-	      <div class="modal-footer">
-	        <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        
-	      </div>
-	      <div class="modal-body">
-	          <div class="infoContact">
-              	  <p>The <strong>Durham Neighborhood Compass</strong> is a quantitative indicators project with qualitative values,  integrating data from local government, the Census Bureau and other state and federal agencies. Measurements are identified through local strategic planning, resident input, research and best practices for neighborhood indicators. The project objective is to provide data that allows all local stakeholders to track quality of life and provision of services throughout Durham.</p>
-              </div>
-	      </div>
-	      <div class="modal-footer">
-	        <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<div class="modal fade" id="modalAbout" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        
-	      </div>
-	      <div class="modal-body">
-	          <div class="infoContact">
-              	  <p>The <strong>Durham Neighborhood Compass</strong> is a quantitative indicators project with qualitative values,  integrating data from local government, the Census Bureau and other state and federal agencies. Measurements are identified through local strategic planning, resident input, research and best practices for neighborhood indicators. The project objective is to provide data that allows all local stakeholders to track quality of life and provision of services throughout Durham.</p>
-              </div>
-	      </div>
-	      <div class="modal-footer">
-	        <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<div class="modal fade" id="modalDisclaimer" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	  <div class="modal-dialog" role="document">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        
-	      </div>
-	      <div class="modal-body">
-	          <div class="infoContact">
-              	  <p>This system is subject to current public information rules and regulations. Information presented on this web site is considered public information and may be redistributed or copied. The City of Durham and its data providers give no warranty, expressed or implied, regarding the data presented. The publisher and data providers assume no liability for damage arising from the use of this web site or the data provided herein.</p>
-              </div>
-	      </div>
-	      <div class="modal-footer">
-	        <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
-	      </div>
-	    </div>
-	  </div>
-	</div>
-	<!-- <div class="modal fade" id="modalData" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            <h3>Data</h3>
-        </div>
-        <div class="modal-body">
-            <p>
-                <h4>Download the Data</h4>
-                <ul>
-                 	<li><a href="data/CompassCSV.zip" onclick="fireGAEvent('Data', 'Download', 'CSV');">CSV/Excel</a></li>
-                    <li><a href="data/CompassSHP.zip" onclick="fireGAEvent('Data', 'Download', 'Shapefile');">GIS Shapefile</a></li>
-                    <li><a href="data/CompassKML.zip" onclick="fireGAEvent('Data', 'Download', 'KML');">KML</a></li>
-                    <li><a href="data/CompassJSON.zip" onclick="fireGAEvent('Data', 'Download', 'JSON');">JSON</a></li>
-                </ul>
-                <h6 id="dataLastUpdated"></h6>
-                <hr style="width: 100%">
-                <a href="data/Requirements For Data Provision.pdf">Contribute Data</a>
-            </p>
-        </div>
-        <div class="modal-footer">
-            <a href="javascript:void(0)" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
-        </div>
-    </div> -->
-	<!-- END: Modals-->
     <!-- BEGIN: Underscore Template Definitions -->
     <script type="text/template" class="template-table">
         <% if (rc.theSelected.length > 0) {
@@ -454,7 +286,7 @@
     <!-- END: Underscore Template Definition. -->
 
     <!-- Begin jQuery Tourbus -->
-    <!-- <ol class='tourbus-legs' id='dashboard-tour'>
+    <ol class='tourbus-legs' id='dashboard-tour'>
       <li data-el='.chosen-container' data-orientation='bottom' data-width='300'>
         <h3>Variables</h3>
         <p>Use this control to select the <strong>Variable</strong> you’re interested in.</p>
@@ -527,19 +359,20 @@
           <button type="button" class="btn btn-default btn-sm tourbus-stop">Finished</button>
         </div>
       </li>
-    </ol> -->
+    </ol>
     <!-- End jQuery Tourbus -->
 
     <!-- scripts at the bottom yo -->
     <script src="js/main.js?foo={{cachebuster}}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
     <!--   Google Analytics -->
-	<script>
-        var _gaq=[['_setAccount','UA-46577629-1'],['_trackPageview']];//compass = UA-46577629-1; compassLab = UA-47136977-1 
-        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-        s.parentNode.insertBefore(g,s);}(document,'script'));
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{gaKey}}', 'mcmap.org');
+      ga('send', 'pageview');
     </script>
 
 </body>
