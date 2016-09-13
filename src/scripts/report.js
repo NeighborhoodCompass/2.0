@@ -228,8 +228,11 @@ function createData(featureSet) {
 			var theMetrics = _.filter(metricConfig, function(el) {
 				return el.category.toLowerCase() === dim.toLowerCase();
 			});
-			//console.log("theMetrics = " + JSON.stringify(theMetrics));
 			_.each(theMetrics, function(val) {
+			    // Check that metric is in data file before continuing.
+                if (!('r' + val.metric in theData)) {
+                    return;
+                }
 				var m = 'm' + val.metric;
 				var lineChartObject = {
 					"id" : m,
@@ -522,9 +525,6 @@ function createData(featureSet) {
 	});
 }
 
-
-
-
 // ****************************************
 // Initialize the map
 // Neighborhoods labled with leaflet.label
@@ -537,13 +537,13 @@ function createMap(data){
             zoomControl: false,
             touchZoom: false
         }).setView(mapGeography.center, mapGeography.defaultZoom - 1);
-    
+
     // Disable drag and zoom handlers.
     smallMap.dragging.disable();
     smallMap.touchZoom.disable();
     smallMap.doubleClickZoom.disable();
     smallMap.scrollWheelZoom.disable();
-    var selectedFeatures = [], 
+    var selectedFeatures = [],
     selectedIDs = [];
     // add data filtering by passed neighborhood id's
     geom = L.geoJson(topojson.feature(data, data.objects[neighborhoods]), {
@@ -690,6 +690,7 @@ function pageTemplates(layer,geoms,IDs) {
 	    });
 	 });
 }
+
 function lineChartData(lineChart) {
     //console.log("lineChart = " + JSON.stringify(lineChart));
     var featureValues = lineChart.featurevalues,
@@ -816,7 +817,7 @@ function lineChartCreate(lineCharts) {
 // ****************************************
 // Globals
 // ****************************************
-var theFilter = ["434","372","232"],        // default list of neighborhoods if none passed
+var theFilter,
     theData,
     theMetadata,                                // global for fetched raw data
     thePrefix,
@@ -831,6 +832,17 @@ _.templateSettings.variable = "rc";
 // Document ready kickoff
 // ****************************************
 $(document).ready(function() {
+    // grab the neighborhood list from the URL to set the filter
+    if (getURLParameter("n") !== "null") {
+        theFilter = getURLParameter("n").split(",");
+    }
+
+    // Get target layer from URL.
+    if (getURLParameter("t") !== "null") {
+        loadLayer = getURLParameter("t");
+    }
+
+    setMetricAndNeighborhoodConfig(loadLayer);
 
     $.ajax({
 		url : 'data/merge_cb.json',
@@ -848,11 +860,6 @@ $(document).ready(function() {
 
     // ye customizable subtitle
     $(".subtitle").on("click", function() { $(this).select(); });
-
-    // grab the neighborhood list from the URL to set the filter
-    if (getURLParameter("n") !== "null") {
-        theFilter = getURLParameter("n").split(",");
-    }
 
     // populate the neighborhoods list on the first page
     // if too long to fit one one line it lists the number of neighborhoods instead
@@ -872,7 +879,6 @@ $(document).ready(function() {
         theData = data;
         // console.log("theData = "+ JSON.stringify(theData));
         createData(theFilter);
-        createCharts();
     });
 
 });
