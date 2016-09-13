@@ -140,7 +140,7 @@ $(document).ready(function () {
 
     // launch report window with selected neighborhoods
     $("button.report-launch").on("click", function() {
-        window.open("report.html?n=" + model.selected.join());
+        window.open("report.html?t=" + activeLayer + "&n=" + model.selected.join());
     });
 
 	$(".censusRadio").click(function() {
