@@ -506,6 +506,12 @@ $(document).ready(function() {
 
     setMetricAndNeighborhoodConfig(loadLayer);
 
+    // Hide metric summary box unless user is viewing the census blockgroup layer.
+    // @todo configure different metric summary boxes for neighborhoods/tracts layers.
+    if (loadLayer != "census") {
+        document.getElementById("metric-summary-box").style.display = "none";
+    }
+
     // fetch map data and make map
     $.get(activeTOPOJSON, function(data) {
         createMap(data);

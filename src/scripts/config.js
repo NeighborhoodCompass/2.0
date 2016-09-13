@@ -443,15 +443,6 @@ var neighborhoodMetricConfig = {
   "decimals": 0,
   "type": "sum"
  },
- "mV_SQM-n": {
-  "metric": "V_SQM-n",
-  "category": "Safety",
-  "title": "Crimes with a Violent Component",
-  "suffix": "/sq.mi.",
-  "raw_label": "",
-  "decimals": 1,
-  "type": "normalize"
- }
 };
 
 var censusTractMetricConfig = {

@@ -1,34 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="{{ header.description }}">
+    <meta name="keywords" content="{{ header.keywords }}">
+    <meta name="author" content="{{ header.author }}">
 
     <!-- Set the title here -->
-    <title>Summary Report</title>
-
-    <!-- metadata -->
-    <meta name="description" content="Quality of Life Dashboard.">
-    <meta name="keywords" content="GIS,Mecklenburg County,parks,libraries,schools,environment,impervious surface,floodplain,zoning,assessment,tax,photos,government">
-    <meta name="author" content="Tobin Bradley">
-
-    <!-- turn off robots during dev -->
-    <meta name="robots" value="none">
+    <title>{{ header.title }}</title>
 
     <!-- Mobile viewport optimized: j.mp/bplateviewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Windows 8.1 garbage -->
-    <meta name="application-name" content="Quality of Life Explorer"/>
-    <meta name="msapplication-TileColor" content="#1e59bd"/>
-
-    <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/report.css?foo={{cachebuster}}">
+    <meta name="application-name" content="{{ header.title }}" />
+    <meta name="msapplication-TileColor" content="#1e59bd" />
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/png" href="images/favicon.png" />
     <link rel="apple-touch-icon-precomposed" href="images/apple-touch-icon-precomposed.png" />
+
+    <!-- Theme color for Android -->
+    <meta name="theme-color" content="#db5945">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/report.css?foo={{ cachebuster }}">
 
 </head>
 
@@ -70,7 +72,7 @@
                     <div id="smallmap" class="pull-right"></div>
                 </div>
             </div>
-             <div class="row">
+             <div class="row" id="metric-summary-box">
                 <div class="col-xs-12 text-center">
                     <table class="metric-box">
                         <tbody>
@@ -111,7 +113,7 @@
                         </tbody>
                     </table>
                 </div>
-            </div> 
+            </div>
         </div>
 
         <!-- Large Map -->
@@ -212,7 +214,7 @@
 		  </div>
           <!-- $('.meta-about').html(
                 data.substring(GetSubstringIndex(data, '</h3>', 2) + 5, GetSubstringIndex(data, '<h3', 3))
-            ); 
+            );
             function GetSubstringIndex(str, substring, n) {
 			    var times = 0, index = null;
 			    while (times < n && index !== -1) {
@@ -324,7 +326,7 @@
     </script> -->
 
     <!-- scripts at the bottom yo -->
-    <script src="js/report.js?foo={{cachebuster}}"></script>
+    <script src="js/report.js?foo={{ cachebuster }}"></script>
 
     <!--   Google Analytics -->
     <!-- <script>
