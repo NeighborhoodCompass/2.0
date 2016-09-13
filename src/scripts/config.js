@@ -454,7 +454,7 @@ var neighborhoodMetricConfig = {
  }
 };
 
-censusTractMetricConfig = {
+var censusTractMetricConfig = {
     "mBACH-t": {
       "metric": "BACH-t",
       "category": "Education",
@@ -481,7 +481,7 @@ var setMetricAndNeighborhoodConfig = function(layer) {
         activeMergeJSON = censusMergeTOPOJSON;
     }
     else if (layer == "censusTracts") {
-        metricConfig = censusMetricConfig;
+        metricConfig = censusTractMetricConfig;
         neighborhoods = censusTractFeatures;
         activeTOPOJSON = censusTractTOPOJSON;
         activeMergeJSON = censusTractsMergeTOPOJSON;
