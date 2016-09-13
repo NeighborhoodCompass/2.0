@@ -496,13 +496,13 @@ var setMetricAndNeighborhoodConfig = function(layer) {
         metricConfig = censusMetricConfig;
         neighborhoods = censusTractFeatures;
         activeTOPOJSON = censusTractTOPOJSON;
-        activeMergeJSON = neighborhoodMergeTOPOJSON;
+        activeMergeJSON = censusTractsMergeTOPOJSON;
     }
     else if (layer == "neighborhoods" || layer == "neighborhood") {
         metricConfig = neighborhoodMetricConfig;
         neighborhoods = neighborhoodFeatures;
         activeTOPOJSON = neighborhoodTOPOJSON;
-        activeMergeJSON = censusTractsMergeTOPOJSON;
+        activeMergeJSON = neighborhoodMergeTOPOJSON;
     }
 }
 

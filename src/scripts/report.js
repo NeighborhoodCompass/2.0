@@ -341,8 +341,7 @@ function createData(featureSet) {
 						for ( iii = 0; iii < keys.length; iii++) {
 							theYear = keys[iii];
 							model.years = keys;
-							//*****Can I use dataPretty here?
-							featureNValue = metricValuesByIDYear(model.metric, feature, theYear, m);
+							featureNValue = metricValuesByIDYear(model.metric, feature.replace(/-/g,' '), theYear, m);
 							featureValue = dataPretty(featureNValue, m);
 							//console.log("Metric = " + m + " theYear = "+theYear+ " feature = "+feature+" featureValue = " + featureValue);
 							yeariii = keys[iii].replace('y_', '');
@@ -686,7 +685,7 @@ function pageTemplates(layer,geoms,IDs) {
 	        }
 	
 	        // drop in category page
-	        pages.append(template({ "vis": vis, "category": cat ,"featureID":geomID}));
+	        pages.append(template({ "vis": vis, "category": cat ,"featureID":geomID.replace(/ /g,'-')}));
 	    });
 	 });
 }
