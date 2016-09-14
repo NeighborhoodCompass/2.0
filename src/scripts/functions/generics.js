@@ -67,20 +67,12 @@ function getTrend(x1, x2) {
 // Format metric data
 // ****************************************
 function dataRound(theValue, theDecimals) {
-    console.log("theValue = " + theValue + " theDecimals = " + theDecimals);
-	if(typeof stringValue != 'string'){
-        return Number(theValue.toFixed(theDecimals));
-    }
-    else{
-        return theValue;
-    }
+	return Number(theValue).toFixed(theDecimals);
 }
 function dataFormat(theValue, theMetric) {
   var prefix = "",
   suffix = "";
-  ////console.log("dataFormat started");
   if (theMetric) {
-  	//console.log("theMetric = "+theMetric+" prefix = " + metricConfig[theMetric].prefix + " suffix = "+ metricConfig[theMetric].suffix);
     prefix = nullCheck(metricConfig[theMetric].prefix);
     suffix = nullCheck(metricConfig[theMetric].suffix);
   }
@@ -131,12 +123,6 @@ function dataPretty(theValue, theMetric) {
     var pretty,
         numDecimals = 0;
 
-	// _.each(metricConfig, function(el, key) {
-        // console.log("genericMetric = "+el.title);
-    // });
-    //console.log("dataPretty theMetric = "+JSON.stringify(theMetric));
-    //console.log("dataPretty metricConfig = "+JSON.stringify(metricConfig));
-    // console.log("metricConfig = "+JSON.stringify(metricConfig[0], null, 2));
     if (theMetric !== null && metricConfig[theMetric].decimals) {
         numDecimals = metricConfig[theMetric].decimals;
     }

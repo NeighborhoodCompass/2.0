@@ -1,28 +1,3 @@
-// All Hail Ye Report
-//
-// The idea was this would be a print page, because try as I might I can't convince
-// people that burning your screen into pressed tree pulp in 2014 is a bad idea.
-// But I figured I could format it well for printing and display so it could be a
-// "nice feature".
-//
-// Because it's very printer/designer-y, it's mostly hard coded to our data.
-// Sorry - I can't figure out a generic way to do what we wanted.
-//
-// Imagine my face while coding up a print page. IMAGINE MY FACE.
-
-
-
-// ****************************************
-// Globals
-// ****************************************
-var theFilter = ["434","372","232"],        // default list of neighborhoods if none passed
-    theData,
-    theMetadata,                                // global for fetched raw data
-    model = {};
-
-_.templateSettings.variable = "rc";
-
-
 // ****************************************
 // get the year(s) for each metric
 // ****************************************
@@ -237,24 +212,27 @@ function GetSubstringIndex(str, substring, n) {
     }
     return index;
 }
+
 // ****************************************
 // Create the metric blocks and table values
 // ****************************************
-
-var featureIndex = 0;
 function createData(featureSet) {
 	var template = _.template($("script.template-metric").html()), categories = _.uniq(_.pluck(metricConfig, 'category'));
 	//console.log("categories = " + JSON.stringify(categories));
 	model.selected = featureSet;
 	var lineCharts = [];
 	_.each(featureSet, function(feature) {
+	    feature = feature.replace(/ /g,'-');
 		_.each(categories, function(dim) {
 			var theTable = $(".table-" + feature + "-" + dim.toLowerCase().replace(/\s+/g, "-") + " tbody");
 			var theMetrics = _.filter(metricConfig, function(el) {
 				return el.category.toLowerCase() === dim.toLowerCase();
 			});
-			//console.log("theMetrics = " + JSON.stringify(theMetrics));
 			_.each(theMetrics, function(val) {
+			    // Check that metric is in data file before continuing.
+                if (!('r' + val.metric in theData)) {
+                    return;
+                }
 				var m = 'm' + val.metric;
 				var lineChartObject = {
 					"id" : m,
@@ -363,8 +341,7 @@ function createData(featureSet) {
 						for ( iii = 0; iii < keys.length; iii++) {
 							theYear = keys[iii];
 							model.years = keys;
-							//*****Can I use dataPretty here?
-							featureNValue = metricValuesByIDYear(model.metric, feature, theYear, m);
+							featureNValue = metricValuesByIDYear(model.metric, feature.replace(/-/g,' '), theYear, m);
 							featureValue = dataPretty(featureNValue, m);
 							//console.log("Metric = " + m + " theYear = "+theYear+ " feature = "+feature+" featureValue = " + featureValue);
 							yeariii = keys[iii].replace('y_', '');
@@ -547,9 +524,6 @@ function createData(featureSet) {
 	});
 }
 
-
-
-
 // ****************************************
 // Initialize the map
 // Neighborhoods labled with leaflet.label
@@ -562,13 +536,13 @@ function createMap(data){
             zoomControl: false,
             touchZoom: false
         }).setView(mapGeography.center, mapGeography.defaultZoom - 1);
-    
+
     // Disable drag and zoom handlers.
     smallMap.dragging.disable();
     smallMap.touchZoom.disable();
     smallMap.doubleClickZoom.disable();
     smallMap.scrollWheelZoom.disable();
-    var selectedFeatures = [], 
+    var selectedFeatures = [],
     selectedIDs = [];
     // add data filtering by passed neighborhood id's
     geom = L.geoJson(topojson.feature(data, data.objects[neighborhoods]), {
@@ -711,10 +685,11 @@ function pageTemplates(layer,geoms,IDs) {
 	        }
 	
 	        // drop in category page
-	        pages.append(template({ "vis": vis, "category": cat ,"featureID":geomID}));
+	        pages.append(template({ "vis": vis, "category": cat ,"featureID":geomID.replace(/ /g,'-')}));
 	    });
 	 });
 }
+
 function lineChartData(lineChart) {
     //console.log("lineChart = " + JSON.stringify(lineChart));
     var featureValues = lineChart.featurevalues,
@@ -804,7 +779,6 @@ function lineChartData(lineChart) {
 	//console.log("data = "+ JSON.stringify(data));
     return data;
 }
-var thePrefix, theSuffix;
 function lineChartCreate(lineCharts) {
     // console.log("lineChartCreate id = " + id);
    	// console.log("lineChartCreate label = " + label);
@@ -838,36 +812,54 @@ function lineChartCreate(lineCharts) {
 	    $("#chartLegend"+lineChart.id+lineChart.feature).html(myLine.generateLegend());
 	});
 }
+
+// ****************************************
+// Globals
+// ****************************************
+var theFilter,
+    theData,
+    theMetadata,                                // global for fetched raw data
+    thePrefix,
+    theSuffix,
+    featureIndex = 0,
+    model = {};
+
+_.templateSettings.variable = "rc";
+
+
 // ****************************************
 // Document ready kickoff
 // ****************************************
 $(document).ready(function() {
-    
-    $.ajax({
-		url : 'data/meta/merge_cb.json',
-		type : 'GET',
-		dataType : 'json',
-		success : function(data) {
-			theMetadata = data;
-		}
-	});
-    
+    // grab the neighborhood list from the URL to set the filter
+    if (getURLParameter("n") !== "null") {
+        theFilter = getURLParameter("n").split(",");
+    }
+
+    // Get target layer from URL.
+    if (getURLParameter("t") !== "null") {
+        loadLayer = getURLParameter("t");
+    }
+
+    setMetricAndNeighborhoodConfig(loadLayer);
+
+    // Hide metric summary box unless user is viewing the census blockgroup layer.
+    // @todo configure different metric summary boxes for neighborhoods/tracts layers.
+    if (loadLayer != "census") {
+        document.getElementById("metric-summary-box").style.display = "none";
+    }
+
     // fetch map data and make map
     $.get(activeTOPOJSON, function(data) {
         createMap(data);
     });
-    
+
     // ye customizable subtitle
     $(".subtitle").on("click", function() { $(this).select(); });
 
-    // grab the neighborhood list from the URL to set the filter
-    if (getURLParameter("n") !== "null") {
-    	//console.log('theFilter = '+theFilter);
-        theFilter = getURLParameter("n").split(",");
-    }
-
     // populate the neighborhoods list on the first page
     // if too long to fit one one line it lists the number of neighborhoods instead
+    // @todo this is not working since the template changed.
     var theNeighborhoods = theFilter.join(", ");
     if (theNeighborhoods.length > 85) {
         theNeighborhoods = theFilter.length;
@@ -883,7 +875,6 @@ $(document).ready(function() {
         theData = data;
         // console.log("theData = "+ JSON.stringify(theData));
         createData(theFilter);
-        createCharts();
     });
 
 });
