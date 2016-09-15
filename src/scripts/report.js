@@ -39,6 +39,10 @@ function setModel(m) {
         case 'normalize':
             model.metricRaw = theData['r' + metricConfig[m].metric];
             model.metricDenominator = theData['d' + metricConfig[m].metric];
+            if (model.metricRaw.length != model.metricDenominator.length) {
+            	console.log("Error: Misconfigured metric " + metricConfig[m].metric + ". Length mismatch between r and d arrays.");
+            	return;
+            }
 
             var calcMetric = $.extend(true, {}, model.metricRaw);
             var keys = _.without(_.keys(model.metricRaw[0]), "id");
@@ -76,10 +80,9 @@ function GetSubstringIndex(str, substring, n) {
 // ****************************************
 function createData(featureSet) {
 	var template = _.template($("script.template-metric").html()), categories = _.uniq(_.pluck(metricConfig, 'category'));
-	//console.log("categories = " + JSON.stringify(categories));
 	model.selected = featureSet;
-	_.each(featureSet, function(feature) {
-	    feature = feature.replace(/ /g,'-');
+    _.each(featureSet, function(featureRaw) {
+	    var feature = featureRaw.replace(/ /g,'-');
 		_.each(categories, function(dim) {
 			var theTable = $(".table-" + feature + "-" + dim.toLowerCase().replace(/\s+/g, "-") + " tbody");
 			var theMetrics = _.filter(metricConfig, function(el) {
@@ -285,12 +288,9 @@ function createMap(data){
             selectedIDs.push(feature.id);
         }
     }).addTo(smallMap);
-    //console.log("geom.style = " + geom);
     // add base tiles at the end so no extra image grabs/FOUC
     L.tileLayer(baseTilesURL).addTo(smallMap);
 
-    //console.log("selectedFeature = "+JSON.stringify(selectedFeatures[0]));
-    //console.log("selectedIDs = "+selectedIDs[0]+","+selectedIDs[1]);
     // scaffold in category pages
     pageTemplates(geom,selectedFeatures,selectedIDs);
 }
@@ -454,6 +454,7 @@ function lineChartData(lineChart) {
 
     return data;
 }
+
 function lineChartCreate(lineCharts) {
 	_.each(lineCharts, function(lineChart, i){
 		thePrefix = lineChart.prefix;
