@@ -115,118 +115,121 @@ function createData(featureSet) {
 					type : 'GET',
 					dataType : 'text',
 					success : function(data) {
-						metricTitle = data.substring(GetSubstringIndex(data, '</p>', 1), GetSubstringIndex(data, '<p', 1) + 3);
-						aboutHTML = data.substring(GetSubstringIndex(data, '</h3>', 2) + 5, GetSubstringIndex(data, '<h3', 3));
-						importance = data.substring(GetSubstringIndex(data, '</p>', 2), GetSubstringIndex(data, '<p', 2) + 3);
-						var additionalResourcesHTML = "<table><thead></thead>" + data.substring(GetSubstringIndex(data, '</tbody>', 1) + 8, GetSubstringIndex(data, '<tbody', 1)) + "</body>";
-						var parser = new DOMParser();
-						var parserDoc = parser.parseFromString(additionalResourcesHTML, "text/html");
-						//var table = parserDoc.getElementsByTagName('table');
-						var tableTRs = parserDoc.getElementsByTagName("tr");
-						var trTDs;
-                        var additionalResourcesLinks = "";
-						for (var i = 0; i < tableTRs.length; i++) {
-							parserDoc = parser.parseFromString("<table><tr>" + tableTRs[i].innerHTML + "</tr></table>", "text/html");
-							trTDs = parserDoc.getElementsByTagName("td");
-							additionalResourcesLinks += "<div>" + [trTDs[0].innerHTML.slice(0, 3), 'title="' + trTDs[1].innerHTML + '"', trTDs[0].innerHTML.slice(3)].join('') + "</div>";;
-						}
-					},
-					error : function(error, status, desc) {
-					},
-					complete : function() {
                         if (!(m in metricConfig)) {
                             console.log("Error: metricConfig is undefined for " + m);
                             return;
                         }
 
-						var tdata = {
-							"id" : m,
-							"feature" : feature,
-							"title" : metricTitle,
-							"year" : "",
-							"typeValues" : "",
-							"about" : aboutHTML,
-							"important" : importance,
-							"additionalResources" : additionalResourcesLinks,
-							"selectedVal" : "",
-							"selectedRaw" : "",
-							"selectedNVal" : "",
-							"countyVal" : "",
-							"countyRaw" : "",
-							"countyNVal" : ""
-						};
                         setModel(m);
                         model.metricID = m;
                         model.prefix = getPrefix(m);
                         model.suffix = getSuffix(m);
 
                         var keys = getYear(m);
-						var year = keys[keys.length - 1];
-						var yearTDs = "";
-						var types = [];
+                        var year = keys[keys.length - 1];
+                        var yearTDs = "";
+                        var types = [];
                         var theYear;
-						var yeariii;
-						var iii;
-						var years = [];
-						var featureValue;
-						var featureNValue;
-						var featureValues = [];
-						var selectedValues = [];
-						var countyValues = [];
+                        var yeariii;
+                        var iii;
+                        var years = [];
+                        var featureValue;
+                        var featureNValue;
+                        var featureValues = [];
+                        var selectedValues = [];
+                        var countyValues = [];
                         var lineCharts = [];
+
+                        // Get metric metadata from metadata HTML file.
+                        var metricTitle = data.substring(GetSubstringIndex(data, '</p>', 1), GetSubstringIndex(data, '<p', 1) + 3);
+						var aboutHTML = data.substring(GetSubstringIndex(data, '</h3>', 2) + 5, GetSubstringIndex(data, '<h3', 3));
+						var importance = data.substring(GetSubstringIndex(data, '</p>', 2), GetSubstringIndex(data, '<p', 2) + 3);
+						var additionalResourcesHTML = "<table><thead></thead>" + data.substring(GetSubstringIndex(data, '</tbody>', 1) + 8, GetSubstringIndex(data, '<tbody', 1)) + "</body>";
+						var parser = new DOMParser();
+						var parserDoc = parser.parseFromString(additionalResourcesHTML, "text/html");
+						var tableTRs = parserDoc.getElementsByTagName("tr");
+						var trTDs;
+                        var additionalResourcesLinks = "";
+						for (var i = 0; i < tableTRs.length; i++) {
+							parserDoc = parser.parseFromString("<table><tr>" + tableTRs[i].innerHTML + "</tr></table>", "text/html");
+							trTDs = parserDoc.getElementsByTagName("td");
+							var linkTitle = "";
+							if (trTDs.length == 2) {
+								linkTitle = trTDs[1].innerHTML;
+							}
+							additionalResourcesLinks += "<div>" + [trTDs[0].innerHTML.slice(0, 3), 'title="' + linkTitle + '"', trTDs[0].innerHTML.slice(3)].join('') + "</div>";;
+						}
+
+                        var tdata = {
+                            "id" : m,
+                            "feature" : feature,
+                            "title" : metricTitle,
+                            "year" : "",
+                            "typeValues" : "",
+                            "about" : aboutHTML,
+                            "important" : importance,
+                            "additionalResources" : additionalResourcesLinks,
+                            "selectedVal" : "",
+                            "selectedRaw" : "",
+                            "selectedNVal" : "",
+                            "countyVal" : "",
+                            "countyRaw" : "",
+                            "countyNVal" : ""
+                        };
+
                         for (iii = 0; iii < keys.length; iii++) {
-							theYear = keys[iii];
-							model.years = keys;
-							featureNValue = metricValuesByIDYear(model.metric, feature.replace(/-/g,' '), theYear, m);
-							featureValue = dataPretty(featureNValue, m);
-							yeariii = keys[iii].replace('y_', '');
-							tdata.countyNVal = dataCrunch('y_' + yeariii);
-							tdata.selectedNVal = dataCrunch('y_' + yeariii, theFilter);
-							model.suffix = val.suffix;
-							if (model.suffix == "%") {
-								featureValue = dataPretty(featureNValue * 100, m);
-								featureNValue = featureNValue * 100;
-								tdata.selectedNVal = tdata.selectedNVal * 100;
-								tdata.countyNVal = tdata.countyNVal * 100;
-							}
-							tdata.selectedVal = dataPretty(tdata.selectedNVal, m);
-							tdata.countyVal = dataPretty(tdata.countyNVal, m);
-							years.push(yeariii);
-							featureValues.push(dataRound(featureNValue, metricConfig[m].decimals));
-							selectedValues.push(dataRound(tdata.selectedNVal, metricConfig[m].decimals));
-							countyValues.push(dataRound(tdata.countyNVal, metricConfig[m].decimals));
-							types.push([featureValue, yeariii, tdata.selectedVal, tdata.countyVal]);
-							tdata.typeValues = types;
-							$(".dataValues").innerHTML = yearTDs;
-							if (metricConfig[m].raw_label) {
-								tdata.countyRaw = '<br>' + dataSum(model.metricRaw, year).toFixed(0).commafy();
-								theStat = dataSum(model.metricRaw, year, theFilter);
-								if ($.isNumeric(theStat)) {
-									theStat = theStat.toFixed(0).commafy();
-								}
-								tdata.selectedRaw = '<br>' + theStat;
-							}
-							// front page
-
-							if ($('[data-metric="' + m + '"]').length > 0) {
-								$('[data-metric="' + m + '"]').text(tdata.selectedVal);
-							}
-							if ($('[data-metric="r' + val.metric + '"]').length > 0) {
-								$('[data-metric="r' + val.metric + '"]').text(tdata.selectedRaw.replace('<br>', ''));
-							}
-						}
-						if (years.length > 1) {
-							lineChartObject.years = years;
-							lineChartObject.featurevalues = featureValues;
-                            if (theFilter.length > 1) {
-							    lineChartObject.selectedvalues = selectedValues;
+                            theYear = keys[iii];
+                            model.years = keys;
+                            featureNValue = metricValuesByIDYear(model.metric, feature.replace(/-/g,' '), theYear, m);
+                            featureValue = dataPretty(featureNValue, m);
+                            yeariii = keys[iii].replace('y_', '');
+                            tdata.countyNVal = dataCrunch('y_' + yeariii);
+                            tdata.selectedNVal = dataCrunch('y_' + yeariii, theFilter);
+                            model.suffix = val.suffix;
+                            if (model.suffix == "%") {
+                                featureValue = dataPretty(featureNValue * 100, m);
+                                featureNValue = featureNValue * 100;
+                                tdata.selectedNVal = tdata.selectedNVal * 100;
+                                tdata.countyNVal = tdata.countyNVal * 100;
                             }
-							lineChartObject.countyvalues = countyValues;
-							lineCharts.push(lineChartObject);
-						}
+                            tdata.selectedVal = dataPretty(tdata.selectedNVal, m);
+                            tdata.countyVal = dataPretty(tdata.countyNVal, m);
+                            years.push(yeariii);
+                            featureValues.push(dataRound(featureNValue, metricConfig[m].decimals));
+                            selectedValues.push(dataRound(tdata.selectedNVal, metricConfig[m].decimals));
+                            countyValues.push(dataRound(tdata.countyNVal, metricConfig[m].decimals));
+                            types.push([featureValue, yeariii, tdata.selectedVal, tdata.countyVal]);
+                            tdata.typeValues = types;
+                            $(".dataValues").innerHTML = yearTDs;
+                            if (metricConfig[m].raw_label) {
+                                tdata.countyRaw = '<br>' + dataSum(model.metricRaw, year).toFixed(0).commafy();
+                                theStat = dataSum(model.metricRaw, year, theFilter);
+                                if ($.isNumeric(theStat)) {
+                                    theStat = theStat.toFixed(0).commafy();
+                                }
+                                tdata.selectedRaw = '<br>' + theStat;
+                            }
+                            // front page
 
-						// Write out stuff
-						theTable.append(template(tdata));
+                            if ($('[data-metric="' + m + '"]').length > 0) {
+                                $('[data-metric="' + m + '"]').text(tdata.selectedVal);
+                            }
+                            if ($('[data-metric="r' + val.metric + '"]').length > 0) {
+                                $('[data-metric="r' + val.metric + '"]').text(tdata.selectedRaw.replace('<br>', ''));
+                            }
+                        }
+                        if (years.length > 1) {
+                            lineChartObject.years = years;
+                            lineChartObject.featurevalues = featureValues;
+                            if (theFilter.length > 1) {
+                                lineChartObject.selectedvalues = selectedValues;
+                            }
+                            lineChartObject.countyvalues = countyValues;
+                            lineCharts.push(lineChartObject);
+                        }
+
+                        // Write out stuff
+                        theTable.append(template(tdata));
 
                         // Hide "Selected features" if there is only one feature selected.
                         if (theFilter.length == 1) {
@@ -236,16 +239,18 @@ function createData(featureSet) {
                         }
 
                         // Create line charts if they exist.
-						if (lineCharts.length > 0) {
-						    console.log("Creating line chart for " + m)
-							lineChartCreate(lineCharts);
-						}
-
-						// Otherwise hide the linechart div.
-						else {
-						    document.getElementById("lineChart"+lineChartObject.id+lineChartObject.feature).style.display = "none";
+                        if (lineCharts.length > 0) {
+                            console.log("Creating line chart for " + m)
+                            lineChartCreate(lineCharts);
                         }
-					}
+
+                        // Otherwise hide the linechart div.
+                        else {
+                            document.getElementById("lineChart"+lineChartObject.id+lineChartObject.feature).style.display = "none";
+                        }
+					},
+					error : function(error, status, desc) {
+					},
 				});
 			});
 		});
