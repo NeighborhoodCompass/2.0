@@ -2,22 +2,19 @@
 
 //searching for other configurable items
 //There are other configurable items that i have found throughout the project that may be of use. I have peppered
-//the applicaiton with the following search terms so that these items may be altered as needed. To find these search 
+//the application with the following search terms so that these items may be altered as needed. To find these search
 //terms, search the entire project for the following words:
 //1. Quantile Color Breaks - this is where the color scheme for the map quantiles is stored these values are RGB values
-// and are indexed starting a q0 and ending with q4. do not change the number of 'q' values without changing the 
+// and are indexed starting a q0 and ending with q4. do not change the number of 'q' values without changing the
 //'colorbreaks' variable listed in this file below. Always that q0 is the first instance so if colorbreaks = n then
 //the 'q' values should extend from q0 to qn-1.
-
-// Stick your Google Analytics key here
-var gaKey = "UA-47136977-1";
 
 // Here's where to put what you are calling your neighborhoods. We call them NPA,
 // you might call them NSA or precinct or even something crazy like "neighborhood".
 // Shorter is better lest you run into some unintended wrapping text issues.
-//TODO - set these variables according to selected target layer. 
-var neighborhoodDescriptor = "Block Group";
+//TODO - set these variables according to selected target layer.
 var neighborhoodDefinition = "Census block groups";
+var neighborhoodDescriptor = "";
 
 // The URL for your base map tiles.
 // Here's a good place to find some:
@@ -49,17 +46,6 @@ var loadLayer = "census";
 var censusFeatures = "blockgroups";
 var neighborhoodFeatures = "neighborhoods";
 var censusTractFeatures = "censusTracts";
-//var tractFeatures = "tracts";
-var neighborhoods;
-if (loadLayer == "census"){
-	neighborhoods = censusFeatures;
-}
-else if (loadLayer = "neighborhoods"){
-	neighborhoods = neighborhoodFeatures;
-}
-else if (loadLayer = "censusTracts"){
-    neighborhoods = censusTractFeatures;
-}
 var blInitMap = true;
 // If you have an additional data layer in your TopoJSON file, name it here.
 // Otherwise comment it out.
@@ -73,15 +59,6 @@ var blInitMap = true;
 // "chart and map colors" if you change this number. A good guide for color
 // breaks is at http://colorbrewer2.org
 var colorbreaks = 5;
-
-// we're going to export a few of our vars for the node build/watch process. Done in a try/catch
-// so a browser reading this will barf quietly to itself.
-try {
-    exports.neighborhoodDescriptor = neighborhoodDescriptor;
-    exports.gaKey = gaKey;
-}
-catch(err) {}
-
 
 // ***********************************************************
 // Ye Olde Metric Configuration
@@ -105,30 +82,12 @@ catch(err) {}
 var neighborhoodTOPOJSON = "data/neighborhood.topo.json";
 var censusTOPOJSON = "data/census.topo.json";
 var censusTractTOPOJSON = "data/tracts.topo.json";
-
 var activeTOPOJSON;
-if (loadLayer == "census"){
-	activeTOPOJSON = censusTOPOJSON;
-}
-else if (loadLayer = "neighborhoods"){
-	activeTOPOJSON = neighborhoodTOPOJSON;
-}
-else if (loadLayer = "censusTracts"){
-	activeTOPOJSON = censusTractTOPOJSON;
-}
 var censusMergeTOPOJSON = "data/merge_cb.json";
 var censusTractsMergeTOPOJSON = "data/merge_tr.json";
 var neighborhoodMergeTOPOJSON = "data/merge_nh.json";
 var activeMergeJSON;
-if (loadLayer == "census"){
-	activeMergeJSON = censusMergeTOPOJSON;
-}
-else if (loadLayer = "neighborhoods"){
-	activeMergeJSON = neighborhoodMergeTOPOJSON;
-}
-else if (loadLayer = "censusTracts"){
-    neighborhoods = censusTractsMergeTOPOJSON;
-}
+
 var censusMetricConfig = {
  "mPOP": {
   "metric": "POP",
@@ -457,107 +416,7 @@ var censusMetricConfig = {
   "type": "normalize"
  }
 };
-//var tractsMetricConfig = {
-// "mPOP-n": {
-//  "metric": "POP-n",
-//  "category": "Demographics",
-//  "label": "People",
-//  "title": "Population",
-//  "decimals": 0,
-//  "type": "sum"
-// },
-// "mPTWHNL-n": {
-//  "metric": "PTWHNL-n",
-//  "category": "Demographics",
-//  "suffix": "%",
-//  "raw_label": "People",
-//  "title": "White or Caucasian",
-//  "decimals": 0,
-//  "type": "normalize"
-// },
-// "mPTBLKNL-n": {
-//  "metric": "PTBLKNL-n",
-//  "category": "Demographics",
-//  "suffix": "%",
-//  "raw_label": "People",
-//  "title": "Black or African American",
-//  "decimals": 0,
-//  "type": "normalize"
-// },
-// "mPTHISP-n": {
-//  "metric": "PTHISP-n",
-//  "category": "Demographics",
-//  "suffix": "%",
-//  "raw_label": "People",
-//  "title": "Latino or Hispanic",
-//  "decimals": 0,
-//  "type": "normalize"
-// },
-// "mPTASNL-n": {
-//  "metric": "PTASNL-n",
-//  "category": "Demographics",
-//  "suffix": "%",
-//  "raw_label": "People",
-//  "title": "Asian",
-//  "decimals": 0,
-//  "type": "normalize"
-// },
-// "mMEDINC-n": {
-//  "metric": "MEDINC-n",
-//  "category": "Economy",
-//  "prefix": "$",
-//  "raw_label": "",
-//  "title": "Median Household Income",
-//  "decimals": 0,
-//  "type": "normalize"
-// },
-// "mMEDHV-n": {
-//  "metric": "MEDHV-n",
-//  "category": "Housing",
-//  "title": "Median Home Value",
-//  "prefix": "$",
-//  "raw_label": "",
-//  "decimals": 0,
-//  "type": "normalize"
-// },
-// "mHMLOAN-n": {
-//  "metric": "HMLOAN-n",
-//  "category": "Housing",
-//  "title": "Median Home Loan Value",
-//  "prefix": "$",
-//  "raw_label": "",
-//  "decimals": 0,
-//  "type": "normalize"
-// },
-// "mHMINC-n": {
-//  "metric": "HMINC-n",
-//  "category": "Housing",
-//  "title": "Median Homebuyer Income",
-//  "prefix": "$",
-// "raw_label": "",
-//  "decimals": 0,
-//  "type": "normalize"
-// },
-// "mMEDGRENT-n": {
-//  "metric": "MEDGRENT-n",
-//  "accuracy": "true",
-//  "category": "Housing",
-//  "title": "Median Gross Rent",
-//  "prefix": "$",
-//  "raw_label": "",
-//  "decimals": 0,
-//  "type": "normalize"
-// },
-// "mBACH-n": {
-//  "metric": "BACH-n",
-//  "category": "Education",
-//  "title": "Bachelor's Degree or More",
-//  "suffix": "%",
-//  "raw_label": "",
-//  "decimals": 0,
-//  "type": "normalize"
-// }
-//};
+
 var neighborhoodMetricConfig = {
  "mCC45-n": {
   "metric": "CC45-n",
@@ -584,18 +443,9 @@ var neighborhoodMetricConfig = {
   "decimals": 0,
   "type": "sum"
  },
- "mV_SQM-n": {
-  "metric": "V_SQM-n",
-  "category": "Safety",
-  "title": "Crimes with a Violent Component",
-  "suffix": "/sq.mi.",
-  "raw_label": "",
-  "decimals": 1,
-  "type": "normalize"
- }
 };
 
-censusTractMetricConfig = {
+var censusTractMetricConfig = {
     "mBACH-t": {
       "metric": "BACH-t",
       "category": "Education",
@@ -606,12 +456,34 @@ censusTractMetricConfig = {
       "type": "normalize"
     }
 }
-//~*~*~*~*~*TODO change metricConfig in the $(".censusRadio").click and $(".neighborhoodsRadio").click functions. 
-var metricConfig;
-if (loadLayer == "census"){
-	metricConfig = censusMetricConfig;
+
+//~*~*~*~*~*TODO change metricConfig in the $(".censusRadio").click and $(".neighborhoodsRadio").click functions.
+var metricConfig,
+    neighborhoods;
+
+/**
+ * Initialize metricConfig and neighborhoods variables based on the target layer.
+ */
+var setMetricAndNeighborhoodConfig = function(layer) {
+    if (layer == "census") {
+        metricConfig = censusMetricConfig;
+        neighborhoods = censusFeatures;
+        activeTOPOJSON = censusTOPOJSON;
+        activeMergeJSON = censusMergeTOPOJSON;
+    }
+    else if (layer == "censusTracts") {
+        metricConfig = censusTractMetricConfig;
+        neighborhoods = censusTractFeatures;
+        activeTOPOJSON = censusTractTOPOJSON;
+        activeMergeJSON = censusTractsMergeTOPOJSON;
+    }
+    else if (layer == "neighborhoods" || layer == "neighborhood") {
+        metricConfig = neighborhoodMetricConfig;
+        neighborhoods = neighborhoodFeatures;
+        activeTOPOJSON = neighborhoodTOPOJSON;
+        activeMergeJSON = neighborhoodMergeTOPOJSON;
+    }
 }
-else{
-	metricConfig = neighborhoodMetricConfig;
-}
- 
+
+// @todo: Remove this call after refactoring main.js
+setMetricAndNeighborhoodConfig(loadLayer);

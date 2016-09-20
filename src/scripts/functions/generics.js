@@ -37,7 +37,6 @@ String.prototype.toProperCase = function(opt_lowerCaseTheRest) {
 // Get URL GET Parameters
 // ****************************************
 function getURLParameter(name) {
-	console.log("getURLParameter name = "+name);
     return decodeURI(
         (new RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,null])[1]
     );
@@ -67,20 +66,12 @@ function getTrend(x1, x2) {
 // Format metric data
 // ****************************************
 function dataRound(theValue, theDecimals) {
-    console.log("theValue = " + theValue + " theDecimals = " + theDecimals);
-	if(typeof stringValue != 'string'){
-        return Number(theValue.toFixed(theDecimals));
-    }
-    else{
-        return theValue;
-    }
+	return Number(theValue).toFixed(theDecimals);
 }
 function dataFormat(theValue, theMetric) {
   var prefix = "",
   suffix = "";
-  ////console.log("dataFormat started");
   if (theMetric) {
-  	//console.log("theMetric = "+theMetric+" prefix = " + metricConfig[theMetric].prefix + " suffix = "+ metricConfig[theMetric].suffix);
     prefix = nullCheck(metricConfig[theMetric].prefix);
     suffix = nullCheck(metricConfig[theMetric].suffix);
   }
@@ -104,19 +95,12 @@ function getPrefix(theMetric){
 }
 function getSuffix(theMetric){
 	var suffix = "";
-    console.log("metricConfig: " + JSON.stringify(metricConfig));
-    console.log("theMetric: " + theMetric);
-    console.log("metricConfig[theMetric]: " + JSON.stringify(metricConfig[theMetric]));
-    if (metricConfig[theMetric].hasOwnProperty('suffix')){
+    if (!(theMetric in metricConfig)) {
+        console.log("Error: metricConfig is undefined for " + theMetric);
+    }
+    else if (metricConfig[theMetric].hasOwnProperty('suffix')){
         suffix = nullCheck(metricConfig[theMetric].suffix);
     }
-    else{
-        suffix = "";
-    }
-	// console.log("suffix = "+suffix);
-	// if (suffix=="%"){return "%";}
-	// else{return suffix;}
-	// console.log('suffix = '+suffix);
 	return suffix;
 }
 function nullCheck(theCheck) {
@@ -131,12 +115,6 @@ function dataPretty(theValue, theMetric) {
     var pretty,
         numDecimals = 0;
 
-	// _.each(metricConfig, function(el, key) {
-        // console.log("genericMetric = "+el.title);
-    // });
-    //console.log("dataPretty theMetric = "+JSON.stringify(theMetric));
-    //console.log("dataPretty metricConfig = "+JSON.stringify(metricConfig));
-    // console.log("metricConfig = "+JSON.stringify(metricConfig[0], null, 2));
     if (theMetric !== null && metricConfig[theMetric].decimals) {
         numDecimals = metricConfig[theMetric].decimals;
     }
