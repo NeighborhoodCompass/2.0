@@ -454,7 +454,106 @@ var censusTractMetricConfig = {
       "title": "Percent Adults with at least a Bachelor's Degree",
       "decimals": 1,
       "type": "normalize"
-    }
+ },
+    "mPOP-t": {
+      "metric": "POP-t",
+      "category": "Demographics",
+      "label": "People",
+      "title": "Population",
+      "decimals": 0,
+      "type": "sum"
+ },
+    "mPTWHNL-t": {
+      "metric": "PTWHNL-t",
+      "category": "Demographics",
+      "suffix": "%",
+      "raw_label": "People",
+      "title": "White or Caucasian",
+      "decimals": 0,
+      "type": "normalize"
+ },
+    "mPTBLKNL-t": {
+      "metric": "PTBLKNL-t",
+      "category": "Demographics",
+      "suffix": "%",
+      "raw_label": "People",
+      "title": "Black or African American",
+      "decimals": 0,
+      "type": "normalize"
+ },
+    "mPTHISP-t": {
+      "metric": "PTHISP-t",
+      "category": "Demographics",
+      "suffix": "%",
+      "raw_label": "People",
+      "title": "Latino or Hispanic",
+      "decimals": 0,
+      "type": "normalize"
+ },
+    "mPTASNL-t": {
+      "metric": "PTASNL-t",
+      "category": "Demographics",
+      "suffix": "%",
+      "raw_label": "People",
+      "title": "Asian",
+      "decimals": 0,
+      "type": "normalize"
+ },
+    "mMEDINC-t": {
+      "metric": "MEDINC-t",
+      "category": "Economy",
+      "prefix": "$",
+      "raw_label": "",
+      "title": "Median Household Income",
+      "decimals": 0,
+      "type": "normalize"
+ },
+    "mMEDHV-t": {
+      "metric": "MEDHV-t",
+      "category": "Housing",
+      "title": "Median Home Value",
+      "prefix": "$",
+      "raw_label": "",
+      "decimals": 0,
+      "type": "normalize"
+ },
+    "mHMLOAN-t": {
+      "metric": "HMLOAN-t",
+      "category": "Housing",
+      "title": "Median Home Loan Value",
+      "prefix": "$",
+      "raw_label": "",
+      "decimals": 0,
+      "type": "normalize"
+ },
+    "mHMINC-t": {
+      "metric": "HMINC-t",
+      "category": "Housing",
+      "title": "Median Homebuyer Income",
+      "prefix": "$",
+      "raw_label": "",
+      "decimals": 0,
+      "type": "normalize"
+ },
+    "mMEDGRENT-t": {
+      "metric": "MEDGRENT-t",
+      "accuracy": "true",
+      "category": "Housing",
+      "title": "Median Gross Rent",
+      "prefix": "$",
+      "raw_label": "",
+      "decimals": 0,
+      "type": "normalize"
+ },
+    "mBACH-t": {
+      "metric": "BACH-t",
+      "category": "Education",
+      "title": "Bachelor's Degree or More",
+      "suffix": "%",
+      "raw_label": "",
+      "decimals": 0,
+      "type": "normalize"
+ }
 }
 
 //~*~*~*~*~*TODO change metricConfig in the $(".censusRadio").click and $(".neighborhoodsRadio").click functions.
