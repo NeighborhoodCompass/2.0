@@ -418,31 +418,58 @@ var censusMetricConfig = {
 };
 
 var neighborhoodMetricConfig = {
- "mCC45-n": {
-  "metric": "CC45-n",
-  "category": "Education",
-  "suffix": "%",
-  "raw_label": "Percent",
-  "title": "Child Care Centers with 4 or 5 Star Ratings",
+//"mCC45-n": {
+//  "metric": "CC45-n",
+//  "category": "Education",
+//  "suffix": "%",
+//  "raw_label": "Percent",
+//  "title": "Child Care Centers with 4 or 5 Star Ratings",
+//  "decimals": 1,
+//  "type": "normalize"
+// },
+// "mCCC-n": {
+//  "metric": "CCC-n",
+//  "category": "Education",
+//  "title": "Child Care Centers",
+//  "decimals": 1,
+//  "type": "normalize"
+// },
+// "mPPSF-n": {
+//  "metric": "PPSF-n",
+//  "category": "Housing",
+//  "prefix": "$",
+//  "raw_label": "Dollars",
+//  "title": "Residential Sale Price per Square Foot",
+//  "decimals": 0,
+//  "type": "sum"
+// },
+ "mV_SQM-n": {
+  "metric": "V_SQM-n",
+  "category": "Safety",
+  "title": "Crimes with a Violent Component",
+  "suffix": "",
+  "raw_label": "",
   "decimals": 1,
   "type": "normalize"
  },
- "mCCC-n": {
-  "metric": "CCC-n",
-  "category": "Education",
-  "title": "Child Care Centers",
+ "mP_SQM-n": {
+  "metric": "P_SQM-n",
+  "category": "Safety",
+  "title": "Crimes Involving Property",
+  "suffix": "",
+  "raw_label": "",
   "decimals": 1,
   "type": "normalize"
  },
- "mPPSF-n": {
-  "metric": "PPSF-n",
-  "category": "Housing",
-  "prefix": "$",
-  "raw_label": "Dollars",
-  "title": "Residential Sale Price per Square Foot",
-  "decimals": 0,
-  "type": "sum"
- },
+ "mD_SQM-n": {
+  "metric": "D_SQM-n",
+  "category": "Safety",
+  "title": "Drug-Related Crimes",
+  "suffix": "",
+  "raw_label": "",
+  "decimals": 1,
+  "type": "normalize"
+ }
 };
 
 var censusTractMetricConfig = {
