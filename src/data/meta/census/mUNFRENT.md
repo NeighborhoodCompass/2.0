@@ -6,6 +6,7 @@ Gross Rent Over 30% of Income
 
 ### About the Data
 Gross rent as a percentage of household income is a computed ratio of monthly gross rent to monthly household income.
+
 As with all measurements from the American Community Survey in the Neighborhood Compass, this data represents 5 years' worth of surveying. With each annual update, the 5-year period advances by dropping one year and incorporating the next. For this reason, annual releases of this measurement are not suitable for true time series comparison until no overlap exists among the survey periods.
 
 Source: American Community Survey (ACS)

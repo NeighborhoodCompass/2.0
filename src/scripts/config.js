@@ -20,6 +20,10 @@ var neighborhoodDescriptor = "";
 // Here's a good place to find some:
 // http://leaflet-extras.github.io/leaflet-providers/preview/
 // Ex: http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png http://tiles.mcmap.org/meckbase/{z}/{x}/{y}.png
+//http://tile.stamen.com/terrain/{z}/{x}/{y}.jpg
+//http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
+//http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png
+//http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
 // You want to change this - our base tiles only cover Mecklenburg County NC.
 var baseTilesURL = "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png";
 
@@ -326,6 +330,22 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "normalize"
  },
+"mCC45": {
+  "metric": "CC45",
+  "category": "Education",
+  "suffix": "%",
+  "raw_label": "Percent",
+  "title": "Child Care Centers with 4 or 5 Star Ratings",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mCCC": {
+  "metric": "CCC",
+  "category": "Education",
+  "title": "Child Care Centers",
+  "decimals": 1,
+  "type": "normalize"
+ },
  "mPCTC30": {
   "metric": "PCTC30",
   "accuracy": "true",
@@ -352,7 +372,7 @@ var censusMetricConfig = {
   "title": "Avg. Monthly Household Electricity Use",
   "suffix": " kwh",
   "decimals": 1,
-  "type": "sum"
+  "type": "normalize"
  },
  "mPCTTREE": {
   "metric": "PCTTREE",
@@ -418,22 +438,22 @@ var censusMetricConfig = {
 };
 
 var neighborhoodMetricConfig = {
-//"mCC45-n": {
-//  "metric": "CC45-n",
-//  "category": "Education",
-//  "suffix": "%",
-//  "raw_label": "Percent",
-//  "title": "Child Care Centers with 4 or 5 Star Ratings",
-//  "decimals": 1,
-//  "type": "normalize"
-// },
-// "mCCC-n": {
-//  "metric": "CCC-n",
-//  "category": "Education",
-//  "title": "Child Care Centers",
-//  "decimals": 1,
-//  "type": "normalize"
-// },
+"mCC45-n": {
+  "metric": "CC45-n",
+  "category": "Education",
+  "suffix": "%",
+  "raw_label": "Percent",
+  "title": "Child Care Centers with 4 or 5 Star Ratings",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mCCC-n": {
+  "metric": "CCC-n",
+  "category": "Education",
+  "title": "Child Care Centers",
+  "decimals": 1,
+  "type": "normalize"
+ },
 // "mPPSF-n": {
 //  "metric": "PPSF-n",
 //  "category": "Housing",

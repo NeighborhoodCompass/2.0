@@ -5,7 +5,9 @@ Housing Ownership Costs 30% or More
 This measurement is related to home owners with mortgages. While home owners with no mortgage generally have lower housing related costs, those with mortgages may have very high housing costs that compare with or even exceed rental costs.
 
 ### About the Data
-This includes selected monthly ownership costs such as mortgage or similar debts, taxes, insurance, utilities, and condo or homeowners fees.<br> As with all measurements from the American Community Survey in the Neighborhood Compass, this data represents 5 years' worth of surveying. With each annual update, the 5-year period advances by dropping one year and incorporating the next. For this reason, annual releases of this measurement are not suitable for true time series comparison until no overlap exists among the survey periods.
+This includes selected monthly ownership costs such as mortgage or similar debts, taxes, insurance, utilities, and condo or homeowners fees. 
+
+As with all measurements from the American Community Survey in the Neighborhood Compass, this data represents 5 years' worth of surveying. With each annual update, the 5-year period advances by dropping one year and incorporating the next. For this reason, annual releases of this measurement are not suitable for true time series comparison until no overlap exists among the survey periods.
 
 Source: American Community Survey (ACS)
 

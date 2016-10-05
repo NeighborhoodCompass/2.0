@@ -5,7 +5,7 @@ Supplemental Security Income
 Supplemental Security Income (SSI) is a nationwide U.S. assistance program administered by the Social Security Administration that guarantees a minimum level of income for aged, blind, or disabled individuals.
 
 ### About the Data
-As with all measurements from the American Community Survey in the Neighborhood Compass, this data represents 5 years' worth of surveying. With each annual update, the 5-year period advances by dropping one year and incorporating the next. For this reason, annual releases of this ACS product are not suitable for true time series comparison until no overlap exists among the survey periods.
+As with all measurements from the American Community Survey in the Neighborhood Compass, this data represents 5 years of surveying. With each annual update, the 5-year period advances by dropping one year and incorporating the next. For this reason, annual releases of this ACS product are not suitable for true time series comparison until no overlap exists among the survey periods.
 
 Source: Durham Police Department and Durham County Sheriff's Office (2013) 
 
