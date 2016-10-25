@@ -335,7 +335,6 @@ var censusMetricConfig = {
   "metric": "CC45",
   "category": "Education",
   "suffix": "%",
-  "raw_label": "Percent",
   "title": "Child Care Centers with 4 or 5 Star Ratings",
   "decimals": 1,
   "type": "normalize"
@@ -344,6 +343,7 @@ var censusMetricConfig = {
   "metric": "CCC",
   "category": "Education",
   "title": "Child Care Centers",
+  "raw_label": "centers",
   "decimals": 1,
   "type": "normalize"
  },
@@ -443,7 +443,6 @@ var neighborhoodMetricConfig = {
   "metric": "CC45-n",
   "category": "Education",
   "suffix": "%",
-  "raw_label": "Percent",
   "title": "Child Care Centers with 4 or 5 Star Ratings",
   "decimals": 1,
   "type": "normalize"
