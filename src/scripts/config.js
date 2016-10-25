@@ -24,8 +24,9 @@ var neighborhoodDescriptor = "";
 //http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png
 //http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png
 //http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
+//http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png
 // You want to change this - our base tiles only cover Mecklenburg County NC.
-var baseTilesURL = "http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png";
+var baseTilesURL = "http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png";
 
 // Server-side processor for feedback.
 // Post arguments passed to the server: email, url, agent (browser info), subject, to, message
@@ -161,7 +162,7 @@ var censusMetricConfig = {
   "suffix": "",
   "raw_label": "",
   "decimals": 2,
-  "type": "sum"
+  "type": "normalize"
  },
  "mMEDAGE": {
   "metric": "MEDAGE",
@@ -295,8 +296,8 @@ var censusMetricConfig = {
   "metric": "RCODE",
   "category": "Housing",
   "title": "Minimum Housing Code Violations",
-  "suffix": "%",
-  "raw_label": "dwelling units",
+  "suffix": "",
+  "raw_label": "violations",
   "decimals": 1,
   "type": "normalize"
  },
@@ -450,7 +451,8 @@ var neighborhoodMetricConfig = {
  "mCCC-n": {
   "metric": "CCC-n",
   "category": "Education",
-  "title": "Child Care Centers",
+  "title": "Child Care Centers per Square Mile",
+  "raw_label": "centers",
   "decimals": 1,
   "type": "normalize"
  },
