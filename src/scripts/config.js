@@ -283,6 +283,15 @@ var censusMetricConfig = {
   "decimals": 0,
   "type": "normalize"
  },
+ "mREVAL": {
+  "metric": "REVAL",
+  "category": "Housing",
+  "title": "Tax Value Change",
+  "suffix": "%",
+  "raw_label": "",
+  "decimals": 1,
+  "type": "sum"
+ },
  "mPRUNSD": {
   "metric": "PRUNSD",
   "category": "Housing",
