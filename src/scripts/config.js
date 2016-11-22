@@ -257,6 +257,14 @@ var censusMetricConfig = {
   "decimals": 0,
   "type": "normalize"
  },
+ "mLUDIV": {
+  "metric": "LUDIV",
+  "category": "Economy",
+  "suffix": "",
+  "title": "Land Use Diversity",
+  "decimals": 1,
+  "type": "normalize"
+ },
  "mPPSF": {
   "metric": "PPSF",
   "category": "Housing",
@@ -288,9 +296,8 @@ var censusMetricConfig = {
   "category": "Housing",
   "title": "Tax Value Change",
   "suffix": "%",
-  "raw_label": "",
   "decimals": 1,
-  "type": "sum"
+  "type": "normalize"
  },
  "mPRUNSD": {
   "metric": "PRUNSD",
@@ -473,6 +480,15 @@ var neighborhoodMetricConfig = {
 //  "decimals": 0,
 //  "type": "sum"
 // },
+ "mREVAL-n": {
+  "metric": "REVAL-n",
+  "category": "Housing",
+  "title": "Tax Value Change",
+  "suffix": "%",
+  "raw_label": "",
+  "decimals": 1,
+  "type": "normalize"
+ },
  "mV_SQM-n": {
   "metric": "V_SQM-n",
   "category": "Safety",
