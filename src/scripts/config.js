@@ -617,15 +617,6 @@ var censusTractMetricConfig = {
       "decimals": 0,
       "type": "normalize"
  },
-    "mHMLOAN-t": {
-      "metric": "HMLOAN-t",
-      "category": "Housing",
-      "title": "Median Home Loan Value",
-      "prefix": "$",
-      "raw_label": "",
-      "decimals": 0,
-      "type": "normalize"
- },
     "mHMINC-t": {
       "metric": "HMINC-t",
       "category": "Housing",
