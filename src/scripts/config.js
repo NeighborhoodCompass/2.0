@@ -172,6 +172,24 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "sum"
  },
+ "mPTUND18": {
+  "metric": "PTUND18",
+  "category": "Demographics",
+  "title": "Youth Population",
+  "suffix": "%",
+  "raw_label": "People",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mPT65Up": {
+  "metric": "PT65UP",
+  "category": "Demographics",
+  "title": "Retirement-Age Population",
+  "suffix": "%",
+  "raw_label": "People",
+  "decimals": 1,
+  "type": "normalize"
+ },
  "mBIKEWK": {
   "metric": "BIKEWK",
   "accuracy": "true",
@@ -199,6 +217,15 @@ var censusMetricConfig = {
   "suffix": "%",
   "raw_label": "people",
   "title": "Working from Home",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mBUS": {
+  "metric": "BUS",
+  "category": "Infrastructure and Amenities",
+  "suffix": "%",
+  "raw_label": "households",
+  "title": "Homes Near Bus Stops",
   "decimals": 1,
   "type": "normalize"
  },
