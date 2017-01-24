@@ -276,11 +276,20 @@ var censusMetricConfig = {
   "type": "normalize"
  },
  "mRPMTS": {
-  "metric": "RMPTS",
+  "metric": "RPMTS",
   "category": "Economy",
   "suffix": "",
-  "raw_label": "permits",
-  "title": "Residential Building Permit Values",
+  "raw_label": "actual dollars",
+  "title": "Residential Building Permit Values Per Sq Mile",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mCPMTS": {
+  "metric": "CPMTS",
+  "category": "Economy",
+  "suffix": "",
+  "raw_label": "actual dollars",
+  "title": "Commercial Building Permit Values Per Sq Mile",
   "decimals": 0,
   "type": "normalize"
  },
@@ -339,7 +348,7 @@ var censusMetricConfig = {
   "metric": "RCODE",
   "category": "Housing",
   "title": "Minimum Housing Code Violations",
-  "suffix": "",
+  "suffix": " per 100",
   "raw_label": "violations",
   "decimals": 1,
   "type": "normalize"
@@ -482,7 +491,25 @@ var censusMetricConfig = {
 };
 
 var neighborhoodMetricConfig = {
-"mCC45-n": {
+ "mRPMTS-n": {
+  "metric": "RPMTS-n",
+  "category": "Economy",
+  "suffix": "",
+  "raw_label": "actual dollars",
+  "title": "Residential Building Permit Values Per Sq Mile",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mCPMTS-n": {
+  "metric": "CPMTS-n",
+  "category": "Economy",
+  "suffix": "",
+  "raw_label": "actual dollars",
+  "title": "Commercial Building Permit Values Per Sq Mile",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mCC45-n": {
   "metric": "CC45-n",
   "category": "Education",
   "suffix": "%",
