@@ -220,12 +220,39 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "normalize"
  },
- "mBUS": {
+ "mPROXBUS": {
   "metric": "BUS",
   "category": "Infrastructure and Amenities",
   "suffix": "%",
   "raw_label": "households",
   "title": "Homes Near Bus Stops",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mPROXGR": {
+  "metric": "PROXGR",
+  "category": "Infrastructure and Amenities",
+  "suffix": "%",
+  "raw_label": "households",
+  "title": "Homes Near Grocery Stores",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mPROXPH": {
+  "metric": "PROXPH",
+  "category": "Infrastructure and Amenities",
+  "suffix": "%",
+  "raw_label": "households",
+  "title": "Homes Near Pharmacies",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mPROXBANK": {
+  "metric": "PROXBANK",
+  "category": "Infrastructure and Amenities",
+  "suffix": "%",
+  "raw_label": "households",
+  "title": "Homes Near Banks or Credit Unions",
   "decimals": 1,
   "type": "normalize"
  },
