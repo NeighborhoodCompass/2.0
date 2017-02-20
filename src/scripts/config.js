@@ -278,7 +278,7 @@ var censusMetricConfig = {
   "metric": "PCTSSI",
   "accuracy": "true",
   "category": "Economy",
-  "prefix": "%",
+  "suffix": "%",
   "raw_label": "people",
   "title": "Supplemental Security Income",
   "decimals": 1,
@@ -305,7 +305,7 @@ var censusMetricConfig = {
  "mRPMTS": {
   "metric": "RPMTS",
   "category": "Economy",
-  "suffix": "",
+  "prefix": "$",
   "raw_label": "actual dollars",
   "title": "Residential Building Permit Values Per Sq Mile",
   "decimals": 0,
@@ -314,7 +314,7 @@ var censusMetricConfig = {
  "mCPMTS": {
   "metric": "CPMTS",
   "category": "Economy",
-  "suffix": "",
+  "prefix": "$",
   "raw_label": "actual dollars",
   "title": "Commercial Building Permit Values Per Sq Mile",
   "decimals": 0,
@@ -521,7 +521,7 @@ var neighborhoodMetricConfig = {
  "mRPMTS-n": {
   "metric": "RPMTS-n",
   "category": "Economy",
-  "suffix": "",
+  "prefix": "$",
   "raw_label": "actual dollars",
   "title": "Residential Building Permit Values Per Sq Mile",
   "decimals": 0,
@@ -530,7 +530,7 @@ var neighborhoodMetricConfig = {
  "mCPMTS-n": {
   "metric": "CPMTS-n",
   "category": "Economy",
-  "suffix": "",
+  "prefix": "$",
   "raw_label": "actual dollars",
   "title": "Commercial Building Permit Values Per Sq Mile",
   "decimals": 0,
