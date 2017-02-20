@@ -149,6 +149,8 @@ function barChart() {
             .transition()
             .duration(1000)
             .attr("width", w / data.length)
+            //.style("stroke", bordercolor)// // bar outline
+            //.style("stroke-width", border)// // bar outline
             .attr("x", function(d,i) {
                 return x(i);
             })
