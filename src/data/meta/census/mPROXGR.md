@@ -13,5 +13,5 @@ Source: City of Durham Transportation, Tax Administration/City-County GIS
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-|[GoTriangle](http://http://www.gotriangle.org/) | text
-|[Triangle Transloc](https://triangle.transloc.com/)| text
+|[Food Bank of Central NC](http://www.foodbankcenc.org/site/PageServer?pagename=branch_durham) | No One Goes Hungry in Central & Eastern North Carolina. 2700 Angier Avenue, Suite A Durham, NC 27703, Monday-Friday, 8:30 am to 5:00 pm. 919-956-2513
+|[Urban Ministries of Durham](http://www.umdurham.org/) | We connect with the community to end homelessness and fight poverty by offering food, shelter and a future to neighbors in need.

@@ -13,5 +13,5 @@ Source: City of Durham Transportation, Tax Administration/City-County GIS
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-|[Senior PharmAssist](http://www.seniorpharmassist.org/) | text
-|[Durham County Public Health Department](http://dconc.gov/government/departments-f-z/public-health)| text
+|[Senior PharmAssist](http://www.seniorpharmassist.org/) | Senior PharmAssist promotes healthier living for Durham seniors by helping them obtain and better manage needed medications, and by providing health education, Medicare insurance counseling, community referral and advocacy.
+|[Partnership for a Healthy Durham](http://healthydurham.org/)| The Partnership for a Healthy Durham is dedicated to collaboratively improve the quality of life of its community.
