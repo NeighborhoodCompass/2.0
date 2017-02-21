@@ -470,12 +470,20 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "normalize"
  },
- "mPTGNRL": {
-  "metric": "PTGNRL",
-  "category": "Engagement",
-  "title": "General Election Participation",
+ "mPCTIMP": {
+  "metric": "PCTIMP",
+  "category": "Environment",
+  "title": "Impervious Area",
   "suffix": "%",
-  "raw_label": "voters",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mWCODE": {
+  "metric": "WCODE",
+  "category": "Environment",
+  "title": "Unmaintained Property Violations",
+  "suffix": "",
+  "raw_label": "Cases",
   "decimals": 1,
   "type": "normalize"
  },
