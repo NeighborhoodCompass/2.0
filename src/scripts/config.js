@@ -375,7 +375,7 @@ var censusMetricConfig = {
   "metric": "RCODE",
   "category": "Housing",
   "title": "Minimum Housing Code Violations",
-  "suffix": " per 100",
+  "suffix": "",
   "raw_label": "violations",
   "decimals": 1,
   "type": "normalize"
@@ -483,7 +483,16 @@ var censusMetricConfig = {
   "category": "Environment",
   "title": "Unmaintained Property Violations",
   "suffix": "",
-  "raw_label": "Cases",
+  "raw_label": "violations",
+  "decimals": 1,
+  "type": "normalize"
+ },
+ "mVCODE": {
+  "metric": "VCODE",
+  "category": "Environment",
+  "title": "Automotive Code Violations",
+  "suffix": "",
+  "raw_label": "violations",
   "decimals": 1,
   "type": "normalize"
  },
