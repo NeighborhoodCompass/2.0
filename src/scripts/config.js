@@ -221,7 +221,7 @@ var censusMetricConfig = {
   "type": "normalize"
  },
  "mPROXBUS": {
-  "metric": "BUS",
+  "metric": "PROXBUS",
   "category": "Infrastructure and Amenities",
   "suffix": "%",
   "raw_label": "households",
