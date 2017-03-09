@@ -402,8 +402,8 @@ function lineChartData(lineChart) {
         var featureValuesData = {
             label: 'Feature',
             fillColor : "rgba(239,223,0,0.2)",
-            strokeColor : "rgba(239,223,0,1)",
-            pointColor : "rgba(239,223,0,1)",
+            strokeColor : "rgba(55,110,215,1)",
+            pointColor : "rgba(55,110,215,1)",
             pointStrokeColor : "#fff",
             pointHighlightFill : "#fff",
             pointHighlightStroke : "rgba(239,223,0,1)",
@@ -442,11 +442,11 @@ function lineChartData(lineChart) {
         var countyMeanData = {
             label: "County",
             fillColor : "rgba(220,220,220,0.5)",
-            strokeColor : "rgba(220,220,220,1)",
-            pointColor : "rgba(220,220,220,1)",
+            strokeColor : "rgba(215,215,215,1)",
+            pointColor : "rgba(215,215,215,1)",
             pointStrokeColor : "#fff",
             pointHighlightFill : "#fff",
-            pointHighlightStroke : "rgba(220,220,220,1)",
+            pointHighlightStroke : "rgba(215,215,215,1)",
             data : []
         };
 

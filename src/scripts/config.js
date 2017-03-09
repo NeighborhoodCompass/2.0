@@ -170,7 +170,7 @@ var censusMetricConfig = {
   "category": "Demographics",
   "title": "Median Age",
   "decimals": 1,
-  "type": "sum"
+  "type": "normalize"
  },
  "mPTUND18": {
   "metric": "PTUND18",
@@ -566,7 +566,7 @@ var neighborhoodMetricConfig = {
   "category": "Education",
   "title": "Child Care Centers per Square Mile",
   "raw_label": "centers",
-  "decimals": 1,
+  "decimals": 0,
   "type": "normalize"
  },
 // "mPPSF-n": {
@@ -581,51 +581,42 @@ var neighborhoodMetricConfig = {
  "mREVAL-n": {
   "metric": "REVAL-n",
   "category": "Housing",
-  "title": "Tax Value Change",
+  "title": "Percent Tax Value Change",
   "suffix": "%",
   "raw_label": "",
   "decimals": 1,
   "type": "normalize"
- },
- "mV_SQM-n": {
-  "metric": "V_SQM-n",
-  "category": "Safety",
-  "title": "Crimes with a Violent Component",
-  "suffix": "",
-  "raw_label": "",
-  "decimals": 1,
-  "type": "normalize"
- },
- "mP_SQM-n": {
-  "metric": "P_SQM-n",
-  "category": "Safety",
-  "title": "Crimes Involving Property",
-  "suffix": "",
-  "raw_label": "",
-  "decimals": 1,
-  "type": "normalize"
- },
- "mD_SQM-n": {
-  "metric": "D_SQM-n",
-  "category": "Safety",
-  "title": "Drug-Related Crimes",
-  "suffix": "",
-  "raw_label": "",
-  "decimals": 1,
-  "type": "normalize"
+// },
+// "mV_SQM-n": {
+//  "metric": "V_SQM-n",
+//  "category": "Safety",
+//  "title": "Crimes with a Violent Component",
+//  "suffix": "",
+//  "raw_label": "",
+//  "decimals": 1,
+//  "type": "normalize"
+// },
+// "mP_SQM-n": {
+//  "metric": "P_SQM-n",
+//  "category": "Safety",
+//  "title": "Crimes Involving Property",
+//  "suffix": "",
+//  "raw_label": "",
+//  "decimals": 1,
+//  "type": "normalize"
+// },
+// "mD_SQM-n": {
+//  "metric": "D_SQM-n",
+//  "category": "Safety",
+//  "title": "Drug-Related Crimes",
+//  "suffix": "",
+//  "raw_label": "",
+//  "decimals": 1,
+//  "type": "normalize"
  }
 };
 
 var censusTractMetricConfig = {
-    "mBACH-t": {
-      "metric": "BACH-t",
-      "category": "Education",
-      "suffix": "%",
-      "raw_label": "Percent",
-      "title": "Percent Adults with at least a Bachelor's Degree",
-      "decimals": 1,
-      "type": "normalize"
- },
     "mPOP-t": {
       "metric": "POP-t",
       "category": "Demographics",
@@ -640,7 +631,7 @@ var censusTractMetricConfig = {
       "suffix": "%",
       "raw_label": "People",
       "title": "White or Caucasian",
-      "decimals": 0,
+      "decimals": 1,
       "type": "normalize"
  },
     "mPTBLKNL-t": {
@@ -649,7 +640,7 @@ var censusTractMetricConfig = {
       "suffix": "%",
       "raw_label": "People",
       "title": "Black or African American",
-      "decimals": 0,
+      "decimals": 1,
       "type": "normalize"
  },
     "mPTHISP-t": {
@@ -658,7 +649,7 @@ var censusTractMetricConfig = {
       "suffix": "%",
       "raw_label": "People",
       "title": "Latino or Hispanic",
-      "decimals": 0,
+      "decimals": 1,
       "type": "normalize"
  },
     "mPTASNL-t": {
@@ -667,7 +658,16 @@ var censusTractMetricConfig = {
       "suffix": "%",
       "raw_label": "People",
       "title": "Asian",
-      "decimals": 0,
+      "decimals": 1,
+      "type": "normalize"
+ },
+    "mBACH-t": {
+      "metric": "BACH-t",
+      "category": "Education",
+      "suffix": "%",
+      "raw_label": "Percent",
+      "title": "Percent Adults with at least a Bachelor's Degree",
+      "decimals": 1,
       "type": "normalize"
  },
     "mMEDINC-t": {
@@ -703,15 +703,6 @@ var censusTractMetricConfig = {
       "category": "Housing",
       "title": "Median Gross Rent",
       "prefix": "$",
-      "raw_label": "",
-      "decimals": 0,
-      "type": "normalize"
- },
-    "mBACH-t": {
-      "metric": "BACH-t",
-      "category": "Education",
-      "title": "Bachelor's Degree or More",
-      "suffix": "%",
       "raw_label": "",
       "decimals": 0,
       "type": "normalize"
