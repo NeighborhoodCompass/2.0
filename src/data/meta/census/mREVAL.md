@@ -7,7 +7,7 @@ The increase in property values across neighborhoods can make a major impact on 
 ### About the Data
 This rate of change is derived from parcel point data from 2014 (previous to the most recent property tax revaluation) and 2016. 2015 records were not used for the before-and-after comparison because many but not all records for 2015 parcels already included revalued estimates and the appeal process had not yet begun.
 
-The number reported here is a median of the rate of change for every property in a blockgroup. Properties with zero value in 2014 or zero values in both years were excluded from this calculation to prevent skewing by outliers.
+The number reported here is a median rate of change for every property in a blockgroup. Properties with zero value in 2014 or zero values in both years were excluded from this calculation to prevent skewing by outliers.
 
 Source: Durham County Tax Administration 
 

@@ -586,6 +586,15 @@ var neighborhoodMetricConfig = {
   "raw_label": "",
   "decimals": 1,
   "type": "normalize"
+},
+ "mPROXBUS-n": {
+  "metric": "PROXBUS-n",
+  "category": "Infrastructure and Amenities",
+  "suffix": "%",
+  "raw_label": "households",
+  "title": "Homes Near Bus Stops",
+  "decimals": 1,
+  "type": "normalize"
 // },
 // "mV_SQM-n": {
 //  "metric": "V_SQM-n",
