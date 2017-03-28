@@ -311,6 +311,15 @@ var censusMetricConfig = {
   "decimals": 0,
   "type": "normalize"
  },
+ "mMEANRPMT": {
+  "metric": "MEANRPMT",
+  "category": "Economy",
+  "prefix": "$",
+  "raw_label": "actual dollars",
+  "title": "Average Residential Building Permit Value",
+  "decimals": 0,
+  "type": "normalize"
+ },
  "mCPMTS": {
   "metric": "CPMTS",
   "category": "Economy",
@@ -544,6 +553,15 @@ var neighborhoodMetricConfig = {
   "decimals": 0,
   "type": "normalize"
  },
+ "mMEANRPMT-n": {
+  "metric": "MEANRPMT-n",
+  "category": "Economy",
+  "prefix": "$",
+  "raw_label": "(000s) ",
+  "title": "Average Residential Building Permit Value",
+  "decimals": 0,
+  "type": "normalize"
+ },
  "mCPMTS-n": {
   "metric": "CPMTS-n",
   "category": "Economy",
@@ -587,6 +605,15 @@ var neighborhoodMetricConfig = {
   "decimals": 1,
   "type": "normalize"
 },
+ "mRAVGYR-n": {
+  "metric": "RAVGYR-n",
+  "category": "Housing",
+  "title": "Average Year of Residential Construction",
+  "prefix": "",
+  "raw_label": "",
+  "decimals": 0,
+  "type": "normalize"
+ },
  "mPROXBUS-n": {
   "metric": "PROXBUS-n",
   "category": "Infrastructure and Amenities",
