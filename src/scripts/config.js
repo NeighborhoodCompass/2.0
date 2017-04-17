@@ -210,6 +210,15 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "normalize"
  },
+ "mSWTORD": {
+  "metric": "SWTORD",
+  "category": "Infrastructure and Amenities",
+  "suffix": "%",
+  "raw_label": "",
+  "title": "Sidewalk to Roadway Ratio",
+  "decimals": 0,
+  "type": "normalize"
+ },
  "mWKHOME": {
   "metric": "WKHOME",
   "accuracy": "true",
