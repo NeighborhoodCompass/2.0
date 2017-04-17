@@ -623,6 +623,15 @@ var neighborhoodMetricConfig = {
   "decimals": 0,
   "type": "normalize"
  },
+ "mSWTORD-n": {
+  "metric": "SWTORD-n",
+  "category": "Infrastructure and Amenities",
+  "suffix": "%",
+  "raw_label": "",
+  "title": "Sidewalk to Roadway Ratio",
+  "decimals": 0,
+  "type": "normalize"
+ },
  "mPROXBUS-n": {
   "metric": "PROXBUS-n",
   "category": "Infrastructure and Amenities",
