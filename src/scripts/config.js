@@ -215,7 +215,7 @@ var censusMetricConfig = {
   "category": "Infrastructure and Amenities",
   "suffix": "%",
   "raw_label": "",
-  "title": "Sidewalk to Roadway Ratio",
+  "title": "Sidewalks to Roadways",
   "decimals": 0,
   "type": "normalize"
  },
@@ -628,7 +628,7 @@ var neighborhoodMetricConfig = {
   "category": "Infrastructure and Amenities",
   "suffix": "%",
   "raw_label": "",
-  "title": "Sidewalk to Roadway Ratio",
+  "title": "Sidewalks-to-Roadways",
   "decimals": 0,
   "type": "normalize"
  },
