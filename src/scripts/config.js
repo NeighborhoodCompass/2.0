@@ -346,14 +346,14 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "normalize"
  },
- "mPPSF": {
-  "metric": "PPSF",
-  "category": "Housing",
-  "title": "Median Price Per Square Foot",
-  "prefix": "$",
-  "decimals": 0,
-  "type": "normalize"
- },
+// "mPPSF": {
+//  "metric": "PPSF",
+//  "category": "Housing",
+//  "title": "Median Price Per Square Foot",
+//  "prefix": "$",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
  "mRAVGYR": {
   "metric": "RAVGYR",
   "category": "Housing",
