@@ -5,7 +5,7 @@ Residential Building Permit Values
 Residential building permit values reflect active investment in property, whether improvements or maintenance for existing residences or development of new homes.
 
 ### About the Data
-The value of residential building permits for each boundary divided by the area (in square miles) of each. These permits include new construction as well as renovations and exclude demolitions.
+The value of residential building permits for each boundary divided by the area (in square miles) of each. These permits include new construction as well as renovations and exclude demolitions. Even when normalized by square miles, as these numbers are, strong outliers skew the data. Some areas of Durham receive tremendous amounts of housing investment as private apartment development continues near downtown.
 
 Source: Durham City/County Inspections Department  
 

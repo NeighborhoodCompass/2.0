@@ -5,7 +5,7 @@ Average Residential Building Permit Value
 Residential building permit values reflect active investment in property, whether improvements or maintenance for existing residences or development of new homes.
 
 ### About the Data
-The average value of residential building permits for each boundary. These permits include new construction as well as renovations and exclude demolitions.
+The average value of residential building permits for each boundary. These permits include new construction as well as renovations and exclude demolitions. As with the value of permits when normalized by square miles, the average permit values shown here are skewed strongly toward areas of Durham that see substantial private investment in apartment building construction. 
 
 Source: Durham City/County Inspections Department  
 

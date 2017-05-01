@@ -5,7 +5,7 @@ Total Population
 Total population indicates the number of people living in a selected area. It is used to calculate density, and other per capita data. Trends of population increase or decrease can help the City, County and other service providers know where infrastructure and other services may be needed.
 
 ### About the Data
-This data is from the 2010 Decennial Census. The Neighborhood Compass will report 100% population counts from the 2010 Decennial Census until population estimates for blockgroups are available through the American Community Survey (ACS) for 2010-2014. Annual population updates will then be made from the ACS until the 2020 Decennial Census.
+This data is from the 2010 Decennial Census. The Neighborhood Compass will report 100% population counts from the 2010 Decennial Census until population estimates for blockgroups and incorporate mid-decade updates from the American Community Survey (ACS) for Census tracts. This will allow for the best-available data at the sub-county level.
 
 Source: U.S. Decennial Census, 2010 
 

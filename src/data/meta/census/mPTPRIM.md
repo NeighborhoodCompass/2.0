@@ -13,5 +13,5 @@ Source: Durham County Board of Elections
 
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
-|[NC Voter ID Requirements](http://voterid.nc.gov/) |  
+|[NC Board of Elections](http://ncsbe2.azurewebsites.net/) |  
 |[Durham County Board of Elections](http://dconc.gov/government/departments-a-e/board-of-elections)| The Mission of the Board of Elections is to provide free, open, honest, and professionally managed election services to our community.

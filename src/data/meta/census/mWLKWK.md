@@ -1,5 +1,5 @@
-## Commuting to Work by Foot
-Commuting to Work by Foot
+## Walking to Work
+Walking to Work
 
 ### Why is this important?
 A higher number of residents walking to work reflects residential proximity to employers, a safe pedestrian network, and/or a preference or necessity to walk. Walking has health and financial benefits, but as an alternative to driving it offers many of the same environmental and infrastructural benefits as biking or working from home: reduced vehicle miles traveled, reduced congestion, and reduced travel demand.

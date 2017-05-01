@@ -190,6 +190,15 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "normalize"
  },
+ "mPARKS": {
+  "metric": "PARKS",
+  "category": "Infrastructure and Amenities",
+  "suffix": "%",
+  "raw_label": "homes",
+  "title": "Walking Distance to Parks or Trails",
+  "decimals": 0,
+  "type": "normalize"
+ },
  "mBIKEWK": {
   "metric": "BIKEWK",
   "accuracy": "true",
@@ -206,7 +215,7 @@ var censusMetricConfig = {
   "category": "Infrastructure and Amenities",
   "suffix": "%",
   "raw_label": "people",
-  "title": "Commuting to work by Foot",
+  "title": "Walking to Work",
   "decimals": 1,
   "type": "normalize"
  },
@@ -315,7 +324,7 @@ var censusMetricConfig = {
   "metric": "RPMTS",
   "category": "Economy",
   "prefix": "$",
-  "raw_label": "actual dollars",
+  "raw_label": "total dollars",
   "title": "Residential Building Permit Values Per Sq Mile",
   "decimals": 0,
   "type": "normalize"
@@ -324,7 +333,6 @@ var censusMetricConfig = {
   "metric": "MEANRPMT",
   "category": "Economy",
   "prefix": "$",
-  "raw_label": "actual dollars",
   "title": "Average Residential Building Permit Value",
   "decimals": 0,
   "type": "normalize"
@@ -333,7 +341,7 @@ var censusMetricConfig = {
   "metric": "CPMTS",
   "category": "Economy",
   "prefix": "$",
-  "raw_label": "actual dollars",
+  "raw_label": "total dollars",
   "title": "Commercial Building Permit Values Per Sq Mile",
   "decimals": 0,
   "type": "normalize"
@@ -523,6 +531,15 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "normalize"
  },
+ "mPTGNRL": {
+  "metric": "PTGNRL",
+  "category": "Engagement",
+  "title": "General Election Participation",
+  "suffix": "%",
+  "raw_label": "voters",
+  "decimals": 1,
+  "type": "normalize"
+ },
  "mV_SQM": {
   "metric": "V_SQM",
   "category": "Safety",
@@ -620,6 +637,15 @@ var neighborhoodMetricConfig = {
   "title": "Average Year of Residential Construction",
   "prefix": "",
   "raw_label": "",
+  "decimals": 0,
+  "type": "normalize"
+ },
+ "mPARKS-n": {
+  "metric": "PARKS-n",
+  "category": "Infrastructure and Amenities",
+  "suffix": "%",
+  "raw_label": "homes",
+  "title": "Walking Distance to Parks or Trails",
   "decimals": 0,
   "type": "normalize"
  },

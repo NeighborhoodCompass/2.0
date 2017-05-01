@@ -14,6 +14,5 @@ Source: Durham County Tax Administration
 |Resource | Learn More and Take Action | 
 |:--- | :--- |
 |[City of Durham Community Development](http://durhamnc.gov/445/Community-Development)| The city’s community development and neighborhood stabilization and revitalization efforts including financial empowerment and home retention, affordable housing, and homelessness services programs.
-|[Habitat Durham](http://www.durhamhabitat.org/)| Dedicated to eliminating substandard housing locally and worldwide through constructing, rehabilitating and preserving homes; by advocating for fair and just housing policies; and by providing training and access to resources to help families improve their shelter conditions.
 |[Preservation Durham](http://preservationdurham.org/)| Preservation Durham's mission is to protect Durham's historic assets through action, advocacy and education.
 |[Open Durham](http://www.opendurham.org/)| Open Durham is a highly interlinked archive/inventory of information about people, places, and history in Durham, NC.

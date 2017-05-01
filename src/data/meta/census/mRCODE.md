@@ -2,10 +2,11 @@
 Minimum Housing Code Violations
 
 ### Why is this important?
-Violations of the City minimum housing code can interfere with the safety and quality of life of residents and can have a negative impact on surrounding homes and properties. The City of Durham minimum housing standards code is enforced by the Neighborhood Improvement Services department.
+Violations of the City minimum housing code can interfere with the safety and quality of life of residents and can have a negative impact on surrounding homes and properties. The City of Durham minimum housing standards code is enforced by the Neighborhood Improvement Services department. 
 
+NOTE: As with residential building permit values, which skew toward areas of uneven investment, enforcement cases of housing code are higher in areas where the City's Proactive Rental Inspection Program (PRIP) is active. For a map of these areas, please refer to the PRIP link in Additional Resources. Because minimum housing code is enforced by the City of Durham but not outside the city in Durham County, this measurement reflects a City-only service and parts of Durham County are not represented by this data. Dwelling unit estimates for this measure therefore only count those within the City administrative boundary.
 ### About the Data
-The number of minimum housing code violations divided by the square miles of each blockgroup that lie within the City boundary. This measurement includes all minimum housing code violations, excluding calls found to be not in violation. This does include orders to repair, demolish, unsafe structures, and boarded properties. NOTE: These numbers may be higher in areas where the City's Proactive Rental Inspection Program (PRIP) is active. For a map of these areas, please refer to the PRIP link in Additional Resources. Because minimum housing code is enforced by the City of Durham but not outside the city in Durham County, this measurement reflects a City-only service and parts of Durham County are not represented by this data. Dwelling unit estimates for this measure therefore only count those within the City administrative boundary.
+The number of minimum housing code violations divided by the square miles of each blockgroup that lie within the City boundary. This measurement includes all minimum housing code violations, excluding calls found to be not in violation. This does include orders to repair, demolish, unsafe structures, and boarded properties. 
 
 Source: City of Durham Neighborhood Improvement Services  
 

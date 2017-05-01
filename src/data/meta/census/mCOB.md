@@ -1,8 +1,8 @@
 ## Commercial Certificates of Occupancy
-Commercial Certificates of Occupancy
+Commercial Certificates of Occupancy per Sq. Mile
 
 ### Why is this important?
-Certificates of occupancy are issued for completed renovations or new construction. Newly completed commercial COs indicate recent investment in real estate (an economic benefit to a neighborhood) and additional new commercial space, which is both an opportunity for local business growth and potential for improved access to core needs and employment.
+Certificates of occupancy are issued for completed renovations or new construction. Newly completed commercial COs indicate recent investment in real estate (an economic benefit to a neighborhood) and additional new commercial space, which is both an opportunity for local business growth and potential for improved access to core needs and employment. Areas with significant investment and significant low income and renting populations may be vulnerable to displacement.
 
 ### About the Data
 COs included here are the following types: business, mercantile, factory industrial, and mixed use commercial. The count of these per neighborhood or blockgroup is divided by the area in square miles within the City/County Inspections districts.

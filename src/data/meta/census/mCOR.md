@@ -1,8 +1,8 @@
 ## Residential Certificates of Occupancy
-Residential Certificates of Occupancy
+Residential Certificates of Occupancy per Sq. Mile
 
 ### Why is this important?
-Certificates of occupancy are issued for completed renovations or new construction. Newly completed residential COs indicate recent investment in real estate and lead to increased property values. Overall, this reflects improvement to a neighborhood's housing stock.
+Certificates of occupancy are issued for completed renovations or new construction. Newly completed residential COs indicate recent investment in real estate and lead to increased property values. Overall, this reflects improvement to a neighborhood's housing stock, but it may also indicate areas where population is increasing as new housing becomes available. Areas with significant investment and significant low income and renting populations may be vulnerable to displacement.
 
 ### About the Data
 COs included here are the following types: residential, single family, townhouse, condominium, duplex, manufactured homes, and mixed-use residential. The count of these per neighborhood or blockgroup is divided by the area in square miles within the City/County Inspections districts.

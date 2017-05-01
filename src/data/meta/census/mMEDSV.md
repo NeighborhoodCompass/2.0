@@ -5,7 +5,7 @@ Median Home Sale Value (Inflation-Adjusted)
 Home sales are a key reflection of how desirable and affordable a community's housing stock is. Changes in the value of homes can reflect increasing market interest in a neighborhood, broader changes like economic recessions and even demographic shifts. 
 
 ### About the Data
-This information reflects home sales reported in Tax Administration property records from 2001 through 2016 and includes 1-, 2-, 3-, and 4-family homes, condos, townhouses, mobile homes, and non-residential buildings converted to residential. Large multi-unit commercial residential sales are excluded. Values have been inflation adjusted to 2016 values using the Consumer Price Index for housing.  
+This information reflects home sales reported in Tax Administration property records from 2001 through 2016 and includes 1-, 2-, 3-, and 4-family homes, condos, townhouses, mobile homes, and non-residential buildings converted to residential. Large multi-unit commercial residential sales are excluded. Dollar amounts have been inflation adjusted to 2016 values using the Consumer Price Index for housing.  
 
 Source: Durham County Tax Administration
 

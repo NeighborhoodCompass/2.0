@@ -2,7 +2,7 @@
 Median Age
 
 ### Why is this important?
-The median age is used to indicate the age of the population in general. Communities with higher numbers of aging residents may face different challenges than others and might require enhanced services or physical infrastructure.
+The median age is used to indicate the age of the population in general. Communities with higher numbers of aging residents may face specific challenges of accessibility and affordability that may require enhanced services or physical infrastructure. Conversely, a community with a particularly low median age may require a greater concentration of child care and youth-focused services, as well as focused attention on recuirting employers and retaining young families.
 
 ### About the Data
 The age at the midpoint of the population. Half of the population is older than this age, and half is younger. 
