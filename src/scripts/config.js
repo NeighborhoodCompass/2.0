@@ -190,15 +190,15 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "normalize"
  },
- "mPARKS": {
-  "metric": "PARKS",
-  "category": "Infrastructure and Amenities",
-  "suffix": "%",
-  "raw_label": "homes",
-  "title": "Walking Distance to Parks or Trails",
-  "decimals": 0,
-  "type": "normalize"
- },
+// "mPARKS": {
+//  "metric": "PARKS",
+//  "category": "Infrastructure and Amenities",
+//  "suffix": "%",
+//  "raw_label": "homes",
+//  "title": "Walking Distance to Parks or Trails",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
  "mBIKEWK": {
   "metric": "BIKEWK",
   "accuracy": "true",
@@ -640,15 +640,15 @@ var neighborhoodMetricConfig = {
   "decimals": 0,
   "type": "normalize"
  },
- "mPARKS-n": {
-  "metric": "PARKS-n",
-  "category": "Infrastructure and Amenities",
-  "suffix": "%",
-  "raw_label": "homes",
-  "title": "Walking Distance to Parks or Trails",
-  "decimals": 0,
-  "type": "normalize"
- },
+// "mPARKS-n": {
+//  "metric": "PARKS-n",
+//  "category": "Infrastructure and Amenities",
+//  "suffix": "%",
+//  "raw_label": "homes",
+//  "title": "Walking Distance to Parks or Trails",
+//  "decimals": 0,
+//  "type": "normalize"
+// },
  "mSWTORD-n": {
   "metric": "SWTORD-n",
   "category": "Infrastructure and Amenities",
