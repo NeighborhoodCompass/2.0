@@ -699,6 +699,7 @@ var neighborhoodMetricConfig = {
 var censusTractMetricConfig = {
     "mPOP-t": {
       "metric": "POP-t",
+      "accuracy": "true",
       "category": "Demographics",
       "label": "People",
       "title": "Population",
