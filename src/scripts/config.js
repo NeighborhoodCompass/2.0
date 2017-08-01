@@ -26,7 +26,7 @@ var neighborhoodDescriptor = "";
 //http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
 //http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png
 // You want to change this - our base tiles only cover Mecklenburg County NC.
-var baseTilesURL = "http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png";
+var baseTilesURL = "http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png";
 
 // Server-side processor for feedback.
 // Post arguments passed to the server: email, url, agent (browser info), subject, to, message
@@ -41,7 +41,7 @@ var contactConfig = {
 var mapGeography = {
         minZoom: 9,
         maxZoom: 17,
-        defaultZoom: 10,
+        defaultZoom: 11,
         center: [35.988, -78.907]
     };
 
@@ -83,7 +83,7 @@ var colorbreaks = 5;
 // }
 // ***********************************************************
 
-//COMPASSNOTE - these are the locations and names of the two target layer topojson files ###JPK 8/16: added tracts TODO: restructure if/else to trio of options
+//COMPASSNOTE - these are the locations and names of the two target layer topojson files ###JPK 8/16: added tracts 
 var neighborhoodTOPOJSON = "data/neighborhood.topo.json";
 var censusTOPOJSON = "data/census.topo.json";
 var censusTractTOPOJSON = "data/tracts.topo.json";
@@ -199,6 +199,14 @@ var censusMetricConfig = {
 //  "decimals": 0,
 //  "type": "normalize"
 // },
+ "mAVEAGE": {
+  "metric": "AVEAGE",
+  "category": "Health",
+  "raw_label": "years",
+  "title": "Average Age of Death",
+  "decimals": 1,
+  "type": "normalize"
+ },    
  "mBIKEWK": {
   "metric": "BIKEWK",
   "accuracy": "true",
@@ -760,6 +768,14 @@ var censusTractMetricConfig = {
       "decimals": 0,
       "type": "normalize"
  },
+    "mAVEAGE-t": {
+     "metric": "AVEAGE-t",
+     "category": "Health",
+     "raw_label": "years",
+     "title": "Average Age of Death",
+     "decimals": 1,
+     "type": "normalize"
+ }, 
     "mMEDHV-t": {
       "metric": "MEDHV-t",
       "category": "Housing",
