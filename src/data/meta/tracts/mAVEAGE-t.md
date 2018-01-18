@@ -5,7 +5,7 @@ Average Age of Death
 [test]
 
 ### About the Data
-The average age of death here is reported for 2009 (reflecting records from 2005-2009) and 2014 (reflecting records from 2010-2014).
+The average age of death here is reported as 2009 (reflecting records from 2005-2009) and 2014 (reflecting records from 2010-2014).
 
 Source: North Carolina State Center for Health Statistics 
 

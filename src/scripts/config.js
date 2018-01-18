@@ -26,7 +26,7 @@ var neighborhoodDescriptor = "";
 //http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png
 //http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png
 // You want to change this - our base tiles only cover Mecklenburg County NC.
-var baseTilesURL = "http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png";
+var baseTilesURL = "http://{s}.www.toolserver.org/tiles/bw-mapnik/{z}/{x}/{y}.png";
 
 // Server-side processor for feedback.
 // Post arguments passed to the server: email, url, agent (browser info), subject, to, message
@@ -444,12 +444,22 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "normalize"
  },
-"mCC45": {
-  "metric": "CC45",
-  "category": "Education",
+ "mUNFOWN": {
+  "metric": "UNFOWN",
+  "accuracy": "true",
+  "category": "Housing",
+  "title": "Cost-Burdened Mortgage Holders",
   "suffix": "%",
-  "title": "Child Care Centers with 4 or 5 Star Ratings",
+  "raw_label": "households",
   "decimals": 1,
+  "type": "normalize"
+ },
+ "mSUMEJECT": {
+  "metric": "SUMEJECT",
+  "category": "Housing",
+  "title": "Summary Ejectments Per Square Mile",
+  "raw_label": "Evictions",
+  "decimals": 0,
   "type": "normalize"
  },
  "mCCC": {
