@@ -1,4 +1,5 @@
 ## Median Household Income
+## Median Household Income
 Median Household Income
 
 ### Why is this important?

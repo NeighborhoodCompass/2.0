@@ -41,7 +41,7 @@ var contactConfig = {
 var mapGeography = {
         minZoom: 9,
         maxZoom: 17,
-        defaultZoom: 10,
+        defaultZoom: 11,
         center: [35.988, -78.907]
     };
 
@@ -83,7 +83,7 @@ var colorbreaks = 5;
 // }
 // ***********************************************************
 
-//COMPASSNOTE - these are the locations and names of the two target layer topojson files ###JPK 8/16: added tracts TODO: restructure if/else to trio of options
+//COMPASSNOTE - these are the locations and names of the two target layer topojson files ###JPK 8/16: added tracts 
 var neighborhoodTOPOJSON = "data/neighborhood.topo.json";
 var censusTOPOJSON = "data/census.topo.json";
 var censusTractTOPOJSON = "data/tracts.topo.json";
@@ -199,6 +199,14 @@ var censusMetricConfig = {
 //  "decimals": 0,
 //  "type": "normalize"
 // },
+ "mAVEAGE": {
+  "metric": "AVEAGE",
+  "category": "Health",
+  "raw_label": "years",
+  "title": "Average Age of Death",
+  "decimals": 1,
+  "type": "normalize"
+ },    
  "mBIKEWK": {
   "metric": "BIKEWK",
   "accuracy": "true",
@@ -436,12 +444,22 @@ var censusMetricConfig = {
   "decimals": 1,
   "type": "normalize"
  },
-"mCC45": {
-  "metric": "CC45",
-  "category": "Education",
+ "mUNFOWN": {
+  "metric": "UNFOWN",
+  "accuracy": "true",
+  "category": "Housing",
+  "title": "Cost-Burdened Mortgage Holders",
   "suffix": "%",
-  "title": "Child Care Centers with 4 or 5 Star Ratings",
+  "raw_label": "households",
   "decimals": 1,
+  "type": "normalize"
+ },
+ "mSUMEJECT": {
+  "metric": "SUMEJECT",
+  "category": "Housing",
+  "title": "Summary Ejectments Per Square Mile",
+  "raw_label": "Evictions",
+  "decimals": 0,
   "type": "normalize"
  },
  "mCCC": {
@@ -760,6 +778,14 @@ var censusTractMetricConfig = {
       "decimals": 0,
       "type": "normalize"
  },
+    "mAVEAGE-t": {
+     "metric": "AVEAGE-t",
+     "category": "Health",
+     "raw_label": "years",
+     "title": "Average Age of Death",
+     "decimals": 1,
+     "type": "normalize"
+ }, 
     "mMEDHV-t": {
       "metric": "MEDHV-t",
       "category": "Housing",
